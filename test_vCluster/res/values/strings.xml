@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name">test_vCluster</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="btn_startSimulator">startSimulator</string>
+    <string name="btn_startDemo">startDemo</string>
+    <string name="btn_writeFile">writeFile</string>
+    <string name="btn_testFile">testFile</string>
+
+</resources>

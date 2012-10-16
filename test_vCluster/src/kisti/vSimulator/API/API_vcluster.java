@@ -1,14 +1,9 @@
 package kisti.vSimulator.API;
 
-import java.io.ObjectInputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.os.AsyncTask;
+import kisti.vSimulator.Simulator;
 
 
 
@@ -30,49 +25,6 @@ import android.os.AsyncTask;
  * 
  */
 
-class backgroundNetConn extends AsyncTask<String, Void, Object>{
-
-	private static final int PORT = 7878;
-	private static final String IP_ADDR = "127.0.0.1";
-//	 private static final String IP_ADDR = "150.183.234.168";
-	private static InetAddress inetAddress = null;
-	private static Socket socket = null;
-
-	private static PrintWriter printWriter = null;
-	private static ObjectInputStream ois = null;
-	
-	@Override
-	protected Object  doInBackground(String... command) {
-		// TODO Auto-generated method stub
-
-		Object result = null;
-		try {
-
-			socket = new Socket(IP_ADDR, PORT);
-			printWriter = new PrintWriter(new OutputStreamWriter(
-					socket.getOutputStream()));
-			// 명령 서버로 날림
-			printWriter.println(command);
-			printWriter.flush();
-
-			// 결과 받기
-			ois = new ObjectInputStream(socket.getInputStream());
-			result = ois.readObject();
-
-			ois.close();
-			printWriter.close();
-			socket.close();
-		} catch (Exception e) {
-			// TODO: handle EXception
-			e.printStackTrace();
-			System.out.println(e.toString());
-		}
-		return result;
-		
-	}
-	
-	
-}
 
 
 
@@ -80,17 +32,17 @@ class backgroundNetConn extends AsyncTask<String, Void, Object>{
 public class API_vcluster {
 
 
+	private Simulator simulator = null;
 
-	public API_vcluster() {
+	public API_vcluster(Simulator simulator) {
 		// TODO Auto-generated constructor stub
+		this.simulator = simulator;
+		
 	}
 
-	private static synchronized Object requestToSimulator(String command) {
-		
+	private  synchronized Object requestToSimulator(String command) {		
 
-		 return new backgroundNetConn().execute(command);
-
-
+		return simulator.execute(command);
 	}
 
 	// ******************************************************************

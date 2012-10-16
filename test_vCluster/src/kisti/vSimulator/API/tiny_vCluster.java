@@ -21,9 +21,9 @@ public class tiny_vCluster {
 	
 	
 	
-	public tiny_vCluster() {	
-		API	 = new API_vcluster();
-		jobQueue = new JobQueue(maxQueue);
+	public tiny_vCluster(API_vcluster API) {	
+		this.API	 = API;
+		this.jobQueue = new JobQueue(maxQueue);
 	}
 	private int getMaxQueue(){
 		return this.maxQueue;		

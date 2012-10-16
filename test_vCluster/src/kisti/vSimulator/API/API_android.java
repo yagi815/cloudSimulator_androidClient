@@ -29,12 +29,14 @@ public class API_android {
 	
 	private API_vcluster API = null;
 	private tiny_vCluster  t_vCluster = null;
+	private Simulator simulator = null;
 	
 
 	public API_android() {
 		// TODO Auto-generated constructor stub
-		API = new API_vcluster();
-		t_vCluster = new tiny_vCluster();
+		simulatorStart();
+		API = new API_vcluster(simulator);
+		t_vCluster = new tiny_vCluster(API);
 	}
 
 	// ******************************************************************
@@ -190,7 +192,7 @@ public class API_android {
 		t_vCluster.demoStop();
 	}
 	public void simulatorStart(){
-		new Simulator();
+		simulator = new Simulator();
 	}
 
 

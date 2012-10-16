@@ -53,8 +53,8 @@ public class SimManager implements Runnable {
 
 	public SimManager() {
 		// TODO Auto-generated constructor stub
-		initVariable();
-		initSimulator();
+		
+	
 	}
 
 	@Override
@@ -104,7 +104,9 @@ public class SimManager implements Runnable {
 		return true;
 	}
 	*/
-	private  void initSimulator() {
+	public  void initSimulator() {
+		initVariable();
+		
 		
 		mainHostContainer = new HostMachine[maxHost];
 		for (int i = 0; i < maxHost; i++) {

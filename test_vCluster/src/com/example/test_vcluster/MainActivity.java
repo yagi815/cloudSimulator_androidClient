@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-    @Overrided
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -54,11 +54,33 @@ public class MainActivity extends Activity {
 		});
         btn2.setOnClickListener(new OnClickListener() {
 			
+        	
+        	
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				txt1.append("startDemo");
-				api.demoStart();
+				
+				new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						api.demoStart();
+						
+					}
+				}).start();
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			}
 		});
         
@@ -67,12 +89,35 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				txt1.append("call func");
-				List list = api.getCurrentRunningVmList("-");
-				for (int i = 0; i < list.size(); i++) {
-					txt1.append((String)list.get(i));
-				}
-					
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						while (true) {
+
+							Log.d("main", "disp sim");
+
+							txt1.append("\tavailvm:"
+									+ api.getCurrentAvailableVmList("-").size());
+							txt1.append("\trunnginjobs:" + api.getRunningJobs());
+							txt1.append("\tidlevm:"
+									+ api.getCurrentIdleVmList("-").size());
+							txt1.append("\trunningHost:"
+									+ api.getRunningHostList("-").size());
+							txt1.append("\n\n");
+
+							try {
+								Thread.sleep(3000);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+
+						}
+					}
+				}).start();
+				
 			}
 		});
         

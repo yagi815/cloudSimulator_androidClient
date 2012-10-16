@@ -3,6 +3,11 @@ package kisti.vSimulator.API;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.test_vcluster.MainActivity;
+
+import android.R.bool;
+import android.widget.Toast;
+
 import kisti.vSimulator.Simulator;
 
 
@@ -183,7 +188,9 @@ public class API_android {
 	 * 
 	 */
 	public void demoStart(){
-		t_vCluster.demoStart();
+		
+			t_vCluster.demoStart();
+		
 	}
 	/**
 	 * Desc : 데모 정지
@@ -191,7 +198,10 @@ public class API_android {
 	 * 
 	 */
 	public void demoStop(){
-		t_vCluster.demoStop();
+	
+			
+			t_vCluster.demoStop();
+		
 	}
 	public void simulatorStart(){
 		simulator = new Simulator();
@@ -199,6 +209,14 @@ public class API_android {
 	public String getTotalVMs(){
 		return API.getTotalVMs();
 	}
+//	public boolean isRunSumlator(){
+//		if (simulator != null) {
+//			return true;
+//		}else{
+//			return false;
+//		}
+//			
+//	}
 
 
 }

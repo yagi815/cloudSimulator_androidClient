@@ -60,22 +60,22 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+
 				txt1.append("startDemo");
-				
+
 				new Thread(new Runnable() {
-					
+
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
 						api.demoStart();
-						Log.d("main", ""+api.getRunningJobs());
+
+								
 					}
 				}).start();
-				
+
 				Toast.makeText(MainActivity.this, "demo Start", 0).show();
-				
-				
-				
+
 			}
 		});
         

@@ -64,7 +64,9 @@ public class API_android {
 	 * 
 	 */
 	public int getRunningJobs() {
-		return 80;
+//		return 80;
+		int runningJobs = API.getBusyVmList("-").size();
+		return runningJobs;
 	}
 
 	/**
@@ -193,6 +195,9 @@ public class API_android {
 	}
 	public void simulatorStart(){
 		simulator = new Simulator();
+	}
+	public String getTotalVMs(){
+		return API.getTotalVMs();
 	}
 
 

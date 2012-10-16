@@ -50,6 +50,7 @@ public class MainActivity extends Activity {
 				
 //				String imgPath = Environment.getExternalStorageDirectory().getAbsolutePath();
 //				 Toast.makeText(MainActivity.this, imgPath, 0).show();
+				Toast.makeText(MainActivity.this, "simulaotr Start", 0).show();
 			}
 		});
         btn2.setOnClickListener(new OnClickListener() {
@@ -67,17 +68,11 @@ public class MainActivity extends Activity {
 					public void run() {
 						// TODO Auto-generated method stub
 						api.demoStart();
-						
+						Log.d("main", ""+api.getRunningJobs());
 					}
 				}).start();
 				
-				
-				
-				
-				
-				
-				
-				
+				Toast.makeText(MainActivity.this, "demo Start", 0).show();
 				
 				
 				
@@ -89,35 +84,62 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				new Thread(new Runnable() {
+//				new Thread(new Runnable() {
+//
+//					@Override
+//					public void run() {
+//						// TODO Auto-generated method stub
+//						while (true) {
 
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						while (true) {
-
-							Log.d("main", "disp sim");
-
-							txt1.append("\tavailvm:"
-									+ api.getCurrentAvailableVmList("-").size());
-							txt1.append("\trunnginjobs:" + api.getRunningJobs());
-							txt1.append("\tidlevm:"
-									+ api.getCurrentIdleVmList("-").size());
-							txt1.append("\trunningHost:"
-									+ api.getRunningHostList("-").size());
-							txt1.append("\n\n");
-
-							try {
-								Thread.sleep(3000);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
+//							Log.d("disp", "--------------------------------");
+//
+////							Log.d("disp", ""+api.getRunningJobs());
+////							txt1.append(""+api.getRunningJobs());
+//							Log.d("disp","\trunnginjobs:" + api.getRunningJobs());
+//							Log.d("disp","\tidlevm:"
+//									+ api.getCurrentIdleVmList("-").size());
+//							Log.d("disp","\trunningHost:"
+//									+ api.getRunningHostList("-").size());
+//							Log.d("disp","\n\n");
+//							Log.d("disp", "--------------------------------");
+//							
+							
+							List list = api.getRunningHostList("-");
+							String runningHost="";
+							for (int i =0 ; i<list.size(); i++){
+								runningHost += (String)list.get(i)+",";
 							}
-
-						}
-					}
-				}).start();
-				
+							String dumpCloudStatsus = 
+										"====================================================================\n"
+										+ "running Hosts :" + runningHost
+										+ "\ntotal VMs :"
+										+ api.getTotalVMs()
+										+ "\n Running Vms :"
+										+ api.getCurrentRunningVmList("-").size()
+										+ "\n Availablet Vms :"
+										+ api.getCurrentAvailableVmList("-").size()
+										+ "\ntotal Running Job :"
+										+ api.getRunningJobs()
+										+ "\ntotal idle VMs :"
+										+ api.getCurrentIdleVmList("-").size() + "\n"
+										+ "\n===================================================================\n";
+								
+							Log.d("disp", dumpCloudStatsus);
+								
+							txt1.append(dumpCloudStatsus);
+							
+//							
+//							try {
+//								Thread.sleep(3000);
+//							} catch (InterruptedException e) {
+//								// TODO Auto-generated catch block
+//								e.printStackTrace();
+//							}
+//
+//						}
+//					}
+//				}).start();
+				Toast.makeText(MainActivity.this, "display start", 0).show();
 			}
 		});
         

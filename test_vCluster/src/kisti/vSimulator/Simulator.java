@@ -71,6 +71,13 @@ public class Simulator {
 		case 05:
 			returnObj  =	simManager.getHostList();
 			break;		
+		case 06:
+			returnObj  =	simManager.getMaxHost();
+			break;		
+		case 07:
+			returnObj  =	simManager.getMaxVM();
+			break;		
+				
 			// VIRTUAL MACHINE
 		case 20:			
 			returnObj  =	simManager.createNewVirtualMachine(parameter);
@@ -120,8 +127,11 @@ public class Simulator {
 			break;
 		case 35:
 			returnObj  =	simManager.getTotalAvailableVMs();			
-			break;
-		
+			break;		
+//		case 36:
+//			returnObj  =	simManager.getHostStatus(parameter);			
+//			break;
+			
 			// VM SPEC
 		case 40:
 			returnObj  =	simManager.getVMCpuInfo(parameter);			

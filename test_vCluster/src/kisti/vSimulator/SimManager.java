@@ -215,6 +215,7 @@ public class SimManager implements Runnable {
 		return runningHostList;
 	}
 
+
 	/**
 	 * Desc : 호스트 머신의 전원을 켠다
 	 * 
@@ -262,6 +263,13 @@ public class SimManager implements Runnable {
 			}
 		}
 		return "-1";
+	}
+	
+	public String getMaxVM(){
+		return this.maxVM+"";
+	}
+	public String getMaxHost(){
+		return this.maxHost+"";
 	}
 
 
@@ -567,7 +575,7 @@ public class SimManager implements Runnable {
 	 */
 	public List getTotalVmList() {
 		List totalVmList = new ArrayList();
-		HostMachine host;
+		HostMachine host; 
 		for (int i = 0; i < mainHostContainer.length; i++) {
 			host = mainHostContainer[i];
 			for (int j = 0; j < host.getTotalVirtualMachine(); j++) {

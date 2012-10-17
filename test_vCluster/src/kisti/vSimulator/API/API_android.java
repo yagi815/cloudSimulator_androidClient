@@ -209,6 +209,18 @@ public class API_android {
 	public String getTotalVMs(){
 		return API.getTotalVMs();
 	}
+	/**
+	 * Desc : 1.1. 0-RunningVM, 1-IdleVM, 2-UnHealthyVM, 3-availableVM
+
+	 * @Method Name : getHostStatus
+	 * @param hostName
+	 * @return
+	 * 
+	 */
+	public int[] getHostStatus(String hostName){	
+		API.getHostStatus("host01");
+		return null;
+	}
 //	public boolean isRunSumlator(){
 //		if (simulator != null) {
 //			return true;

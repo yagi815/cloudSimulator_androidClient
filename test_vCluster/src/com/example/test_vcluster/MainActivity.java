@@ -36,7 +36,8 @@ public class MainActivity extends Activity {
         Button btn1 = (Button)findViewById(R.id.btn1);
         Button btn2 = (Button)findViewById(R.id.btn2);
         Button btn3 = (Button)findViewById(R.id.btn3);
-//        Button btn4 = (Button)findViewById(R.id.btn4);
+        Button btn4 = (Button)findViewById(R.id.btn4);
+        
         final TextView txt1 = (TextView)findViewById(R.id.txt1);
         final API_android api = new API_android();
         
@@ -140,6 +141,22 @@ public class MainActivity extends Activity {
 //					}
 //				}).start();
 				Toast.makeText(MainActivity.this, "display start", 0).show();
+			}
+		});
+        
+        
+        btn4.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Log.d("test", "btn4 click!!");
+				List runnHostList = api.getRunningHostList("-");
+				System.out.println("RunningHostList:>>>> "+runnHostList);
+				for (int i = 0; i < runnHostList.size(); i++) {
+					
+					api.getHostStatus((String)runnHostList.get(i));
+				}
 			}
 		});
         

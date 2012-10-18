@@ -217,7 +217,7 @@ public class HostMachine {
 		List unHealthyList = new ArrayList();
 		for (int i = 0; i < virtualMachineList.size(); i++) {
 			VirtualMachine vm = (VirtualMachine)virtualMachineList.get(i);
-			if (vm.getVmHealthy().equals("healthy")) {				
+			if (!vm.getVmHealthy().equals("healthy")) {				
 				unHealthyList.add( vm.getVmName());
 			}
 		}

@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -31,6 +32,8 @@ public class MainActivity extends Activity {
 //		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 //
 //		StrictMode.setThreadPolicy(policy);
+        
+        final Vibrator vib = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
         
         
         Button btn1 = (Button)findViewById(R.id.btn1);
@@ -81,9 +84,10 @@ public class MainActivity extends Activity {
 		});
         
         btn3.setOnClickListener(new OnClickListener() {
-			
+		
 			@Override
 			public void onClick(View v) {
+				vib.vibrate(100);
 				// TODO Auto-generated method stub
 //				new Thread(new Runnable() {
 //
@@ -103,7 +107,8 @@ public class MainActivity extends Activity {
 //									+ api.getRunningHostList("-").size());
 //							Log.d("disp","\n\n");
 //							Log.d("disp", "--------------------------------");
-//							
+				
+							txt1.setText("");
 							
 							List list = api.getRunningHostList("-");
 							String runningHost="";
@@ -115,8 +120,8 @@ public class MainActivity extends Activity {
 										+ "running Hosts :" + runningHost
 										+ "\ntotal VMs :"
 										+ api.getTotalVMs()
-										+ "\n Running Vms :"
-										+ api.getCurrentRunningVmList("-").size()
+//										+ "\n Running Vms :"
+//										+ api.getCurrentRunningVmList("-").size()
 										+ "\n Availablet Vms :"
 										+ api.getCurrentAvailableVmList("-").size()
 										+ "\ntotal Running Job :"
@@ -128,6 +133,7 @@ public class MainActivity extends Activity {
 							Log.d("disp", dumpCloudStatsus);
 								
 							txt1.append(dumpCloudStatsus);
+
 							
 //							
 //							try {
@@ -149,6 +155,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				vib.vibrate(100);
 				// TODO Auto-generated method stub
 				Log.d("test", "btn4 click!!");
 				List runnHostList = api.getRunningHostList("-");

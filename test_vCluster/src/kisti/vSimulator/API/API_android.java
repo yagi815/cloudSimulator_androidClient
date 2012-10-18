@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.test_vcluster.MainActivity;
 
 import android.R.bool;
+import android.util.Log;
 import android.widget.Toast;
 
 import kisti.vSimulator.Simulator;
@@ -217,9 +218,11 @@ public class API_android {
 	 * @return
 	 * 
 	 */
-	public int[] getHostStatus(String hostName){	
-		API.getHostStatus("host01");
-		return null;
+	public String getHostStatus(String hostName){	
+		
+//		Log.d("test", hostName);
+		return API.getHostStatus(hostName);
+		
 	}
 //	public boolean isRunSumlator(){
 //		if (simulator != null) {

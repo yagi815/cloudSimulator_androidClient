@@ -35,6 +35,15 @@ public class API_vcluster {
 
 
 	private Simulator simulator = null;
+	
+//	3-availableVM
+//	1-IdleVM, 
+//	0-RunningVM, 
+//	2-UnHealthyVM, 
+	final private int IDLE = 1;
+	final private int AVAIL= 3;
+	final private int RUNN = 0;
+	final private int UNHEALTH = 2;
 
 	public API_vcluster(Simulator simulator) {
 		// TODO Auto-generated constructor stub
@@ -338,60 +347,50 @@ public class API_vcluster {
 		return (String) requestToSimulator("35:-" );
 	}
 
-	public int[] getHostStatus(String hostName){
-		// getting total   vm   number
-		// make array list by default(idle)
-		
-		// make change vm by avaiable 
-		// make change vm by running 
-		// make change vm by idle 
-		// make change vm by unhhealthy
-		//Desc :  
-//		0-RunningVM, 
-//		1-IdleVM, 
-//		2-UnHealthyVM, 
+	public String getHostStatus(String hostName){
+
 //		3-availableVM
+//		1-IdleVM, 
+//		0-RunningVM, 
+//		2-UnHealthyVM, 
+
 		// host01-vm01 .... 
 		System.out.println("hostNAme:"+hostName);
 		
 		String result = (String)requestToSimulator("07:-");		
 		Log.d("test", "result:"+result);
 		int totalVM = Integer.parseInt(result);
-		int[] hostStatus = new int[totalVM];
+		String[] hostStatus = new String[totalVM];
 		for (int i = 0; i < hostStatus.length; i++) {
-			hostStatus[i] = 3;			           
+			hostStatus[i] = "3";			           
 		}
 		
-		List idleVmList = getIdleVmList(hostName);				
-		for (int i = 0; i < idleVmList.size(); i++) {
-			String vm = (String)idleVmList.get(i);
-			int index = Integer.parseInt(vm.substring(vm.length()-2, vm.length()));			
-			hostStatus[index-1] = 1;			
-		}		
 		List availableVmList = getAvailableVmList(hostName);				
 		for (int i = 0; i < availableVmList.size(); i++) {
 			String vm = (String)availableVmList.get(i);
 			int index = Integer.parseInt(vm.substring(vm.length()-2, vm.length()));			
-			hostStatus[index-1] = 3;			
+			hostStatus[index] = "3";			
 		}		
 		List busyVmList = getBusyVmList(hostName);
 		for (int i = 0; i < busyVmList.size(); i++) {
 			String vm = (String)busyVmList.get(i);
 			int index = Integer.parseInt(vm.substring(vm.length()-2, vm.length()));			
-			hostStatus[index-1] = 0;			
+			hostStatus[index] = "0";			
 		}
-		List unHealthyVmList = getUnhealthyVmList(hostName);
-		for (int i = 0; i < unHealthyVmList.size(); i++) {
-			String vm = (String)unHealthyVmList.get(i);
+		List idleVmList = getIdleVmList(hostName);				
+		for (int i = 0; i < idleVmList.size(); i++) {
+			String vm = (String)idleVmList.get(i);
 			int index = Integer.parseInt(vm.substring(vm.length()-2, vm.length()));			
-			hostStatus[index-1] = 0;			
-		}
+			hostStatus[index] = "1";			
+		}		
+
+		String list = "";
 		
 		for (int i = 0; i < hostStatus.length; i++) {
-			System.out.print(hostStatus[i]+"-");
+			list += hostStatus[i]+",";
 		}
 		
-		return null;
+		return list;
 	}
 	
 	// ******************************************************************

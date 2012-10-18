@@ -54,36 +54,17 @@ public class tiny_vCluster {
 		 */
 		
 		final Random random = new Random();
-		final int randomNumber = 0;
-		int totalJobs=0;	
+		final int nJob = random.nextInt(10);
+//		int totalJobs=0;	
 		
-//		
-//		new Thread(new Runnable() {
-//			
-//			@Override
-//			public void run() {
-//				// TODO Auto-generated method stub
-//				while (true) {
-//					api_vcluster.showCloud();
-//					try {
-//						Thread.sleep(1000);
-//					} catch (InterruptedException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//				}
-//				
-//			}
-//		}).start();
-//		
 		
 		reductionResorce(); // 리소스 정리 60초 마다 검사해서 정리 한다.
 		
 		
-		for (int i = 0; i < 3; i++) {
-			job_submit(50*i); // 10초에 한번씩
-			Log.d("tiny_vCluster", 50*i+"개 job is submitted.");
-			try {Thread.sleep(5000);} catch (InterruptedException e) {e.printStackTrace();}
+		for (int i = 0; i < 20; i++) {
+			job_submit(10+nJob); // 10초에 한번씩
+			Log.d("tiny_vCluster", 10+nJob+"개 job is submitted.");
+			try {Thread.sleep(2000);} catch (InterruptedException e) {e.printStackTrace();}
 		}
 					
 	}

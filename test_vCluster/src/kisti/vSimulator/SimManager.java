@@ -2,6 +2,7 @@ package kisti.vSimulator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import android.util.Log;
 
@@ -320,9 +321,6 @@ public class SimManager implements Runnable {
 	 */
 	public String createNewVirtualMachine(String virtualMachine) {
 		HostMachine host;
-//		String[] tmp = new String[2];
-//		tmp = virtualMachine.split("[-]");
-//		String hName = tmp[0];
 
 		
 		
@@ -331,12 +329,12 @@ public class SimManager implements Runnable {
 			if (alist == null) {
 				return "-1";
 			}
-//			System.out.println("==="+alist);
+
 			String createVmName = (String) alist.get(0);		
 			String[] tmp = new String[2];
 			tmp = createVmName.split("[-]");
 			host = mainHostContainer[getHostIndex(tmp[0])];
-//			System.out.println("name>>>----------"+createVmName);
+
 			Log.d("SimManager", "name>>---"+createVmName);
 			host.addVM(createVmName);
 			return "1";
@@ -346,7 +344,6 @@ public class SimManager implements Runnable {
 				String[] tmp = new String[2];
 				tmp = virtualMachine.split("[-]");
 				host = mainHostContainer[getHostIndex(tmp[0])];
-//				System.out.println("name>>>----------"+virtualMachine);
 				Log.d("SimManager", "name>>>---"+virtualMachine);
 				host.addVM(virtualMachine);
 				return "1";
@@ -857,7 +854,8 @@ public class SimManager implements Runnable {
 			String[] tmp = virtualMachine.split("[-]");
 			if (isContainVirtualMachine(virtualMachine)) {
 				host = mainHostContainer[getHostIndex(tmp[0])];
-				host.submitJob(jobName, this.jobRunningTime);
+				int runningTime = new Random().nextInt(40);    // 10~30 sec 
+				host.submitJob(jobName, runningTime);				
 				return "1";
 			}
 		}

@@ -47,6 +47,13 @@
             android:background="#FFFF01"
             android:text="@string/txt1" >
         </TextView>
+        <TextView
+            android:id="@+id/txt2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#CCFF01"
+            android:text="@string/txt2" >
+        </TextView>
     </LinearLayout>
 
 </LinearLayout>

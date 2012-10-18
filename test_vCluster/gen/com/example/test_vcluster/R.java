@@ -19,9 +19,10 @@ public final class R {
         public static final int btn2=0x7f080001;
         public static final int btn3=0x7f080002;
         public static final int btn4=0x7f080003;
-        public static final int menu_settings=0x7f080006;
-        public static final int sub_txt1=0x7f080005;
+        public static final int menu_settings=0x7f080007;
+        public static final int sub_txt1=0x7f080006;
         public static final int txt1=0x7f080004;
+        public static final int txt2=0x7f080005;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

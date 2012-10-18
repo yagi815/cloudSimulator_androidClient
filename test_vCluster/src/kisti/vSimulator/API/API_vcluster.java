@@ -245,7 +245,6 @@ public class API_vcluster {
 		List failVmList = new ArrayList();
 		failVmList = (List) requestToSimulator("26:" + hostName);
 		return failVmList;
-
 	}
 
 	/**
@@ -359,7 +358,12 @@ public class API_vcluster {
 		
 		String result = (String)requestToSimulator("07:-");		
 		Log.d("test", "result:"+result);
+		
 		int totalVM = Integer.parseInt(result);
+		if (hostName.equals("host01")) {
+			totalVM -= 2;
+		}
+		
 		String[] hostStatus = new String[totalVM];
 		for (int i = 0; i < hostStatus.length; i++) {
 			hostStatus[i] = "3";			           

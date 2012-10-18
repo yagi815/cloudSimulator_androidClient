@@ -130,7 +130,7 @@ public class HostMachine {
 			if (vm.getVmPowerStatus().equals("on")) {				
 				runningVMlist.add( vm.getVmName());						
 			}
-		}	
+		}
 		return runningVMlist;
 	}	
 //	/**
@@ -235,7 +235,10 @@ public class HostMachine {
 		String [] list = new String[this.totalVirtualMachine];
 		for (int i = 0; i < this.totalVirtualMachine; i++) {
 			
-			if (this.hostName.equals("host01") && i==0) {// master
+			if (this.hostName.equals("host01") && i==10) {// master
+				continue;
+			}
+			if (this.hostName.equals("host01") && i==11) {// master
 				continue;
 			}
 			

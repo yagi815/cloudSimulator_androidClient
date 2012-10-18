@@ -160,9 +160,8 @@ public class MainActivity extends Activity {
 				Log.d("test", "btn4 click!!");
 				List runnHostList = api.getRunningHostList("-");
 				System.out.println("RunningHostList:>>>> "+runnHostList);
-				for (int i = 0; i < runnHostList.size(); i++) {
-					
-					api.getHostStatus((String)runnHostList.get(i));
+				for (int i = 0; i < runnHostList.size(); i++) {					
+					System.out.println(api.getHostStatus((String)runnHostList.get(i)));
 				}
 			}
 		});

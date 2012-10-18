@@ -114,7 +114,7 @@ public class VirtualMachine implements Runnable{
 				// TODO Auto-generated method stub
 				setVmBusy("busy");
 				setJobName(jobName);
-				try {Thread.sleep(jobRunningTime);} catch (InterruptedException e) { e.printStackTrace();}
+				try {Thread.sleep(jobRunningTime*1000);} catch (InterruptedException e) { e.printStackTrace();}
 				setVmBusy("idle");
 				System.out.println( "job "+jobName+" is done.");				
 			}

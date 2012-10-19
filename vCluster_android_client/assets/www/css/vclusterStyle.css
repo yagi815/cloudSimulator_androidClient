@@ -1,0 +1,265 @@
+/*인덱스*/
+body,html{
+	margin:0px;
+	padding:0px;
+}
+.logo {
+	padding:262px 0px 0px 474px;
+}
+.copy {
+	padding:0px 0px 0px 492px;
+}
+.logoSub {
+	padding:34px 0px 0px 40px;
+}
+
+
+
+/*메인 탑*/
+.VclusterTopText{
+	padding:0px 0px 0px 49px;
+	font-size:24px;
+	color:#929292;
+}
+.VclusterTop {
+	//background-color:#FFFFFF;
+	width:100%;
+	padding:64px 0px 0px 49px;
+	text-shadow: 0px -2px 0px #111,
+                 0px 0px 2px #999;
+}
+
+.VclusterStatus {
+	padding:0px 0px 0px 5px;
+	width:420px;
+	float:left;
+	//background-color:#FFFFFF;
+}
+.QueStatus {
+	padding:0px 0px 0px 23px;
+	width:215px;
+	float:left;
+	//background-color:#333333;
+}
+
+.ImageRepository {
+	position:relative;
+	padding:0px 0px 0px 0px;
+	width:400px;
+	float:left;
+	//background-color:#FFFFFF;
+}
+
+.ImageRepository img{
+	position:absolute;
+	top:-2px;
+}
+
+.ImageRepository span{
+	margin-right:15px;
+}
+
+.VclusterStatusNumber {
+	//background-color:#FFFFFF;
+	width:88px;
+	height:34px;
+	float:left;
+	text-align:right;
+	margin-right:17px;
+	font-size:30px;
+	margin-top:-4px;
+	letter-spacing: 11px;
+}
+
+.VclusterTop .running {
+	color:#83c21e;
+	
+}
+.VclusterTop .idle {
+	color: #ea840c;
+
+}
+.VclusterTop .unhealthy {
+	color: #d32121;
+
+}
+
+.VclusterTop .available {
+	color: #9f9f9f;
+
+}
+
+.ImageText{
+	padding-top:6px;
+	color: #ea840c;
+	overflow:scroll; width:510px; height:35px;
+}
+/*컨텐츠*/
+.content{
+	clear:both;
+	float:left;
+	position:relative;
+	//background-color:#000000;
+	display:table;
+	padding:23px 0px 0px 0px;
+}
+
+.vsimulator {
+	//background-color:#000000;
+	padding:0px 0px 0px 34px;
+	float:left;
+}
+.FermiCloud{
+	padding:0px 0px 0px 8px;
+	float:left;
+}
+.Amazon_Cloud {
+	padding:0px 0px 0px 8px;
+	float:left;
+}
+.GCloud{
+	padding:0px 0px 0px 8px;
+	float:left;
+}
+
+
+
+.status_power {
+	padding:9px 0px 0px 10px;
+	float:left;
+}
+.statusTop .title{
+	float:left;
+	margin:12px 0px 0px 12px;
+	width:230px;
+	font-size:19px;
+	color:#dcdcdc;
+	
+	text-shadow:
+		 0px -1px 5px #191919,     /* north      */
+		 0px  1px 5px #191919,     /* south      */
+		-1px  0px 5px #191919,     /* west       */
+		 1px  0px 5px #191919,     /* east       */
+		-1px -1px 5px #191919,     /* north-west */
+		-1px  1px 5px #191919,     /* north-east */
+		 1px -1px 5px #191919,     /* south-west */
+		 1px  1px 5px #191919;     /* south-east */
+}
+
+
+.statusTop .subTitle{
+	margin:25px 0px 0px 12px;
+	width:260px;
+	font-size:12px;
+	color:#929292;
+	
+}
+
+.status {
+	//clear:both;
+	padding:24px 0px 0px 18px;
+	//background-color:#000000;
+	text-shadow: -1px -1px 0px #111,
+                 0px 0px 1px #999;
+}
+
+
+
+
+.statusNumber {
+	//background-color:#FFFFFF;
+	width:59px;
+	height:25px;
+	float:left;
+	text-align:right;
+	margin-right:11px;
+	letter-spacing: 10px;
+}
+
+.status .running {
+	color:#83c21e;
+	
+}
+.status .idle {
+	color: #ea840c;
+
+}
+.status .unhealthy {
+	color: #d32121;
+
+}
+
+.status .available {
+	color: #9f9f9f;
+
+}
+
+.host_cover {
+	//clear:both;
+	float:left;
+	padding:8px 0px 0px 5px;
+	overflow:scroll; width:290px; height:350px;
+}
+.host{
+	position: relative;
+	width:281px;
+	height:84px;
+	background-image:url("images/host_back.png");
+	margin-bottom:5px;
+	
+}
+.hostTop p{
+	float:left;
+	//background-color:#FFFFFF;
+	margin:6px 0px 0px 70px;
+	text-align:center;
+	width:80px;
+	color:#dcdcdc;
+	font-size:14px;
+	
+	text-shadow:
+		 0px -1px 5px #191919,     /* north      */
+		 0px  1px 5px #191919,     /* south      */
+		-1px  0px 5px #191919,     /* west       */
+		 1px  0px 5px #191919,     /* east       */
+		-1px -1px 5px #191919,     /* north-west */
+		-1px  1px 5px #191919,     /* north-east */
+		 1px -1px 5px #191919,     /* south-west */
+		 1px  1px 5px #191919;     /* south-east */
+	
+}
+
+
+
+.hostStatus {
+	//background-color:#FFFFFF;
+	padding:10px 0px 0px 13px;
+	width:266px;
+	height:25px;
+	float:left;
+	text-align:center;
+	font-size:12px;
+}
+.hostSign {
+	padding:10px 0px 0px 10px;
+	float:left;
+}
+.hostStatus span{
+	display:block;
+	float:left;
+	width:64px;
+}
+.hostStatus .running {
+	color:#83c21e;
+}
+.hostStatus .idle {
+	color: #ea840c;
+}
+.hostStatus .unhealthy {
+	color: #d32121;
+}
+
+.hostStatus .available {
+	color: #9f9f9f;
+}
+

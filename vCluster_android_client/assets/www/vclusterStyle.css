@@ -1,0 +1,654 @@
+/*¿Œµ¶Ω∫*/
+body, html{
+	margin:0px;
+	padding:0px;
+	-webkit-tap-highlight: rgba(0,0,0,0);
+	background-color: black;
+}
+
+#logo1 {
+	width:1000px;
+	opacity:0;
+	margin:30px 0px 0px 100px;
+}
+
+#logo2 {
+	width:305px;
+	opacity:0.1;
+	margin:262px 0px 0px 474px;
+}
+.copy {
+	padding:0px 0px 0px 492px;
+}
+.logoSub {
+	//background-color:#FFFFFF;
+	padding:34px 0px 0px 40px;
+}
+.menuButton {
+	//background-color:#FFFFFF;
+	margin:0px 0px 0px 890px;
+}
+.menuOut {
+	//background-color:#FFFFFF;
+	width:277px;
+	height:247px;
+	position: absolute;
+	margin:-70px 0px 0px 970px;
+	background-image:url("images/menu_bg.png");
+}
+.menuPop {
+	position: absolute;
+	width:277px;
+	height:247px;
+	margin:16px 0px 0px 20px;
+	overflow:scroll; width:277px; height:247px;
+}
+.menuPop p{
+	margin:10 0px 0px 0px 20px;
+	font-size:18px;
+	color:#929292;
+	line-height:18px;
+	text-shadow: none;
+	text-decoration:none;
+}
+
+
+
+.menuPop p A{font-size:18px;color:#929292;text-decoration:none;}
+.menuPop p A:link{font-size:18px;color:#929292;text-decoration:none;}
+.menuPop p A:active{font-size:18px;color:#929292;text-decoration:none;}
+.menuPop p A:visited{font-size:18px;color:#929292;text-decoration:none;}
+.menuPop p A:hover{font-size:18px;color:#929292;text-decoration:none;}
+
+
+/*∏ﬁ¿Œ ≈æ*/
+.VclusterTopText{
+	padding:0px 0px 0px 49px;
+	font-size:24px;
+	color:#929292;
+	text-shadow: none;	
+}
+.VclusterTop {
+	//background-color:#FFFFFF;
+	width:1200px;
+	height:10px;
+	margin:68px 0px 0px 49px;
+	text-shadow: 0px -2px 0px #111,
+                 0px 0px 2px #999;
+}
+
+.VclusterStatus {
+	padding:0px 0px 0px 5px;
+	width:420px;
+	float:left;
+	//background-color:#FFFFFF;
+}
+.QueStatus {
+	padding:0px 0px 0px 23px;
+	width:215px;
+	float:left;
+	//background-color:#333333;
+}
+
+.ImageRepository {
+	position:relative;
+	padding:0px 0px 0px 0px;
+	width:400px;
+	float:left;
+	//background-color:#FFFFFF;
+}
+
+.ImageRepository img{
+	position:absolute;
+	top:-5px;
+}
+
+.ImageRepository span{
+	margin-right:15px;
+}
+
+.VclusterStatusNumber {
+	//background-color:#FFFFFF;
+	width:88px;
+	height:34px;
+	float:left;
+	text-align:right;
+	margin-right:17px;
+	font-size:30px;
+	margin-top:-4px;
+	letter-spacing: 11px;
+}
+
+.VclusterTop .running {
+	color:#83c21e;
+	
+}
+.VclusterTop .idle {
+	color: #ea840c;
+
+}
+.VclusterTop .unhealthy {
+	color: #d32121;
+
+}
+
+.VclusterTop .available {
+	color: #9f9f9f;
+
+}
+
+.ImageText{
+	padding-top:6px;
+	color: #ea840c;
+	overflow:scroll; width:510px; height:35px;
+}
+/*ƒ¡≈Ÿ√˜*/
+.content{
+	clear:both;
+	float:left;
+	position:relative;
+	//background-color:#000000;
+	display:table;
+	padding:23px 0px 0px 26px;
+}
+.contentSub{
+	clear:both;
+	float:left;
+	position:relative;
+	//background-color:green;
+	display:table;
+	padding:23px 0px 0px 0px;
+}
+
+
+
+
+.vsimulator {
+	//width:281px;
+	//background-color:#000000;
+	padding:0px 0px 0px 8px;
+	float:left;
+}
+.FermiCloud{
+	padding:0px 0px 0px 8px;
+	float:left;
+}
+.Amazon_Cloud {
+	padding:0px 0px 0px 8px;
+	float:left;
+}
+.GCloud{
+	padding:0px 0px 0px 8px;
+	float:left;
+}
+
+
+
+.statusConfig {
+	padding:9px 0px 0px 10px;
+	float:left;
+}
+
+
+.statusTop .title{
+	//clear:both;
+	//position:absolute;
+	float:left;
+	margin:12px 0px 0px 12px;
+	width:154px;
+	font-size:19px;
+	color:#dcdcdc;
+	text-align: left;
+	//background-color:#000000;
+	text-shadow:
+		 0px -1px 5px #191919,     /* north      */
+		 0px  1px 5px #191919,     /* south      */
+		-1px  0px 5px #191919,     /* west       */
+		 1px  0px 5px #191919,     /* east       */
+		-1px -1px 5px #191919,     /* north-west */
+		-1px  1px 5px #191919,     /* north-east */
+		 1px -1px 5px #191919,     /* south-west */
+		 1px  1px 5px #191919;     /* south-east */
+}
+
+
+.statusTop .subTitle{
+	margin:28px 0px 0px 12px;
+	width:260px;
+	font-size:12px;
+	color:#929292;
+	text-shadow: none;
+	
+}
+
+.status {
+	//clear:both;
+	padding:24px 0px 0px 18px;
+	//background-color:#000000;
+	text-shadow: -1px -1px 0px #111,
+                 0px 0px 1px #999;
+}
+
+
+
+
+.statusNumber {
+	//background-color:#FFFFFF;
+	width:59px;
+	height:25px;
+	float:left;
+	text-align:right;
+	margin-right:11px;
+	letter-spacing: 10px;
+}
+
+.status .running {
+	color:#83c21e;
+	
+}
+.status .idle {
+	color: #ea840c;
+
+}
+.status .unhealthy {
+	color: #d32121;
+
+}
+
+.status .available {
+	color: #9f9f9f;
+
+}
+
+.host_cover {
+	//clear:both;
+	float:left;
+	margin:8px 0px 0px 6px;
+	overflow:scroll; width:290px; height:356px;
+	
+	//-webkit-overflow-scrolling: touch;
+}
+.host{
+	position: relative;
+	width:281px;
+	height:84px;
+	background-image:url("images/host_back.png");
+	margin-bottom:5px;
+	
+}
+.hostTitle{
+	//clear:both;
+	position:absolute;
+	float:left;
+	//background-color:#FFFFFF;
+	margin:-5px 0px 0px 100px;
+	text-align:center;
+	width:80px;
+	color:#dcdcdc;
+	font-size:14px;
+	
+	text-shadow:
+		 0px -1px 5px #191919,     /* north      */
+		 0px  1px 5px #191919,     /* south      */
+		-1px  0px 5px #191919,     /* west       */
+		 1px  0px 5px #191919,     /* east       */
+		-1px -1px 5px #191919,     /* north-west */
+		-1px  1px 5px #191919,     /* north-east */
+		 1px -1px 5px #191919,     /* south-west */
+		 1px  1px 5px #191919;     /* south-east */
+	
+}
+
+
+
+.hostStatus {
+	background-color:#;
+	position:absolute;
+	//background-color:#FFFFFF;
+	padding:36px 0px 0px 13px;
+	width:266px;
+	height:25px;
+	float:left;
+	text-align:center;
+	font-size:12px;
+	text-shadow: none;
+}
+.hostSign {
+	padding:7px 0px 0px 10px;
+	float:left;
+}
+.hostStatus span{
+	display:block;
+	float:left;
+	width:64px;
+}
+.hostStatus .running {
+	color:#83c21e;
+}
+.hostStatus .idle {
+	color: #ea840c;
+}
+.hostStatus .unhealthy {
+	color: #d32121;
+}
+
+.hostStatus .available {
+	color: #9f9f9f;
+}
+
+.hostSubCover{
+	position:relative;
+	
+	//margin:12px 0px 0px 34px;
+	//background-color:red;
+	width:2625px;
+	height:477px;
+}
+.hostSubScroll{
+	margin:12px 0px 0px 34px;
+	//background-color:#CCCCCC;
+	//overflow-x:hidden;
+	//overflow-y:hidden;
+	overflow:scroll; 
+	width:1210px; 
+	height:477px;
+}
+.hostSub{
+	//background-color:bule;
+	margin-right:4px;
+	float:left;
+	background:url("images/host_sub_back.png") 0 0 no-repeat;
+	width:171px;
+	height:477px;
+}
+.hostSubAmazon{
+	//background-color:#FFFFFF;
+	float:left;
+	background:url("images/host_amazon_back.png") 0 0 no-repeat;
+	width:1211px;
+	height:477px;
+}
+.subHostTop{
+	//position:relative;
+	margin:7px 0px 0px 0px;
+
+}
+
+.amazonCover{
+	padding-left:13px;
+	clear: both;
+	//float:left;
+}
+
+
+.subHost_power {
+	padding:0px 0px 0px 8px;
+	float:left;
+}
+
+.subHostToptitle{
+	//position:absolute;
+	//background-color:#FFFFFF;
+	float:left;
+	margin:10px 0px 0px 48px;
+	width:100px;
+	font-size:13px;
+	color:#dcdcdc;
+	text-align:center;
+	
+	text-shadow:
+		 0px -1px 5px #191919,     /* north      */
+		 0px  1px 5px #191919,     /* south      */
+		-1px  0px 5px #191919,     /* west       */
+		 1px  0px 5px #191919,     /* east       */
+		-1px -1px 5px #191919,     /* north-west */
+		-1px  1px 5px #191919,     /* north-east */
+		 1px -1px 5px #191919,     /* south-west */
+		 1px  1px 5px #191919;     /* south-east */
+}
+
+
+.subHostTopsubTitle{
+	margin:21px 0px 0px 12px;
+	//background-color:#FFFFFF;
+	width:140px;
+	font-size:12px;
+	color:#929292;
+	text-shadow: none;
+	
+}
+.subStatus {
+	//clear:both;
+	width:160px;
+	
+	padding:17px 0px 0px 18px;
+	//background-color:#FFFFFF;
+	text-shadow: -1px -1px 0px #111,
+                 0px 0px 1px #999;
+}
+
+.subStatus .running {
+	color:#83c21e;
+	
+}
+.subStatus .idle {
+	color: #ea840c;
+
+}
+.subStatus .unhealthy {
+	color: #d32121;
+
+}
+
+.subStatus .available {
+	color: #9f9f9f;
+
+}
+.subStatusNumber {
+	//background-color:#FFFFFF;
+	width:56px;
+	height:25px;
+	float:left;
+	text-align:right;
+	margin:10px 8px 11px 7px;
+	letter-spacing: 11px;
+}
+
+.masterCover{
+	//background-color:#FFFFFF;
+	//float:left;
+	width: 146px;
+	padding-left:13px;
+}
+.cpuCover{
+
+	float:left;
+	width: 146px;
+	padding-left:13px;
+}
+
+.cpuAmazonCover{
+	//background-color:#FFFFFF;
+	float:left;
+	width: 146px;
+	padding-left:0px;
+}
+.cpu{
+	margin:0px 2px 5px 0px; 
+	float:left;
+	text-align:center; 
+	width:67px;
+	//height:48px; 
+	background:url("images/cpu_back.png") 0 0 no-repeat;
+}
+.cpuSign{
+	position:absolute;
+	//background-color:#FFFFFF;
+	margin:0px 0px 0px 8px;
+
+}
+.cpuP{
+	margin-top:27px;
+	font-size:10px;
+	color:#929292;
+	text-shadow: none;
+}
+							
+.cpu_running{
+	margin:0px 3px 2px 0px;
+	float:left;
+	text-align:center; 
+	width:67px;
+	height:48px; 
+	background:url("images/cpu_running_back.png") 0 0 no-repeat;
+}
+.cpu_available{
+	margin:0px 3px 2px 0px; 
+	float:left;
+	text-align:center; 
+	width:67px;
+	height:48px; 
+	background:url("images/cpu_available_back.png") 0 0 no-repeat;
+}
+.cpu_available_ready{
+	opacity:0.3;
+	padding-bottom:2px; 
+	float:left;
+	text-align:center; 
+	width:67px;
+	height:48px; 
+	background:url("images/cpu_available_back.png") 0 0 no-repeat;
+}
+.cpu_unhealthy{
+	margin:0px 3px 2px 0px;
+	float:left;
+	text-align:center; 
+	width:67px;
+	height:48px; 
+	background:url("images/cpu_unhealthy_back.png") 0 0 no-repeat;
+}
+.cpu_idle{
+	margin:0px 3px 2px 0px;
+	float:left;
+	text-align:center; 
+	width:67px;
+	height:48px; 
+	background:url("images/cpu_idle_back.png") 0 0 no-repeat;
+}
+.cpu_off{
+	margin:0px 3px 2px 0px;
+	float:left;
+	text-align:center; 
+	width:67px;
+	height:48px; 
+	background:url("images/cpu_off_back.png") 0 0 no-repeat;
+}
+
+
+#master_running{
+	margin-top:8px;
+}
+.master{
+	
+	padding-bottom:2px; 
+	float:left;
+	text-align:center; 
+	width:137px;
+	height:49px; 
+	background:url("images/master_back.png") 0 0 no-repeat;
+}
+#masterP{
+	position: absolute;
+	float:left;
+	margin:14px 0px 0px 78px;
+	font-size:12px;
+	color:#929292;
+	text-shadow: none;
+}
+.master img{
+	float:left;
+	margin:8px 0px 0px 18px;
+}
+#popBack{
+	top:0px;
+	position: absolute;
+	margin:0px 0px 0px 0px;
+	background-color: black;
+	width:1280px;
+	height:754px; 
+	opacity: 0.8;
+}
+
+.menuBack{
+	top:0px;
+	position: absolute;
+	margin:0px 0px 0px 0px;
+	background-color: black;
+	width:1280px;
+	height:754px; 
+	opacity: 0.8;
+}
+
+#infoPop{
+	top:0px;
+	position: absolute;
+	margin:333px 0px 0px 448px;
+	width:397px;
+	height:191px; 
+	background:url("images/sub_pop_back.png") 0 0 no-repeat;
+}
+
+#infoPop p{
+	float: left;
+	margin:10px 0px 0px 7px;
+	width:316px;
+	height:33px; 
+	font-size:18px;
+	color:#929292;
+	text-shadow: -1px -1px 0px #111,
+                 0px 0px 1px #999;
+}
+.popClose{
+	float: left;
+	margin:5px 0px 0px 0px;
+}
+.detail{
+	margin:55px 0px 0px 20px;
+	width:369px;
+	height:120px; 
+	//background-color: black;
+	font-size:12px;
+	
+	text-shadow: none;
+	line-height: 30px;
+}
+.title{
+	
+	float: left;
+	width:87px;
+	//background-color: white;
+	color:#62ac2d;
+	text-align: right;
+}
+
+.subText{
+	color:#929292;
+	float: left;
+	width:257px;
+	margin:0px 0px 0px 20px;
+	//background-color: black;
+}
+
+.pop_running{
+	float: left;
+	margin: 12px 0px 0px 8px;
+}
+.pop_available{
+	margin-top:8px;
+}
+.pop_unhealthy{
+	margin-top:8px;
+}
+.pop_idle{
+	margin-top:8px;
+}

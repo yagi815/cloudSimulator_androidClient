@@ -185,6 +185,16 @@ $(document).ready(function() {
 		}
 		
 ////////////////////////////3번째 페이지 시작///////////////////////////
+		
+		function subAppendQueueRunning() {
+			//$.mobile.loading( 'show');
+			$("#subQueueRunning").replaceWith("<div CLASS='VclusterStatusNumber running' id='subQueueRunning'>"+window.NAPIVcluster.getRunningJobs()+"</div>");
+	    }
+		
+		function subAppendQueueWaiting() {
+			$("#subQueueIdle").replaceWith("<div CLASS='VclusterStatusNumber idle' id='subQueueIdle'>"+window.NAPIVcluster.getWatingJobs()+"</div>");
+	    }
+		
 		function changeClusterStatusNumber(){
 			
 			simulatorOnHostList = getRunningHostList("vSimulator");
@@ -481,6 +491,8 @@ $(document).ready(function() {
 			int2 = setInterval( function() {
 				changeVmStatus();
 				hostStatusNumber();
+				subAppendQueueRunning();
+				subAppendQueueWaiting();
 				//changeClusterStatusNumber();
 			}, 	
 			5000
@@ -495,6 +507,8 @@ $(document).ready(function() {
 	 
 		
 		//changeClusterStatusNumber();
+		subAppendQueueRunning();
+		subAppendQueueWaiting();
 		getVsimulatorDisplay();
 		hostStatusNumber();
 		hostVmStatus();

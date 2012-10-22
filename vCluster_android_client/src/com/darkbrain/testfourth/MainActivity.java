@@ -13,7 +13,7 @@ public class MainActivity extends DroidGap
 	//private API_vcluster mc; 
 	private API_android Nmc;
 	
-	
+	//
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -37,9 +37,8 @@ public class MainActivity extends DroidGap
         //String wnStatus = cafHelper.hostPowerOn("test");
         //super.appView.addJavascriptInterface(new Toaster(), "toaster");
         super.loadUrl("file:///android_asset/www/index.html");
-    }
-
-
+        
+    }   
     
 }
 

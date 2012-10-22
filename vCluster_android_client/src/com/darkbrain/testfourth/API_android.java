@@ -196,7 +196,6 @@ public class API_android {
 	public void demoStart(){
 		new Thread(new Runnable() {
 			
-			@Override
 			public void run() {		
 				t_vCluster.demoStart();
 					

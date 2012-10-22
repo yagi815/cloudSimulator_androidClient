@@ -20,17 +20,17 @@ import com.darkbrain.testfourth.HostMachine;
  * 
  * @Company : KISTI
  * @Author :grkim
- * @Date :2012. 9. 11. ¿ÀÈÄ 5:12:49
+ * @Date :2012. 9. 11. ï¿½ï¿½ï¿½ï¿½ 5:12:49
  * @Version:
  * 
  */
 public class SimManager implements Runnable {
 
-	// host ¸ÞÀÎ ¸®½ºÆ®
+	// host ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	private HostMachine[] mainHostContainer;
 
 	
-	// ¸®½ºÆ® º¯¼ö ÁöÁ¤ * Á¤Ã¥ º¯¼ö ÁöÁ¤.		
+	// ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ * ï¿½ï¿½Ã¥ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.		
 	final private String cloudName = "vSimulator";
 	private static List hostList;
 	private static List vmList;
@@ -57,14 +57,13 @@ public class SimManager implements Runnable {
 	
 	}
 
-	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 	}
 	
 
 	private void initVariable() {
-		// Á¤Ã¥À» ÀÐ°í ÀúÀå
+		// ï¿½ï¿½Ã¥ï¿½ï¿½ ï¿½Ð°ï¿½ ï¿½ï¿½ï¿½ï¿½
 		PolicyReader policyReader = new PolicyReader();
 
 
@@ -130,12 +129,12 @@ public class SimManager implements Runnable {
 	// 0X: HOST MACHINE
 	// ******************************************************************
 	/**
-	 * Desc : È£½ºÆ® ¸Ó½ÅÀÌ ÀÌ¹Ì Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+	 * Desc : È£ï¿½ï¿½Æ® ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	 * 
 	 * @Method Name : isContainHost
 	 * @param hostMachine
-	 *            È£½ºÆ®ÀÌ¸§ EX) "host01"
-	 * @return ÀÖÀ¸¸é true , ¾øÀ¸¸é false
+	 *            È£ï¿½ï¿½Æ®ï¿½Ì¸ï¿½ EX) "host01"
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ true , ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ false
 	 * 
 	 */
 	private boolean isContainHost(String hostMachine) {
@@ -148,12 +147,12 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : È£½ºÆ® ¸Ó½ÅÀÇ ÀÎµ¦½º ¹ÝÈ¯
+	 * Desc : È£ï¿½ï¿½Æ® ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 	 * 
 	 * @Method Name : getHostIndex
 	 * @param hostMachine
-	 *            È£½ºÆ® ¸Ó½Å ÀÌ¸§ EX) "host01"
-	 * @return ÇØ´çÈ£½ºÆ®ÀÇ ÀÎµ¦½º EX) 2
+	 *            È£ï¿½ï¿½Æ® ï¿½Ó½ï¿½ ï¿½Ì¸ï¿½ EX) "host01"
+	 * @return ï¿½Ø´ï¿½È£ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ EX) 2
 	 * 
 	 */
 	private int getHostIndex(String hostMachine) {
@@ -165,10 +164,10 @@ public class SimManager implements Runnable {
 		return -1;
 	}
 	/**
-	 * Desc : ¸ðµç È£½ºÆ®ÀÇ ¸®½ºÆ®
+	 * Desc : ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	 * 
 	 * @Method Name : getHostList
-	 * @return ¸ðµç È£½ºÆ®ÀÇ ¸®½ºÆ®
+	 * @return ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	 * 
 	 */
 	public List getHostList() {
@@ -180,10 +179,10 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : µ¿ÀÛÁßÀÎ È£½ºÆ®µéÀÇ ¸®½ºÆ®¸¦ ¹ÝÈ¯ÇÑ´Ù.
+	 * Desc : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
 	 * 
 	 * @Method Name : getPowerOnHostList
-	 * @return µ¿ÀÛÁßÀÎ È£½ºÆ®µéÀÇ ¸®½ºÆ® ¹ÝÈ¯ <br>
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¯ <br>
 	 *         EX) "host01,host02,host02,"
 	 * 
 	 */
@@ -198,10 +197,10 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : »ç¿ë°¡´ÉÇÑ È£½ºÆ® ¸®½ºÆ®
+	 * Desc : ï¿½ï¿½ë°¡ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½Æ®
 	 * 
 	 * @Method Name : getAvailableHostList
-	 * @return »ç¿ë°¡´ÉÇÑ È£½ºÆ® ¸®½ºÆ® <br>
+	 * @return ï¿½ï¿½ë°¡ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½Æ® <br>
 	 *         EX) "host07, host08..."
 	 * 
 	 */
@@ -217,12 +216,12 @@ public class SimManager implements Runnable {
 
 
 	/**
-	 * Desc : È£½ºÆ® ¸Ó½ÅÀÇ Àü¿øÀ» ÄÒ´Ù
+	 * Desc : È£ï¿½ï¿½Æ® ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½
 	 * 
 	 * @Method Name : turnOnHostMachine
 	 * @param hostMachine
-	 *            È£½ºÆ® ¸Ó½Å ÀÌ¸§ EX) "host04"
-	 * @return ¼º°øÇÏ¸é "1", ½ÇÆÐÇÏ¸é "-1"
+	 *            È£ï¿½ï¿½Æ® ï¿½Ó½ï¿½ ï¿½Ì¸ï¿½ EX) "host04"
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ "1", ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ "-1"
 	 * 
 	 */
 	public String turnOnHostMachine(String hostMachine) {
@@ -246,12 +245,12 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : È£½ºÆ® ¸Ó½ÅÀÇ Àü¿øÀ» ³¡³ª.
+	 * Desc : È£ï¿½ï¿½Æ® ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	 * 
 	 * @Method Name : turnOffHostMachine
 	 * @param hostMachine
-	 *            È£½ºÆ® ¸Ó½Å ÀÌ¸§ EX) "host04"
-	 * @return ¼º°øÇÏ¸é "1", ½ÇÆÐÇÏ¸é "-1"
+	 *            È£ï¿½ï¿½Æ® ï¿½Ó½ï¿½ ï¿½Ì¸ï¿½ EX) "host04"
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ "1", ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ "-1"
 	 * 
 	 */
 	public String turnOffHostMachine(String hostMachine) {
@@ -279,17 +278,17 @@ public class SimManager implements Runnable {
 	// 2X: VIRTUAL MACHINE
 	// ******************************************************************
 	/**
-	 * Desc : °¡»ó¸Ó½ÅÀÌ Á¸ÀçÇÏ´ÂÁö È®ÀÎÇÑ´Ù.
+	 * Desc : ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * @Method Name : isContainVirtualMachine
 	 * @param hostName
-	 *            È£½ºÆ® ÀÌ¸§ <br>
+	 *            È£ï¿½ï¿½Æ® ï¿½Ì¸ï¿½ <br>
 	 *            EX) "host01"
 	 * @param vmName
-	 *            °¡»ó¸Ó½Å ÀÌ¸§ <br>
+	 *            ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½Ì¸ï¿½ <br>
 	 *            EX) "vm01"
 	 * 
-	 * @return Á¸ÀçÇÏ¸é true, ¾øÀ¸¸é false
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ true, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ false
 	 * 
 	 */
 	private boolean isContainVirtualMachine(String virtualMachine) {
@@ -307,15 +306,15 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : »õ·Î¿î °¡»ó¸Ó½Å Ãß°¡ 
-	 * <br>ÆÄ¶ó¹ÌÅÍ¿¡ °¡»ó¸Ó½ÅÀÌ¸§ÀÌ µé¾î¿À¸é ÇØ´ç ¸Ó½ÅÀ¸·Î »ý¼ºÇÏ°í 
-	 * <br>±×·¸Áö ¾ÊÀ¸¸é °¡¿ëÇÑ ¸®½ºÆ®ÀÇ Ã¹¹øÂ°¿¡ °¡»ó¸Ó½ÅÀ» ¤¾»ý¼ºÇÑ´Ù. 
+	 * Desc : ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ß°ï¿½ 
+	 * <br>ï¿½Ä¶ï¿½ï¿½ï¿½Í¿ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ 
+	 * <br>ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Ã¹ï¿½ï¿½Â°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. 
 	 * 
 	 * @Method Name : addVirtualMachine
 	 * @param virtualMachine
-	 *            »ý¼ºÇÒ °¡»ó¸Ó½Å ÀÌ¸§ <br>
+	 *            ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½Ì¸ï¿½ <br>
 	 *            EX) "host01-vm01"
-	 * @return ¼º°øÇÏ¸é "1', ½ÇÆÐÇÏ¸é "-1"
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ "1', ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ "-1"
 	 * 
 	 */
 	public String createNewVirtualMachine(String virtualMachine) {
@@ -356,13 +355,13 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : µ¿ÀÛÇÏ°í ÀÕ´Â °¡»ó¸Ó½ÅÀ» ÇØ´ç È£½ºÆ®¿¡¼­ »èÁ¦ ÇÑ´Ù.
+	 * Desc : ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Õ´ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ È£ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
 	 * 
 	 * @Method Name : removeVirtualMachine
 	 * @param virtualMachine
-	 *            »èÁ¦ÇÒ °¡»ó¸Ó½Å ÀÌ¸§ <br>
+	 *            ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½Ì¸ï¿½ <br>
 	 *            EX) "host01-vm01"
-	 * @return ¼º°øÇÏ¸é "1", ½ÇÆÐÇÏ¸é "-1"
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ "1", ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ "-1"
 	 * 
 	 */
 	public String removeVirtualMachine(String virtualMachine) {
@@ -380,20 +379,20 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : µ¿ÀÛÇÏ´Â °¡»ó¸Ó½ÅÀ» »õ·Î¿î °¡»ó¸Ó½ÅÀ¸·Î ÀÌµ¿
+	 * Desc : ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 	 * 
 	 * @Method Name : migrationVirtualMachine
 	 * @param srcVirtualMachine
-	 *            src °¡»ó¸Ó½ÅÀÌ¸§ EX) "host01-vm01"
+	 *            src ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½Ì¸ï¿½ EX) "host01-vm01"
 	 * @param desVirtualMachine
-	 *            desc °¡»ó¸Ó½ÅÀÌ¸§ EX) "host02-vm04"
-	 * @return ¼º°øÇÏ¸é "1", ½ÇÆÐÇÏ¸é "-1"
+	 *            desc ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½Ì¸ï¿½ EX) "host02-vm04"
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ "1", ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ "-1"
 	 * 
 	 */
 	public String migrationVirtualMachine(String srcVirtualMachine,
 			String desVirtualMachine) {
-		// job ·±´× »óÅÂ¸¦ ÆÄ¾ÇÇØ¾ß ÇÑ´Ù.
-		// job µµ °°ÀÌ ÀÌµ¿
+		// job ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½Ä¾ï¿½ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½.
+		// job ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 		if (createNewVirtualMachine(desVirtualMachine) == "1") {
 			removeVirtualMachine(srcVirtualMachine);
 			return "1";
@@ -402,12 +401,12 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : Å¬¶ó¿ìµå ³»¿¡¼­ µ¿ÀÛÁßÀÎ °¡»ó¸Ó½ÅÀÇ ¸®½ºÆ®¸¦ ¾ò¾î¿Â´Ù.
+	 * Desc : Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @Method Name : getRunningVMs
 	 * @param srcVirtualMachine
-	 *            <br>  È£½ºÆ® ÀÌ¸§. EX) "host01"
-	 * @return µ¿ÀÛÁßÀÎ ¸ðµç °¡»ó¸Ó½Å ¸®½ºÆ® ¹ÝÈ¯ <br>
+	 *            <br>  È£ï¿½ï¿½Æ® ï¿½Ì¸ï¿½. EX) "host01"
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¯ <br>
 	 *         EX)"host01-vm01,host02-vm05,host07-vm06"
 	 * 
 	 */
@@ -430,10 +429,10 @@ public class SimManager implements Runnable {
 	}
 	
 	/**
-	 * Desc : avaiable »óÅÂÀÇ ¸ðµç vm ¸®½ºÆ®¸¦ ¾ò¾î¿Â´Ù.
+	 * Desc : avaiable ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ vm ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @Method Name : getTotalHostList
-	 * @return avaiable »óÅÂÀÇ ¸ðµç °¡»ó¸Ó½Å ¸®½ºÆ® ¹ÝÈ¯ <br>
+	 * @return avaiable ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¯ <br>
 	 *         EX) "host01-vm02,host02-vm08"
 	 * 
 	 */
@@ -455,10 +454,10 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : FAIL »óÅÂÀÇ °¡»ó¸Ó½ÅÀÇ ¸®½ºÆ®¸¦ ¾ò¾î ¿Â´Ù. *
+	 * Desc : FAIL ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Â´ï¿½. *
 	 * 
 	 * @Method Name : getFailVmList
-	 * @return FAIL »óÅÂÀÇ °¡»ó¸Ó½Å ¸®½ºÆ®¸¦ ¹ÝÈ¯<br>
+	 * @return FAIL ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½È¯<br>
 	 *         EX) "host07-vm06"
 	 * 
 	 */
@@ -479,10 +478,10 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : BUSY »óÅÂÀÇ °¡»ó¸Ó½ÅÀÇ ¸®½ºÆ®¸¦ ¾ò¾î¿Â´Ù. *
+	 * Desc : BUSY ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Â´ï¿½. *
 	 * 
 	 * @Method Name : getBusyVmList
-	 * @return BUSY »óÅÂÀÇ °¡»ó¸Ó½Å ¸®½ºÆ®¸¦ ¹ÝÈ¯ <br>
+	 * @return BUSY ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½È¯ <br>
 	 *         EX) "host07-vm06,hot08-vm01"
 	 * 
 	 */
@@ -518,10 +517,10 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : IDLE »óÅÂÀÇ °¡»ó¸Ó½ÅÀÇ ¸®½ºÆ®¸¦ ¾ò¾î¿Â´Ù.
+	 * Desc : IDLE ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @Method Name : getIdleVmList
-	 * @return IDLE »óÅÂÀÇ °¡»ó¸Ó½Å ¸®½ºÆ®¸¦ ¹ÝÈ¯ <br>
+	 * @return IDLE ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½È¯ <br>
 	 *         EX) "host07-vm05,..."
 	 * 
 	 */
@@ -542,10 +541,10 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : unhealthy »óÅÂÀÇ °¡»ó¸Ó½ÅÀÇ ¸®½ºÆ®¸¦ ¾ò¾î¿Â´Ù.
+	 * Desc : unhealthy ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @Method Name : getUnhealthyVmList
-	 * @return unhealthy »óÅÂÀÇ °¡»ó¸Ó½Å ¸®½ºÆ®¸¦ "," ±¸ºÐÀÇ ¹®ÀÚ¿­ ÇüÅÂ·Î ¹ÝÈ¯ <br>
+	 * @return unhealthy ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ "," ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½È¯ <br>
 	 *         EX) "host07-vm01"
 	 * 
 	 */
@@ -566,10 +565,10 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : »ç¿ë°¡´ÉÇÑ ¸ðµç È£½ºÆ®ÀÇ ¸®½ºÆ®¸¦ °¡Á®¿Â´Ù
+	 * Desc : ï¿½ï¿½ë°¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½
 	 * 
 	 * @Method Name : getTotalVmList
-	 * @return »ç¿ë°¡´ÉÇÑ ¸ðµç È£½ºÆ®ÀÇ ¸®½ºÆ® <br>
+	 * @return ï¿½ï¿½ë°¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® <br>
 	 *         "host01-vm01,host02-vm02..."
 	 * 
 	 */
@@ -587,10 +586,10 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : ½Ã¹Ä·¹ÀÌÅÍ¿¡¼­ µ¿ÀÛÁßÀÎ ¸ðµç JobÀ» °¡Á®¿Â´Ù.
+	 * Desc : ï¿½Ã¹Ä·ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @Method Name : getRunningJobs
-	 * @return Total Job ¼ö ¹ÝÈ¯ <br>
+	 * @return Total Job ï¿½ï¿½ ï¿½ï¿½È¯ <br>
 	 *         EX) "43"
 	 */
 	public String getRunningJobs(String hostName) {
@@ -600,10 +599,10 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : È£½ºÆ®¿¡¼­ »ý¼º°¡´ÉÇÑ °¡»ó¸Ó½ÅÀÇ ÃÖ´ë °³¼ö¸¦ °¡Á®¿Â´Ù.
+	 * Desc : È£ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @Method Name : getTotalVMs
-	 * @return »ý¼º°¡´ÉÇÑ °¡»ç¸Õ½ÅÀÇ ÃÖ´ë °³¼ö¸¦ ¹ÝÈ¯ <br>
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Õ½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ <br>
 	 *         EX) "192"
 	 * 
 	 */
@@ -618,13 +617,13 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : °¡»ó¸Ó½ÅÀÇ µ¿ÀÛ »óÅÂ¸¦ ¹ÝÈ¯ÇÑ´Ù.
+	 * Desc : ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
 	 * 
 	 * @Method Name : virtualMachineStatus
 	 * @param virtualMachine
-	 *            °¡»ó¸Ó½Å ÀÌ¸§ <br>
+	 *            ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½Ì¸ï¿½ <br>
 	 *            EX) "host01-vm004"
-	 * @return ´ÙÀ½Áß ÇÏ³ª ¹ÝÈ¯
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ ï¿½ï¿½È¯
 	 *         "pending","prolog","running","shudown","eliplog","stop","null"
 	 * 
 	 */
@@ -663,10 +662,10 @@ public class SimManager implements Runnable {
 	}
 	
 	/**
-	 * Desc : ÇöÀç Å¬¶ó¿ìµå ÀÌ¸§ ¹ÝÈ¯
+	 * Desc : ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½È¯
 	 * 
 	 * @Method Name : getCloudName
-	 * @return ÇöÁ¦ Å¬¶ó¿ìµå ÀÌ¸§
+	 * @return ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 	 * 
 	 */
 	public String getCloudName() {
@@ -678,10 +677,10 @@ public class SimManager implements Runnable {
 	// ******************************************************************
 
 	// /**
-	// * Desc : °¡»ó¸Ó½ÅÀÌ ·±´×ÇÑ ½Ã°£À» °¡Á®¿Â´Ù.
+	// * Desc : ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	// * @Method Name : getVMActiveTime
 	// * @param virtualMachine
-	// * @return [½Ã°£:ºÐ:ÃÊ ] ½ºÆ®¸µ Çü½ÄÀ¸·Î ¹ÝÈ¯
+	// * @return [ï¿½Ã°ï¿½:ï¿½ï¿½:ï¿½ï¿½ ] ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 	// * <br> EX) "00:10:13"
 	// *
 	// */
@@ -691,12 +690,12 @@ public class SimManager implements Runnable {
 	// }
 	/**
 	 * 
-	 * Desc : Æ¯Á¤ °¡»ó¸Ó½ÅÀÇ cpu ½ºÆåÀ» °¡Á®¿Â´Ù.
+	 * Desc : Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ cpu ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @Method Name : getVMCpuInfo
 	 * @param virtualMachine
-	 *            cpu Á¤º¸¸¦ °¡Á®¿Ã °¡»ó ¸Ó½Å ÀÌ¸§À» String Çü½ÄÀ¸·Î ÀÔ·Â
-	 * @return cpu ½ºÆåÀ» ½ºÆ®¸µÀ¸·Î ¹ÝÈ¯ <br>
+	 *            cpu ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ String ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
+	 * @return cpu ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ <br>
 	 *         EX) "Intel(R) Xeon(R) CPU           E5640  @ 2.67GHz"
 	 * 
 	 */
@@ -711,12 +710,12 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : Æ¯Á¤ °¡»ó¸Ó½ÅÀÇ mem Á¤º¸¸¦ °¡Á®¿Â´Ù.
+	 * Desc : Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ mem ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @Method Name : getVMMemInfo
 	 * @param virtualMachine
-	 *            ¸Þ¸ð¸® Á¤º¸¸¦ °¡Á®¿Ã °¡»ó ¸Ó½Å ÀÌ¸§À» String Çü½ÄÀ¸·Î ÀÔ·Â
-	 * @return ¸Þ¸ð¸® Á¤º¸¸¦ ½ºÆ®¸µÀ¸·Î ¹ÝÈ¯ <br>
+	 *            ï¿½Þ¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ String ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
+	 * @return ï¿½Þ¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ <br>
 	 *         EX) "8Gbyte"
 	 * 
 	 */
@@ -731,12 +730,12 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : Æ¯Á¤ °¡»ó¸Ó½ÅÀÇ µð½ºÅ© ¿ë·®À» °¡Á®¿Â´Ù.
+	 * Desc : Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½ï¿½Å© ï¿½ë·®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @Method Name : getVMDiskInfo
 	 * @param virtualMachine
-	 *            µð½ºÅ© Á¤º¸¸¦ °¡Á®¿Ã °¡»ó ¸Ó½Å ÀÌ¸§À» String Çü½ÄÀ¸·Î ÀÔ·Â
-	 * @return µð½ºÅ© ¿ë·®À» ½ºÆ®¸µÀ¸·Î ¹ÝÈ¯ <br>
+	 *            ï¿½ï¿½Å© ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ String ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
+	 * @return ï¿½ï¿½Å© ï¿½ë·®ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ <br>
 	 *         EX) "100Gbyte"
 	 * 
 	 */
@@ -751,12 +750,12 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : Æ¯Á¤ °¡»ó¸Ó½ÅÀÇ OS Á¤º¸¸¦ °¡Á®¿Â´Ù.
+	 * Desc : Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ OS ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @Method Name : getVMOSInfo
 	 * @param virtualMachine
-	 *            OS Á¤º¸¸¦ °¡Á®¿Ã °¡»ó ¸Ó½Å ÀÌ¸§À» String Çü½ÄÀ¸·Î ÀÔ·Â
-	 * @return OSÁ¤º¸¸¦ ½ºÆ®¸µÀ¸·Î ¹ÝÈ¯ <br>
+	 *            OS ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ String ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
+	 * @return OSï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ <br>
 	 *         EX) "Scientific Linux SLF release 5.7 (Lederman)"
 	 * 
 	 */
@@ -771,12 +770,12 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : Æ¯Á¤ °¡»ó¸Ó½ÅÀÇ OSBIT Á¤º¸¸¦ °¡Á®¿Â´Ù.
+	 * Desc : Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ OSBIT ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @Method Name : getVMOSBitInfo
 	 * @param virtualMachine
-	 *            OS BIT Á¤º¸¸¦ °¡Á®¿Ã °¡»ó ¸Ó½Å ÀÌ¸§À» String Çü½ÄÀ¸·Î ÀÔ·Â
-	 * @return OSBITÁ¤º¸¸¦ ½ºÆ®¸µÀ¸·Î ¹ÝÈ¯ <br>
+	 *            OS BIT ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ String ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
+	 * @return OSBITï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ <br>
 	 *         EX) "Scientific Linux SLF release 5.7 (Lederman)"
 	 * 
 	 */
@@ -791,12 +790,12 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : Æ¯Á¤ °¡»ó¸Ó½ÅÀÇ Kernel Á¤º¸¸¦ °¡Á®¿Â´Ù.
+	 * Desc : Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ Kernel ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @Method Name : getVMKernelInfo
 	 * @param virtualMachine
-	 *            Ä¿³Î Á¤º¸¸¦ °¡Á®¿Ã °¡»ó ¸Ó½Å ÀÌ¸§À» String Çü½ÄÀ¸·Î ÀÔ·Â
-	 * @return KernelÁ¤º¸¸¦ ½ºÆ®¸µ Çü½ÄÀ¸·Î ¹ÝÈ¯ <br>
+	 *            Ä¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ String ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
+	 * @return Kernelï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ <br>
 	 *         EX) "2.6.18-308.11.1.el5"
 	 * 
 	 */
@@ -811,12 +810,12 @@ public class SimManager implements Runnable {
 	}
 
 	/**
-	 * Desc : »ý¼ºµÈ °¡»ó¸Ó½ÅÀÇ °íÀ¯¹øÈ£(ID)¸¦ °¡Á®¿Â´Ù.
+	 * Desc : ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£(ID)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @Method Name : getVMUUID
 	 * @param virtualMachine
-	 *            UUID¸¦ °¡Á®¿Ã ¸Ó½ÅÀ» ÀÌ¸§À» String Çü½ÄÀ¸·Î ÀÔ·Â
-	 * @return VM °íÀ¯ ¹øÈ£ ½ºÆ®¸µ Çü½ÄÀ¸·Î ¹ÝÈ¯
+	 *            UUIDï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ String ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
+	 * @return VM ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 	 * 
 	 */
 	public String getVMUUID(String virtualMachine) {
@@ -841,10 +840,10 @@ public class SimManager implements Runnable {
 	// ******************************************************************
 
 	/**
-	 * Desc : jobÀ» ¼öÇàÇÑ´Ù. 
+	 * Desc : jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. 
 	 * @Method Name : jobSubmit
-	 * @param jobName ½ÇÇàÇÒ JobÀÌ¸§ EX) "job01"
-	 * @return ¼º°ø "1", ½ÇÆÐ "-1"
+	 * @param jobName ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Jobï¿½Ì¸ï¿½ EX) "job01"
+	 * @return ï¿½ï¿½ï¿½ï¿½ "1", ï¿½ï¿½ï¿½ï¿½ "-1"
 	 * 
 	 */
 	public String jobSubmit(String jobName){

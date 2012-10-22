@@ -5,16 +5,16 @@ import java.util.UUID;
 
 public class VirtualMachine implements Runnable{
 
-	//1. cloud Á¤º¸
+	//1. cloud ï¿½ï¿½ï¿½ï¿½
 	private String cloudName = "simulator"; 
 	
 	
-	//2. Host Á¤º¸
+	//2. Host ï¿½ï¿½ï¿½ï¿½
 	private String hostName = null;
 	private String hostStatus = null;
 	
 	
-	//3. vm Á¤º¸
+	//3. vm ï¿½ï¿½ï¿½ï¿½
 	private String vmID = null;
 	private String vmName = null; // host1, host2 ....
 	private String vmPowerStatus = "off"; // on, off
@@ -27,7 +27,7 @@ public class VirtualMachine implements Runnable{
 
 	private String jobName="";
 	
-	// ½Ã½ºÅÛ »ç¾ç
+	// ï¿½Ã½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	private String CPU = "Intel(R) Xeon(R) CPU           E5640  @ 2.67GHz";
 	private String MEM = "8Gbyte";
 	private String DISK = "100Gbyte";
@@ -63,11 +63,10 @@ public class VirtualMachine implements Runnable{
 		System.out.println("vm created by host.......................");
 	}
 	
-	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		while (IS_EXIT) {
-			// power  °¡ on ÇÏ¸é vm »óÅÂ¸¦ ´Ü°èÀûÀ¸·Î º¯°æ 
+			// power  ï¿½ï¿½ on ï¿½Ï¸ï¿½ vm ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½Ü°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 			if (vmPowerStatus.equals("on") && !vmStatus.equals("running")) {
 				try {
 					setVmStatus("pending");
@@ -80,7 +79,7 @@ public class VirtualMachine implements Runnable{
 					e.printStackTrace();
 				}
 			}
-			//power »óÅÂ¸¦ offÇÏ¸é vm »óÅÂ¸¦ ´Ü°èÀûÀ¸·Î º¯°æ 
+			//power ï¿½ï¿½ï¿½Â¸ï¿½ offï¿½Ï¸ï¿½ vm ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½Ü°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 			if (vmPowerStatus.equals("off") && vmStatus.equals("running")) {
 				
 				try {
@@ -97,7 +96,7 @@ public class VirtualMachine implements Runnable{
 			
 			
 			
-			// 1ÃÊ ¸¶´Ù »óÅÂ È®ÀÎ 
+			// 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ 
 			try {Thread.sleep(1000);} catch (Exception e) {}
 		}
 		
@@ -109,7 +108,6 @@ public class VirtualMachine implements Runnable{
 		
 		new Thread(new Runnable() {
 			
-			@Override
 			public void run() {
 				// TODO Auto-generated method stub
 				setVmBusy("busy");

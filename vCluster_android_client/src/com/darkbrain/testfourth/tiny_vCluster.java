@@ -38,20 +38,20 @@ public class tiny_vCluster {
 	}
 	public  void demoStart(){
 		/*
-		 * Max Queue 1000 °³
-		 * ÃÑ °¡´É vm ¼ö´Â 12*20 = 240°³
+		 * Max Queue 1000 ï¿½ï¿½
+		 * ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ vm ï¿½ï¿½ï¿½ï¿½ 12*20 = 240ï¿½ï¿½
 		 * MaxHost = 20
 		 * Max VM each = 12
 		 *  
-		 * job ¼­ºê¹Ì¼ÇÀº 5ÃÊ¿¡ 40~50°³ »çÀÌ 
+		 * job ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ 5ï¿½Ê¿ï¿½ 40~50ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 		 * 
-		 * ½Ã¹Ä·¹ÀÌÅÍ¿¡¼­´Â ±âº» °¡»ó¸Ó½Å ¸î°³ µ¿ÀÛÁß
-		 * »óÅÂ¸ð´ÏÅÍ¸µ ÇØ¼­ ¸ðÀÚ¸£¸é vm»ý¼º~
-		 * »óÅÂ¸ð´ÏÅÍ¸µÇØ¼­ ³²À¸¸é È£½ºÆ®¸Ó½Å »èÁ¦
-		 * Job Àº 5~10ÃÊÁ¤µµ ¼öÇàÇÏ°í ¾ø¾îÁü 
+		 * ï¿½Ã¹Ä·ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº» ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½î°³ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		 * ï¿½ï¿½ï¿½Â¸ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½ vmï¿½ï¿½~
+		 * ï¿½ï¿½ï¿½Â¸ï¿½ï¿½ï¿½Í¸ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ®ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		 * Job ï¿½ï¿½ 5~10ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		 * 
 		 * 
-		 * Ãß°¡·Î fail¸ðµâ »ý¼ºÇØ¼­ vm Á×ÀÌ°í, »õ·Î¿î ¸ÚÈù¿¡ Job ÀÌµ¿½ÃÄÑ ¼öÇàÇÑ´Ù. 
+		 * ï¿½ß°ï¿½ï¿½ï¿½ failï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ vm ï¿½ï¿½ï¿½Ì°ï¿½, ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ Job ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. 
 		 */
 		
 		final Random random = new Random();
@@ -59,12 +59,12 @@ public class tiny_vCluster {
 //		int totalJobs=0;	
 		
 		
-		reductionResorce(); // ¸®¼Ò½º Á¤¸® 60ÃÊ ¸¶´Ù °Ë»çÇØ¼­ Á¤¸® ÇÑ´Ù.
+		reductionResorce(); // ï¿½ï¿½ï¿½Ò½ï¿½ ï¿½ï¿½ï¿½ï¿½ 60ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
 		
 		
 		for (int i = 0; i < 20; i++) {
-			job_submit(10+nJob); // 10ÃÊ¿¡ ÇÑ¹ø¾¿
-			Log.d("tiny_vCluster", 7+nJob+"°³ job is submitted.");
+			job_submit(10+nJob); // 10ï¿½Ê¿ï¿½ ï¿½Ñ¹ï¿½
+			Log.d("tiny_vCluster", 7+nJob+"ï¿½ï¿½ job is submitted.");
 			try {Thread.sleep(2000);} catch (InterruptedException e) {e.printStackTrace();}
 		}
 					
@@ -74,9 +74,9 @@ public class tiny_vCluster {
 
 	
 	public void reductionResorce(){
-		//1ºÐ¸¶´Ù °Ë»çÇØ¼­ ÇÊ¿ä ¾ø´Â ¸Ó½Å ²ö´Ù.
-		//vm¸ÕÀú ²ô±â,
-		//running ÁßÀÌ vmÀÌ ÇÏ³ªµµ ¾ø´Â ¸Ó½ÅÀº È£½ºÆ® Àü¿ø²ô±â
+		//1ï¿½Ð¸ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ø¼ï¿½ ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+		//vmï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½,
+		//running ï¿½ï¿½ï¿½ï¿½ vmï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 		new Thread(new Runnable() {
 			
@@ -84,7 +84,6 @@ public class tiny_vCluster {
 			List runningHost=null;
 			
 			
-			@Override
 			public void run() {
 				final int SEC = 1000;
 				
@@ -112,9 +111,9 @@ public class tiny_vCluster {
 	
 	
 	/**
-	 * Desc : job À» ¼öÇàÇÑ´Ù.  n.job ÀÌ¸§À¸·Î jobÀ» »ý¼ºÇÏ¿© ½ÇÇàÇÑ´Ù. 
+	 * Desc : job ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.  n.job ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ jobï¿½ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. 
 	 * @Method Name : job_submit
-	 * @param num ¼öÇàÇÒ job °³¼ö 
+	 * @param num ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ job ï¿½ï¿½ï¿½ï¿½ 
 	 * 
 	 */
 	public void job_submit(int num){
@@ -130,19 +129,19 @@ public class tiny_vCluster {
 		int sendCnt = 0;
 //		int remainJobs = ;
 
-		//1.  Å¥¿¡ Job ¸ðµÎ ³Ö±â 
+		//1.  Å¥ï¿½ï¿½ Job ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½ 
 //		for (int i = 0; i < num; i++) {			
 //			API.jobSubmit(String.format("job%3d", i));			
 //		}
 		for (int i = 0; i < num; i++) {
 			if (jobQueue.isFull()) {
-				Log.d("tiny_vCluster", "Å¥°¡ °¡µæ Ã¡½À´Ï´Ù. ");
+				Log.d("tiny_vCluster", "Å¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¡ï¿½ï¿½ï¿½Ï´ï¿½. ");
 				break;
 			}
 			jobQueue.enQueue(String.format("%10d.job", cnt++));			
 		}		
 		
-		//2. avail list ´ë·Î Ã£¾Æ¼­  job ¼öÇàÇÏ±â ¸ðµÎ ¼öÇà		
+		//2. avail list ï¿½ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½  job ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½		
 		while (!jobQueue.isEmpty()) {	
 //			try {Thread.sleep(200);} catch (InterruptedException e) {e.printStackTrace();}
 			
@@ -150,22 +149,22 @@ public class tiny_vCluster {
 				API.jobSubmit(jobQueue.deQueue());
 				remainJob--;
 			}else { 
-				// ³²Àº JobÀÌ »ý¼º°¡´ÉÇÑ vmº¸´Ù Å©¸é
+				// ï¿½ï¿½ï¿½ï¿½ Jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ vmï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½
 				
  
 
-					// °¡´ÉÇÑ ½½·ÔÀÌ 10°³º¸´Ù ¸¹À¸¸é VM»ý¼º
+					// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 10ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ VMï¿½ï¿½
 					if (availSlots > 10) {
 						
 						for (int i = 0; i < 10; i++) {
 							createVM();
 						}
 					}else {
-						// 10°³º¸´Ù ÀÛÀ¸¸é, host¸¦ ÇÏ³ª ´õ »ý¼ºÇÑ´Ù.
+						// 10ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, hostï¿½ï¿½ ï¿½Ï³ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ´ï¿½.
 						turnOnHostMachine();
 					}
 
-					// °ª ´Ù½Ã ÀÐ±â 
+					// ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½Ð±ï¿½ 
 					availSlots = getAvailableSlots();
 					idleVMs = getIdleVMs();					
 				
@@ -252,7 +251,7 @@ class JobQueue {
 		if (!isEmpty()) {
 			str = queue[rear];
 		}else {
-			Log.d("tiny_vCluster","Å¥¿¡ µ¥ÀÌÅÍ ¾øÀ½");
+			Log.d("tiny_vCluster","Å¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			str = null;
 		}
 		return str;
@@ -276,7 +275,7 @@ class JobQueue {
 		return true;	
 	}
 	public boolean isFull() {
-		// ÀÔ±¸¿¡¼­ Ãâ±¸°¡ ¾ÕÂÊÀ¸·Î 1Ä­ Â÷ÀÌ¸é °¡µæ Âù °ÍÀÌ´Ù. 
+		// ï¿½Ô±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½â±¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1Ä­ ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½. 
 		if ( (front +1)%size == rear ) {
 			return true;
 		}else{
@@ -284,7 +283,7 @@ class JobQueue {
 		}
 	}
 	public boolean isEmpty() {
-		//ÀÔ±¸¿Í Ãâ±¸°¡ °°À¸¸é ºñ¾îÀÖ´Â°ÍÀÌ´Ù. 
+		//ï¿½Ô±ï¿½ï¿½ï¿½ ï¿½â±¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö´Â°ï¿½ï¿½Ì´ï¿½. 
 		if (front == rear) {
 			return true;
 		} else {

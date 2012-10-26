@@ -1,4 +1,6 @@
 /*인덱스*/
+
+
 body, html{
 	margin:0px;
 	padding:0px;
@@ -13,20 +15,27 @@ body, html{
 }
 
 #logo2 {
-	width:305px;
+	width:547px;
 	opacity:0.1;
-	margin:262px 0px 0px 474px;
+	margin:262px 0px 0px 364px;
 }
 .copy {
-	padding:0px 0px 0px 492px;
+	padding:30px 0px 0px 492px;
 }
 .logoSub {
+	float:left;
 	//background-color:#FFFFFF;
 	padding:34px 0px 0px 40px;
 }
 .menuButton {
+	float:left;
 	//background-color:#FFFFFF;
-	margin:0px 0px 0px 890px;
+	margin:60px 0px 0px 0px;
+}
+.demoButton {
+	float:left;
+	//background-color:#FFFFFF;
+	margin:60px 0px 0px 815px;
 }
 .menuOut {
 	//background-color:#FFFFFF;
@@ -46,7 +55,7 @@ body, html{
 .menuPop p{
 	margin:10 0px 0px 0px 20px;
 	font-size:18px;
-	color:#929292;
+	color:#FFFFFF;
 	line-height:18px;
 	text-shadow: none;
 	text-decoration:none;
@@ -54,18 +63,19 @@ body, html{
 
 
 
-.menuPop p A{font-size:18px;color:#929292;text-decoration:none;}
-.menuPop p A:link{font-size:18px;color:#929292;text-decoration:none;}
-.menuPop p A:active{font-size:18px;color:#929292;text-decoration:none;}
-.menuPop p A:visited{font-size:18px;color:#929292;text-decoration:none;}
-.menuPop p A:hover{font-size:18px;color:#929292;text-decoration:none;}
+.menuPop p A{font-size:18px;color:#FFFFFF;text-decoration:none;}
+.menuPop p A:link{font-size:18px;color:#FFFFFF;text-decoration:none;}
+.menuPop p A:active{font-size:18px;color:#FFFFFF;text-decoration:none;}
+.menuPop p A:visited{font-size:18px;color:#FFFFFF;text-decoration:none;}
+.menuPop p A:hover{font-size:18px;color:#FFFFFF;text-decoration:none;}
 
 
 /*메인 탑*/
 .VclusterTopText{
+	clear:both;
 	padding:0px 0px 0px 49px;
 	font-size:24px;
-	color:#929292;
+	color:#FFFFFF;
 	text-shadow: none;	
 }
 .VclusterTop {
@@ -197,7 +207,7 @@ body, html{
 	margin:12px 0px 0px 12px;
 	width:154px;
 	font-size:19px;
-	color:#dcdcdc;
+	color:#FFFFFF;
 	text-align: left;
 	//background-color:#000000;
 	text-shadow:
@@ -216,7 +226,7 @@ body, html{
 	margin:28px 0px 0px 12px;
 	width:260px;
 	font-size:12px;
-	color:#929292;
+	color:#FFFFFF;
 	text-shadow: none;
 	
 }
@@ -284,7 +294,7 @@ body, html{
 	margin:-5px 0px 0px 100px;
 	text-align:center;
 	width:80px;
-	color:#dcdcdc;
+	color:#FFFFFF;
 	font-size:14px;
 	
 	text-shadow:
@@ -317,6 +327,10 @@ body, html{
 	padding:7px 0px 0px 10px;
 	float:left;
 }
+.hostSignOff {
+	padding:7px 0px 0px 10px;
+	float:left;
+}
 .hostStatus span{
 	display:block;
 	float:left;
@@ -335,6 +349,11 @@ body, html{
 .hostStatus .available {
 	color: #9f9f9f;
 }
+
+.hostStatus .off {
+	color: #666666;
+}
+
 
 .hostSubCover{
 	position:relative;
@@ -361,6 +380,16 @@ body, html{
 	width:171px;
 	height:477px;
 }
+
+.hostSubOver{
+	background-color:bule;
+	margin-right:4px;
+	float:left;
+	background:url("images/host_sub_back_over.png") 0 0 no-repeat;
+	width:171px;
+	height:477px;
+}
+
 .hostSubAmazon{
 	//background-color:#FFFFFF;
 	float:left;
@@ -393,7 +422,7 @@ body, html{
 	margin:10px 0px 0px 48px;
 	width:100px;
 	font-size:13px;
-	color:#dcdcdc;
+	color:#FFFFFF;
 	text-align:center;
 	
 	text-shadow:
@@ -413,7 +442,7 @@ body, html{
 	//background-color:#FFFFFF;
 	width:140px;
 	font-size:12px;
-	color:#929292;
+	color:#FFFFFF;
 	text-shadow: none;
 	
 }
@@ -444,6 +473,11 @@ body, html{
 	color: #9f9f9f;
 
 }
+
+.subStatus .off {
+	color: #666666;
+
+}
 .subStatusNumber {
 	//background-color:#FFFFFF;
 	width:56px;
@@ -466,6 +500,12 @@ body, html{
 	width: 146px;
 	padding-left:13px;
 }
+.cpuCoverOver{
+	background-color:#FFFFFF;
+	float:left;
+	width: 146px;
+	padding-left:13px;
+}
 
 .cpuAmazonCover{
 	//background-color:#FFFFFF;
@@ -484,13 +524,13 @@ body, html{
 .cpuSign{
 	position:absolute;
 	//background-color:#FFFFFF;
-	margin:0px 0px 0px 8px;
+	margin:0px 0px 0px 7px;
 
 }
 .cpuP{
 	margin-top:27px;
 	font-size:10px;
-	color:#929292;
+	color:#FFFFFF;
 	text-shadow: none;
 }
 							
@@ -562,7 +602,7 @@ body, html{
 	float:left;
 	margin:14px 0px 0px 78px;
 	font-size:12px;
-	color:#929292;
+	color:#FFFFFF;
 	text-shadow: none;
 }
 .master img{
@@ -604,7 +644,7 @@ body, html{
 	width:316px;
 	height:33px; 
 	font-size:18px;
-	color:#929292;
+	color:#FFFFFF;
 	text-shadow: -1px -1px 0px #111,
                  0px 0px 1px #999;
 }
@@ -632,7 +672,7 @@ body, html{
 }
 
 .subText{
-	color:#929292;
+	color:#FFFFFF;
 	float: left;
 	width:257px;
 	margin:0px 0px 0px 20px;

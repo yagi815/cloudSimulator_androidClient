@@ -58,6 +58,7 @@ public class API_android {
 		list.add("fermiCloud");
 		return list;
 	}
+	/*
 	public List getRunningHostList(String hostMame) {
 		return API.getRunningHostList();
 	}
@@ -76,6 +77,29 @@ public class API_android {
 	public List getCurrentUnhealthyVmList(String hostMame) {
 		return API.getUnhealthyVmList(hostMame);
 	}	
+	*/
+	public String getRunningHostList(String hostMame) {
+        return API.newgetRunningHostList();
+	}
+	public String getCurrentBusyVmList(String hostMame) {
+		return API.newgetBusyVmList(hostMame);
+	}
+	
+	public String getCurrentRunningVmList(String hostMame) {
+		return API.newgetRunningVmList(hostMame);
+	}
+	
+	public String getCurrentIdleVmList(String hostMame) {
+		return API.newgetIdleVmList(hostMame);
+	}
+	
+	public String getCurrentAvailableVmList(String hostMame) {
+		return API.newgetAvailableVmList(hostMame);
+	}
+	
+	public  String getCurrentUnhealthyVmList(String hostMame) {
+		return API.newgetUnhealthyVmList(hostMame);
+	}
 	public List getImageRepositoryList(String hostMame) { 
 		List list = new ArrayList();
 		list.add("CDF_OS_Image");

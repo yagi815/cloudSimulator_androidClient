@@ -56,6 +56,74 @@ public class API_vcluster {
 		return simulator.execute(command);
 	}
 
+	
+	
+	
+	
+	
+	//===============================================================
+	public String newgetRunningHostList() {
+		List runningHostList = new ArrayList();
+		runningHostList = (List) requestToSimulator("00:-");
+
+		String list = "";
+		for (int i = 0; i < runningHostList.size(); i++) {
+			list += (String) runningHostList.get(i) + ",";
+		}
+
+		return list;
+	}
+	public String newgetRunningVmList(String hostName) {
+		List runningVmList = new ArrayList();
+		runningVmList = (List) requestToSimulator("23:" + hostName);
+		String list = "";
+        for (int i = 0; i < runningVmList.size(); i++) {
+            list += (String)runningVmList.get(i) + ",";
+        }
+        return list;
+	}
+	public String newgetAvailableVmList(String hostName) {
+		List availableVmList = new ArrayList();
+		availableVmList = (List) requestToSimulator("24:" + hostName);
+		String list = "";
+        for (int i = 0; i < availableVmList.size(); i++) {
+            list += (String)availableVmList.get(i) + ",";
+        }
+        return list;
+	}
+	public String newgetBusyVmList(String hostName) {
+		List busyVmList = new ArrayList();
+		busyVmList = (List) requestToSimulator("26:" + hostName);
+		String list = "";
+        for (int i = 0; i < busyVmList.size(); i++) {
+            list += (String)busyVmList.get(i) + ",";
+        }
+        return list;
+	}
+	public String newgetIdleVmList(String hostName) {
+		List idleVmList = new ArrayList();
+		idleVmList = (List) requestToSimulator("27:" + hostName);
+		String list = "";
+        for (int i = 0; i < idleVmList.size(); i++) {
+            list += (String)idleVmList.get(i) + ",";
+        }
+
+        return list;
+	}
+	public String newgetUnhealthyVmList(String hostName) {
+		List unHealthyVmList = new ArrayList();
+		unHealthyVmList = (List) requestToSimulator("28:" + hostName);
+		String list = "";
+        for (int i = 0; i < unHealthyVmList.size(); i++) {
+            list += (String)unHealthyVmList.get(i) + ",";
+        }
+
+        return list;
+	}
+	//===============================================================
+
+	
+	
 	// ******************************************************************
 	// 0X: HOSTMACHINE
 	// ******************************************************************

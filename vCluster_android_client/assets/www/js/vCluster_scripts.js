@@ -1,4 +1,8 @@
+
+
 $(document).ready(function() { 
+	
+	
 	$('#logo2').animate({opacity: 1}, 200);//�ΰ� ���İ� ��
 
 		theNumberOfCloud=""
@@ -15,11 +19,13 @@ $(document).ready(function() {
 		
 		window.NAPIVcluster.simulatorStart();
 		
-		var RunningTop=0;
-		var IdleTop=0;
+		var RunningTop=62;
+		var IdleTop=12;
 		var UnhealthyTop=0;
-		var AvailableTop=0;
+		var AvailableTop=11;
 		
+		
+		 
 		function changeNum( vmNumber ) {
 	  	  var RetrunNumber;
 	  	  
@@ -34,52 +40,38 @@ $(document).ready(function() {
 	    }
 	
 		function appendQueueRunning() {
-			$.mobile.loading( 'show');
-			$("#QueueRunning").replaceWith("<div CLASS='VclusterStatusNumber running' id='QueueRunning'>"+window.NAPIVcluster.getRunningJobs()+"</div>");
+			//$.mobile.loading( 'show');
+			$("#QueueRunning").replaceWith("<div CLASS='VclusterStatusNumber running' id='QueueRunning'>"+(window.NAPIVcluster.getRunningJobs()+RunningTop)+"</div>");
 	    }
 		
 		function appendQueueWaiting() {
 			$("#QueueIdle").replaceWith("<div CLASS='VclusterStatusNumber idle' id='QueueIdle'>"+window.NAPIVcluster.getWatingJobs()+"</div>");
 	    }
-		
-		//$Result=""
+
 		function appendImageRepository() {
 			var List = new Array();
 			List=window.NAPIVcluster.getImageRepositoryList("test");
-
 			var Result = new String();
 			var Result1 = new String();
-
 			$lastResult = "";
 			for (i=0; i<List.size(); i++){
 				var ValueText = new String(List.get(i));
 				var firstSpan = new String("<span>");
 				var lastSpan = new String("</span>");
-
-				
 				Result = firstSpan + ValueText + lastSpan;
-				
 				Result1 += Result;
-
 			}
 			$("#ImageRepositoryText").replaceWith("<div CLASS='ImageText' ID='ImageRepositoryText'>"+Result1+"</div>");
-			
-	    }
+		}
 		
 
 		var simulatorHostList=new Array("host01","host02","host03","host04","host05","host06","host07","host08","host09","host10","host11","host12","host13","host14","host15");
-		simulatorHostListSize = simulatorHostList.length;
-		
-
-		
-		//alert(simulatorOnHostListSize);
+		var simulatorHostListSize = simulatorHostList.length;
 		
 		function statusNumber(){
 			
 			simulatorOnHostList = getRunningHostList("vSimulator");
-			simulatorOnHostListSize = simulatorOnHostList.size();
-			
-			var Result = new String();
+			simulatorOnHostListSize = simulatorOnHostList.length-1;
 			
 			var firstSpan = new String("<div CLASS='host' id='vsimulatorHost'><div CLASS='simulatorHostTop'><div CLASS='hostTitle'><p>");
 
@@ -91,27 +83,21 @@ $(document).ready(function() {
 				j=0;
 				for (i=0; i<simulatorHostListSize; i++){
 					
-					var numberResult = new String(simulatorOnHostList.get(j));
-					var stringResult = numberResult.toString();
-					//theNumberOfCloudRunnig+=parseInt(getCurrentRunningVmList(stringResult).size());
-					
+					var stringResult = simulatorOnHostList[j];			
 					if(simulatorHostList[i]==stringResult){
-						theNumberOfCloudRunnig+=parseInt(getCurrentRunningVmList(stringResult).size());
+						theNumberOfCloudRunnig+=parseInt(getCurrentRunningVmList(stringResult));
+						theNumberOfCloudIdle+=parseInt(getCurrentIdleVmList(stringResult));						
+						theNumberOfCloudUnhealthy+=parseInt(getCurrentUnhealthyVmList(stringResult));						
+						theNumberOfCloudAvailable+=parseInt(getCurrentAvailableVmList(stringResult));
 						
-						theNumberOfCloudIdle+=parseInt(getCurrentIdleVmList(stringResult).size());
-						
-						theNumberOfCloudUnhealthy+=parseInt(getCurrentUnhealthyVmList(stringResult).size());
-						
-						theNumberOfCloudAvailable+=parseInt(getCurrentAvailableVmList(stringResult).size());
-						
-						var secondSpan = new String("</p></div></div><div CLASS='hostStatus' id='vsimulatorHostStatus'><span CLASS='running'>"+getCurrentRunningVmList(stringResult).size()+"</span><span CLASS='idle'>"+getCurrentIdleVmList(stringResult).size()+"</span><span CLASS='unhealthy'>"+getCurrentUnhealthyVmList(stringResult).size()+"</span><span CLASS='available'>"+getCurrentAvailableVmList(stringResult).size()+"</span></div></div>");
+						var secondSpan = new String("</p></div></div><div CLASS='hostStatus' id='vsimulatorHostStatus'><span CLASS='running'>"+getCurrentRunningVmList(stringResult)+"</span><span CLASS='idle'>"+getCurrentIdleVmList(stringResult)+"</span><span CLASS='unhealthy'>"+getCurrentUnhealthyVmList(stringResult)+"</span><span CLASS='available'>"+getCurrentAvailableVmList(stringResult)+"</span></div></div>");
 						$(firstSpan+simulatorHostList[i]+secondSpan).appendTo("#host_cover");
 						if(j<simulatorOnHostListSize-1){
 							j++;
 						}
 						
 					}else{
-						var secondSpan = new String("</p></div></div><div CLASS='hostStatus' id='vsimulatorHostStatus'><span CLASS='running'>0</span><span CLASS='idle'>0</span><span CLASS='unhealthy'>0</span><span CLASS='available'>0</span></div></div>");
+						var secondSpan = new String("</p></div></div><div CLASS='hostStatus' id='vsimulatorHostStatus'><span CLASS='off'>0</span><span CLASS='off'>0</span><span CLASS='off'>0</span><span CLASS='off'>0</span></div></div>");
 						$(firstSpan+simulatorHostList[i]+secondSpan).appendTo("#host_cover");
 					}
 
@@ -120,48 +106,46 @@ $(document).ready(function() {
 				$("#statusCloudNumber").replaceWith("<div CLASS='status' id='statusCloudNumber'><div CLASS='statusNumber running'>"+theNumberOfCloudRunnig+"</div><div CLASS='statusNumber idle'>"+theNumberOfCloudIdle+"</div><div CLASS='statusNumber unhealthy'>"+theNumberOfCloudUnhealthy+"</div><div CLASS='statusNumber available'>"+theNumberOfCloudAvailable+"</div></div>");
 				$("#VclusterStatus").replaceWith("<div CLASS='VclusterStatus'  id='VclusterStatus'><div CLASS='VclusterStatusNumber running'>"+(parseInt(theNumberOfCloudRunnig)+parseInt(RunningTop))+"</div><div CLASS='VclusterStatusNumber idle'>"+(parseInt(theNumberOfCloudIdle)+parseInt(IdleTop))+"</div><div CLASS='VclusterStatusNumber unhealthy'>"+(parseInt(theNumberOfCloudUnhealthy)+parseInt(UnhealthyTop))+"</div><div CLASS='VclusterStatusNumber available'>"+(parseInt(theNumberOfCloudAvailable)+parseInt(AvailableTop))+"</div></div>");
 
-
+				simulatorOnHostList = null;
+				simulatorOnHostListSize = null;
 
 		}
 		
 		
 		function changeStatusNumber(){
 			simulatorOnHostList = getRunningHostList("vSimulator");
-			simulatorOnHostListSize = simulatorOnHostList.size();
+			simulatorOnHostListSize = simulatorOnHostList.length-1;
 			
 			changeNumberOfCloudRunnig = 0;
 			changeNumberOfCloudIdle = 0;
 			changeNumberOfCloudUnhealthy = 0;
 			changeNumberOfCloudAvailable = 0;
-			changeResult = "";
-			stringchangeResult = "";
 			j=0;
 			for (i=0; i<simulatorHostListSize; i++){
-				//$("<div CLASS='hostSign'></div>").appendTo($("#secondContent").children().eq(i).children().eq(2).children().eq(i).children().eq(0));
-				var numberResult = new String(simulatorOnHostList.get(j));
-				var stringResult = numberResult.toString();
+				var stringResult = simulatorOnHostList[j];
+				//var stringResult = numberResult.toString();
 				
 				if(simulatorHostList[i]==stringResult){
-					changeNumberOfCloudRunnig+=parseInt(getCurrentRunningVmList(stringResult).size());
+					changeNumberOfCloudRunnig+=parseInt(getCurrentRunningVmList(stringResult));
 					
-					changeNumberOfCloudIdle+=parseInt(getCurrentIdleVmList(stringResult).size());
+					changeNumberOfCloudIdle+=parseInt(getCurrentIdleVmList(stringResult));
 					
-					changeNumberOfCloudUnhealthy+=parseInt(getCurrentUnhealthyVmList(stringResult).size());
+					changeNumberOfCloudUnhealthy+=parseInt(getCurrentUnhealthyVmList(stringResult));
 					
-					changeNumberOfCloudAvailable+=parseInt(getCurrentAvailableVmList(stringResult).size());
+					changeNumberOfCloudAvailable+=parseInt(getCurrentAvailableVmList(stringResult));
 					
 					
 					
-					$("#host_cover").children().eq(i).children().eq(1).replaceWith("<div CLASS='hostStatus' id='vsimulatorHostStatus'><span CLASS='running'>"+getCurrentRunningVmList(stringResult).size()+"</span><span CLASS='idle'>"+getCurrentIdleVmList(stringResult).size()+"</span><span CLASS='unhealthy'>"+getCurrentUnhealthyVmList(stringResult).size()+"</span><span CLASS='available'>"+getCurrentAvailableVmList(stringResult).size()+"</span></div></div>");
+					$("#host_cover").children().eq(i).children().eq(1).replaceWith("<div CLASS='hostStatus' id='vsimulatorHostStatus'><span CLASS='running'>"+getCurrentRunningVmList(stringResult)+"</span><span CLASS='idle'>"+getCurrentIdleVmList(stringResult)+"</span><span CLASS='unhealthy'>"+getCurrentUnhealthyVmList(stringResult)+"</span><span CLASS='available'>"+getCurrentAvailableVmList(stringResult)+"</span></div></div>");
 					
 					if(j<simulatorOnHostListSize-1){
 						j++;
 					}
-					//$("<div CLASS='hostSign'><img src='images/host_sign_on_"+i+changeNum(i)+".gif'></div>").replaceWith($("#secondContent").children().eq(0).children().eq(2).children().eq(i).children().eq(0));
-					$("#host_cover").children().eq(i).children().eq(0).children().eq(1).replaceWith("<div CLASS='hostSign'><img src='images/host_sign_on_0"+changeNum(i)+".gif'></div>");
+					//$("#host_cover").children().eq(i).children().eq(0).children().eq(1).replaceWith("<div CLASS='hostSign'><img src='images/host_sign_on_0"+changeNum(i)+".gif'></div>");
+					$("#host_cover").children().eq(i).children().eq(0).children().eq(1).replaceWith("<div CLASS='hostSign'><img src='images/host_sign_on_000.png'></div>");
 				}else{
-					$("#host_cover").children().eq(i).children().eq(1).replaceWith("<div CLASS='hostStatus' id='vsimulatorHostStatus'><span CLASS='running'>0</span><span CLASS='idle'>0</span><span CLASS='unhealthy'>0</span><span CLASS='available'>0</span></div></div>");
-					$("#host_cover").children().eq(i).children().eq(0).children().eq(1).replaceWith("<div CLASS='hostSign'></div>");
+					$("#host_cover").children().eq(i).children().eq(1).replaceWith("<div CLASS='hostStatus' id='vsimulatorHostStatus'><span CLASS='off'>0</span><span CLASS='off'>0</span><span CLASS='off'>0</span><span CLASS='off'>0</span></div></div>");
+					$("#host_cover").children().eq(i).children().eq(0).children().eq(1).replaceWith("<div CLASS='hostSignOff'><img src='images/host_sign_off.png'></div>");
 				}
 				
 			}
@@ -170,6 +154,9 @@ $(document).ready(function() {
 			
 			$("#VclusterStatus").replaceWith("<div CLASS='VclusterStatus'  id='VclusterStatus'><div CLASS='VclusterStatusNumber running'>"+(parseInt(changeNumberOfCloudRunnig)+parseInt(RunningTop))+"</div><div CLASS='VclusterStatusNumber idle'>"+(parseInt(changeNumberOfCloudIdle)+parseInt(IdleTop))+"</div><div CLASS='VclusterStatusNumber unhealthy'>"+(parseInt(changeNumberOfCloudUnhealthy)+parseInt(UnhealthyTop))+"</div><div CLASS='VclusterStatusNumber available'>"+(parseInt(changeNumberOfCloudAvailable)+parseInt(AvailableTop))+"</div></div>");
 
+			
+			simulatorOnHostList = null;
+			simulatorOnHostListSize = null;
 		}
 		
 		function addGif(){
@@ -177,14 +164,25 @@ $(document).ready(function() {
 			for (i=0; i<4; i++){
 				var hostLength = $("#secondContent").children().eq(i).children().eq(2).children(".host").length;
 				for (j=0; j<hostLength; j++){
-					$("<div CLASS='hostSign'><img src='images/host_sign_on_"+i+changeNum(j)+".gif'></div>").appendTo($("#secondContent").children().eq(i).children().eq(2).children().eq(j).children().eq(0));
-					
-					//$(".host_cover").children().eq(j).children().eq(0).after("<div CLASS='hostSign'><img src='images/host_sign_on_"+changeNum(j)+".gif'></div>");
+					//$("<div CLASS='hostSign'><img src='images/host_sign_on_"+i+changeNum(j)+".gif'></div>").appendTo($("#secondContent").children().eq(i).children().eq(2).children().eq(j).children().eq(0));
+					$("<div CLASS='hostSign'><img src='images/host_sign_on_000.png'></div>").appendTo($("#secondContent").children().eq(i).children().eq(2).children().eq(j).children().eq(0));
 				}
 			}
+			//$("#secondContent").children().eq(i).children().eq(2).children().eq(j).children().eq(0).replaceWith("<div CLASS='hostSign'></div>");
+			$("#secondContent").children().eq(1).children().eq(2).children().eq(3).children().eq(0).children().eq(1).replaceWith("<div CLASS='hostSignOff'><img src='images/host_sign_off.png'></div>");
+			$("#secondContent").children().eq(1).children().eq(2).children().eq(4).children().eq(0).children().eq(1).replaceWith("<div CLASS='hostSignOff'><img src='images/host_sign_off.png'></div>");
+			$("#secondContent").children().eq(3).children().eq(2).children().eq(2).children().eq(0).children().eq(1).replaceWith("<div CLASS='hostSignOff'><img src='images/host_sign_off.png'></div>");
+			$("#secondContent").children().eq(3).children().eq(2).children().eq(3).children().eq(0).children().eq(1).replaceWith("<div CLASS='hostSignOff'><img src='images/host_sign_off.png'></div>");
 		}
-		
-////////////////////////////3��° ������ ����///////////////////////////
+		function signing(){
+			int4 = setInterval( function() {
+				$(".hostSign").fadeIn(150).fadeOut(150);
+			//show().delay(500).hide();
+			},
+			300
+			);
+		}
+		////////////////////////////����2��° ������ ��� �Ǵ� �Լ� ����///////////////////////////
 		
 		function subAppendQueueRunning() {
 			//$.mobile.loading( 'show');
@@ -198,47 +196,41 @@ $(document).ready(function() {
 		function changeClusterStatusNumber(){
 			
 			simulatorOnHostList = getRunningHostList("vSimulator");
-			simulatorOnHostListSize = simulatorOnHostList.size();
+			simulatorOnHostListSize = simulatorOnHostList.length-1;
 			
 			changeNumberOfCloudRunnig = 0;
 			changeNumberOfCloudIdle = 0;
 			changeNumberOfCloudUnhealthy = 0;
 			changeNumberOfCloudAvailable = 0;
-			changeResult = "";
-			stringchangeResult = "";
-			//alert(vsimulatorHostList);
 			for (i=0; i<simulatorOnHostList.size(); i++){
-				var numberResult = new String(simulatorOnHostList.get(i));
+				var numberResult = new String(simulatorOnHostList[i]);
 				var stringResult = numberResult.toString();
 
-				changeNumberOfCloudRunnig+=parseInt(getCurrentRunningVmList(stringResult).size());
+				changeNumberOfCloudRunnig+=parseInt(getCurrentRunningVmList(stringResult));
 				
-				changeNumberOfCloudIdle+=parseInt(getCurrentIdleVmList(stringResult).size());
+				changeNumberOfCloudIdle+=parseInt(getCurrentIdleVmList(stringResult));
 				
-				changeNumberOfCloudUnhealthy+=parseInt(getCurrentUnhealthyVmList(stringResult).size());
+				changeNumberOfCloudUnhealthy+=parseInt(getCurrentUnhealthyVmList(stringResult));
 				
-				changeNumberOfCloudAvailable+=parseInt(getCurrentAvailableVmList(stringResult).size());
+				changeNumberOfCloudAvailable+=parseInt(getCurrentAvailableVmList(stringResult));
 
 			}
-			
-			//$("#VsimulatorclusterStatus").replaceWith("<div CLASS="VclusterStatus" id="VsimulatorclusterStatus"><div CLASS='VclusterStatusNumber running'>"+changeNumberOfCloudRunnig+"</div><div CLASS='VclusterStatusNumber idle'>"+changeNumberOfCloudIdle+"</div><div CLASS='VclusterStatusNumber unhealthy'>"+changeNumberOfCloudUnhealthy+"</div><div CLASS='VclusterStatusNumber available'>"+changeNumberOfCloudAvailable+"</div></div>");
 			$("#VsimulatorclusterStatus").replaceWith("<div CLASS='VclusterStatus' id='VsimulatorclusterStatus'><div CLASS='VclusterStatusNumber running'>"+changeNumberOfCloudRunnig+"</div><div CLASS='VclusterStatusNumber idle'>"+changeNumberOfCloudIdle+"</div><div CLASS='VclusterStatusNumber unhealthy'>"+changeNumberOfCloudUnhealthy+"</div><div CLASS='VclusterStatusNumber available'>"+changeNumberOfCloudAvailable+"</div></div>");
+			simulatorOnHostList = null;
+			simulatorOnHostListSize = null;
 		}
 		
 		function getVsimulatorDisplay(){
-			//alert(simulatorHostListSize);
 			for (j=0; j<simulatorHostListSize; j++){
 				stringchangeResult = simulatorHostList[j];
 				if(j==0){
 					var firstSpan = new String("<div CLASS='hostSub'><div CLASS='subHostTop'><div CLASS='cpuSign'></div><p CLASS='subHostToptitle'>");
 					var secondSpan = new String("</p><br><p CLASS='subHostTopsubTitle'>");
-					//var thirdSpan = new String(" Status</p></div>");
 					var thirdSpan = new String(" Status</p></div><div CLASS='subStatus'></div><div CLASS='masterCover'><div CLASS='master'><p ID='masterP'>Master</p></div></div><div CLASS='cpuCover'></div>");
 					$(firstSpan+stringchangeResult+secondSpan+stringchangeResult+thirdSpan).appendTo("#simulatorSubCover");
 				}else{
 					var firstSpan = new String("<div CLASS='hostSub'><div CLASS='subHostTop'><p CLASS='subHostToptitle'>");
 					var secondSpan = new String("</p><br><p CLASS='subHostTopsubTitle'>");
-					//var thirdSpan = new String(" Status</p></div>");
 					var thirdSpan = new String(" Status</p></div><div CLASS='subStatus'></div><div CLASS='cpuCover'></div>");
 					$(firstSpan+stringchangeResult+secondSpan+stringchangeResult+thirdSpan).appendTo("#simulatorSubCover");
 				}
@@ -249,53 +241,82 @@ $(document).ready(function() {
 		function addGif2(){
 			
 			for (i=0; i<simulatorHostListSize; i++){
-					//$("<div CLASS='hostSign'><img src='images/host_sign_on_"+i+changeNum(j)+".gif'></div>").appendTo($("#simulatorSubCover").children().eq(j).children().eq(0).children().eq(1));
-					//$("<div CLASS='cpuSign'><img src='images/fliker_cpu.gif'></div>").appendTo($("#simulatorSubCover").children().eq(j).children().eq(0).children(".subHost_power"));
-					//node.getElementsByTagName("tagname");
-					//$("<div CLASS='hostSign'><img src='images/host_sign_on_"+i+changeNum(j)+".gif'></div>").appendTo($("#simulatorSubCover").children().eq(j).children().eq(0).children().eq(1));
-					$("#simulatorSubCover").children().eq(i).children().eq(0).children().eq(1).before("<div CLASS='cpuSign'><img src='images/fliker_cpu_"+changeNum(i)+".gif'></div>"); 
+					//$("#simulatorSubCover").children().eq(i).children().eq(0).children().eq(1).before("<div CLASS='cpuSign'><img src='images/fliker_cpu_"+changeNum(i)+".gif'></div>"); 
+				$("#simulatorSubCover").children().eq(i).children().eq(0).children().eq(1).before("<div CLASS='cpuSign'><img src='images/fliker_cpu_00.png'></div>");
 			}
 		}
 		
+		
+		////////////////2�������� ����� status�� ������ ���� �ϴ� �Լ� //////////////////////////
 		function hostStatusNumber(){
 			
 			simulatorOnHostList = getRunningHostList("vSimulator");
-			simulatorOnHostListSize = simulatorOnHostList.size();
+			simulatorOnHostListSize = simulatorOnHostList.length-1;
 			
 			changeNumberOfCloudRunnig = 0;
 			changeNumberOfCloudIdle = 0;
 			changeNumberOfCloudUnhealthy = 0;
 			changeNumberOfCloudAvailable = 0;
-			changeResult = "";
-			stringchangeResult = "";
-			
 			j=0;
 			for (i=0; i<simulatorHostListSize; i++){
-				var numberResult = new String(simulatorOnHostList.get(j));
-				var stringResult = numberResult.toString();
+				var stringResult = simulatorOnHostList[j];
+				//var stringResult = numberResult.toString();
 
 				if(simulatorHostList[i]==stringResult){
-					changeNumberOfCloudRunnig+=parseInt(getCurrentRunningVmList(stringResult).size());
-					
-					changeNumberOfCloudIdle+=parseInt(getCurrentIdleVmList(stringResult).size());
-					
-					changeNumberOfCloudUnhealthy+=parseInt(getCurrentUnhealthyVmList(stringResult).size());
-					
-					changeNumberOfCloudAvailable+=parseInt(getCurrentAvailableVmList(stringResult).size());
-				
-
-				
-					$("#simulatorSubCover").children().eq(i).children().eq(1).replaceWith("<div CLASS='subStatus'><span CLASS='subStatusNumber running'>"+getCurrentRunningVmList(stringResult).size()+"</span><span CLASS='subStatusNumber idle'>"+getCurrentIdleVmList(stringResult).size()+"</span><span CLASS='subStatusNumber unhealthy'>"+getCurrentUnhealthyVmList(stringResult).size()+"</span><span CLASS='subStatusNumber available'>"+getCurrentAvailableVmList(stringResult).size()+"</span></div></div>");
+					changeNumberOfCloudRunnig+=parseInt(getCurrentRunningVmList(stringResult));
+					changeNumberOfCloudIdle+=parseInt(getCurrentIdleVmList(stringResult));
+					changeNumberOfCloudUnhealthy+=parseInt(getCurrentUnhealthyVmList(stringResult));
+					changeNumberOfCloudAvailable+=parseInt(getCurrentAvailableVmList(stringResult));
+				    $("#simulatorSubCover").children().eq(i).children().eq(1).replaceWith("<div CLASS='subStatus'><span CLASS='subStatusNumber running'>"+getCurrentRunningVmList(stringResult)+"</span><span CLASS='subStatusNumber idle'>"+getCurrentIdleVmList(stringResult)+"</span><span CLASS='subStatusNumber unhealthy'>"+getCurrentUnhealthyVmList(stringResult)+"</span><span CLASS='subStatusNumber available'>"+getCurrentAvailableVmList(stringResult)+"</span></div></div>");
 					if(j<simulatorOnHostListSize-1){
 						j++;
 					}
 				}else{
-					$("#simulatorSubCover").children().eq(i).children().eq(1).replaceWith("<div CLASS='subStatus'><span CLASS='subStatusNumber running'>0</span><span CLASS='subStatusNumber idle'>0</span><span CLASS='subStatusNumber unhealthy'>0</span><span CLASS='subStatusNumber available'>0</span></div></div>");
+					$("#simulatorSubCover").children().eq(i).children().eq(1).replaceWith("<div CLASS='subStatus'><span CLASS='subStatusNumber off'>0</span><span CLASS='subStatusNumber off'>0</span><span CLASS='subStatusNumber off'>0</span><span CLASS='subStatusNumber off'>0</span></div></div>");
 				}
 			}
 			$("#VsimulatorclusterStatus").replaceWith("<div CLASS='VclusterStatus' id='VsimulatorclusterStatus'><div CLASS='VclusterStatusNumber running'>"+changeNumberOfCloudRunnig+"</div><div CLASS='VclusterStatusNumber idle'>"+changeNumberOfCloudIdle+"</div><div CLASS='VclusterStatusNumber unhealthy'>"+changeNumberOfCloudUnhealthy+"</div><div CLASS='VclusterStatusNumber available'>"+changeNumberOfCloudAvailable+"</div></div>");
+			simulatorOnHostList = null;
+			simulatorOnHostListSize = null;
 		}
 		
+		function vmDragStart(){
+	          $( ".cpu_running" ).draggable({ revert: "valid",opacity: 1.0, helper: "clone",stack: ".cpuCover div" });
+	          $( ".cpu_idle" ).draggable({ revert: "valid",opacity: 1.0, helper: "clone" ,stack: ".cpuCover div" });
+	          $( ".hostSub" ).droppable({
+	        	  over: function(ev, ui) {
+	        		  $(this).addClass( 'hostSubOver' );
+	        		},
+	        		out: function(ev, ui) {
+	        			  $(this).removeClass( 'hostSubOver' );
+	        			},
+	        	  drop: function( event, ui ) {
+	        		  $(this).removeClass( 'hostSubOver' );
+	        		  $dragBox=ui.draggable;
+	        		  $dropBox=$(this);
+	        		  
+	        		  $dragParent=$dragBox.parent().children();
+	        		  $dropParent=$dropBox;
+	        		  
+	        		  var dragIndex = $dragParent.index($dragBox);
+	        		  var dropIndex = $dropBox.parent().children().index($dropBox);
+						
+	        		  var dragParentIndex = $dragBox.parent().parent().parent().children().index($dragBox.parent().parent());
+	        		  
+	        		  // 추가할 부분
+	        		  // =====================================================
+	        		  var vmName = "vm"+(dragIndex+1);
+	        		  var srcHost = "host-"+(dragParentIndex+1);
+	        		  var desHost = "host-"+(dropIndex+1);
+	        		  
+	        		  List=window.NAPIVcluster.funcName(vmName, srcHost, desHost);
+						
+	        		  alert("vm"+(dragIndex+1)+",vm host"+(dragParentIndex+1)+",drop host"+(dropIndex+1));
+	        	  }
+	          });
+        } 
+		
+		///////////////2�������� ȣ��Ʈ�� vm�� ���¸� ó�� ���� �ϴ� �Լ� //////////////////
 		function hostVmStatus(){
 			
 			var firstSpan0 = new String("<div CLASS='cpu_running'><p class='cpuP'>vm-");
@@ -306,17 +327,17 @@ $(document).ready(function() {
 			var secondSpan = new String("</p></div>");
 			
 			simulatorOnHostList = getRunningHostList("vSimulator");
-			simulatorOnHostListSize = simulatorOnHostList.size();
+			simulatorOnHostListSize = simulatorOnHostList.length-1;
 			
 			k=0;
 			for (i=0; i<simulatorHostListSize; i++){
 				
-				var numberResult = new String(simulatorOnHostList.get(k));
-				var stringResult = numberResult.toString();
+				var stringResult = simulatorOnHostList[k];
+				//var stringResult = numberResult.toString();
 				if(simulatorHostList[i]==stringResult){
-					vmList = new Array();
-					vmList=getHostStatus(stringResult);
-					resultList = vmList.split(",");
+					//vmList = new Array();
+					resultList=getHostStatus(stringResult);
+					//resultList = vmList.split(",");
 					var lastSpan = new String("");
 					
 					for (j=0; j<resultList.length-1; j++){
@@ -354,31 +375,36 @@ $(document).ready(function() {
 				}
 				
 			}
+			simulatorOnHostList = null;
+			simulatorOnHostListSize = null;
+			vmDragStart();
 		}
 		
-		
+		///////////////2�������� ȣ��Ʈ�� vm�� ���¸� ���ε� �ϴ� �Լ� //////////////////
 		function changeVmStatus(){
 			$(".cpuSign").remove();
 			simulatorOnHostList = getRunningHostList("vSimulator");
-			simulatorOnHostListSize = simulatorOnHostList.size();
+			simulatorOnHostListSize = simulatorOnHostList.length-1;
 			
 			k=0;
 			for (i=0; i<simulatorHostListSize; i++){
-				var numberResult = new String(simulatorOnHostList.get(k));
-				var stringResult = numberResult.toString();
+				var stringResult = simulatorOnHostList[k];
+				//var stringResult = numberResult.toString();
+				
+				//var numberResult = new String(simulatorOnHostList[k]);
+				//var stringResult = numberResult.toString();
 				if(simulatorHostList[i]==stringResult){
-					vmList = new Array();
-					vmList=getHostStatus(stringResult);
-					resultList = vmList.split(",");
+					resultList=getHostStatus(stringResult);
 					var lastSpan = new String("");
-					//alert(resultList.length);
 					for (j=0; j<resultList.length-1; j++){
 
 						if(i==0){
 							if(resultList[j]==0){
-								$("#simulatorSubCover").children().eq(i).children().eq(3).children().eq(j).removeClass().addClass("cpu_running");
+								$("#simulatorSubCover").children().eq(i).children().eq(3).children().eq(j).removeClass().addClass("cpu_running").draggable( 'enable' );
+								//$("#simulatorSubCover").children().eq(i).children().eq(3).children().eq(j).draggable( 'enable' );
 							}else if(resultList[j]==1){
-								$("#simulatorSubCover").children().eq(i).children().eq(3).children().eq(j).removeClass().addClass("cpu_idle");
+								$("#simulatorSubCover").children().eq(i).children().eq(3).children().eq(j).removeClass().addClass("cpu_idle").draggable( 'enable' );
+								//$("#simulatorSubCover").children().eq(i).children().eq(3).children().eq(j).draggable( 'enable' );
 							}else if(resultList[j]==2){
 								$("#simulatorSubCover").children().eq(i).children().eq(3).children().eq(j).removeClass().addClass("cpu_unhealthy");
 							}else if(resultList[j]==3){
@@ -386,9 +412,11 @@ $(document).ready(function() {
 							}
 						}else{
 							if(resultList[j]==0){
-								$("#simulatorSubCover").children().eq(i).children().eq(2).children().eq(j).removeClass().addClass("cpu_running");
+								$("#simulatorSubCover").children().eq(i).children().eq(2).children().eq(j).removeClass().addClass("cpu_running").draggable( 'enable' );
+								//$("#simulatorSubCover").children().eq(i).children().eq(2).children().eq(j).draggable( 'enable' );
 							}else if(resultList[j]==1){
-								$("#simulatorSubCover").children().eq(i).children().eq(2).children().eq(j).removeClass().addClass("cpu_idle");
+								$("#simulatorSubCover").children().eq(i).children().eq(2).children().eq(j).removeClass().addClass("cpu_idle").draggable( 'enable' );
+								//$("#simulatorSubCover").children().eq(i).children().eq(2).children().eq(j);
 							}else if(resultList[j]==2){
 								$("#simulatorSubCover").children().eq(i).children().eq(2).children().eq(j).removeClass().addClass("cpu_unhealthy");
 							}else if(resultList[j]==3){
@@ -400,126 +428,117 @@ $(document).ready(function() {
 					if(k<simulatorOnHostListSize-1){
 						k++;
 					}
-					//$("#simulatorSubCover").children().eq(i).children().eq(0).children().eq(0).replaceWith("<img src='images/btn_host_power.png' CLASS='subHost_power'>");
-					$("#simulatorSubCover").children().eq(i).children().eq(0).children().eq(1).before("<div CLASS='cpuSign'><img src='images/btn_power_fliker_"+changeNum(i)+".gif'></div>"); 
+					//$("#simulatorSubCover").children().eq(i).children().eq(0).children().eq(1).before("<div CLASS='cpuSign'><img src='images/btn_power_fliker_"+changeNum(i)+".gif'></div>");
+					$("#simulatorSubCover").children().eq(i).children().eq(0).children().eq(1).before("<div CLASS='cpuSign'><img src='images/btn_power_fliker_00.png'></div>");
 				}else{
-					//$("#simulatorSubCover").children().eq(i).children().eq(0).children().eq(0).replaceWith("<img src='images/btn_host_power_off.png' CLASS='subHost_power'>");
 					var lastSpan = new String("");
 					for (j=0; j<12; j++){
-						$("#simulatorSubCover").children().eq(i).children().eq(2).children().eq(j).removeClass().addClass("cpu_off");
+						$("#simulatorSubCover").children().eq(i).children().eq(2).children().eq(j).removeClass().addClass("cpu_off").draggable( 'disable' );
+						//$("#simulatorSubCover").children().eq(i).children().eq(2).children().eq(j).draggable( 'disable' );
 					}
 				}				
 			}
+			
+			simulatorOnHostList = null;
+			simulatorOnHostListSize = null;
+			vmDragStart();
 		}
-
-
 		
+		function flikering(){
+			int3 = setInterval( function() {
+				$(".cpuSign").fadeIn(250).fadeOut(250);
+			//show().delay(500).hide();
+			},
+			500
+			);
+		}
+		
+
+		//////////ȣ��Ʈ�� vm�� ����/////////////
 		function getHostStatus($item){
 			var List = new String();
-
 			List=window.NAPIVcluster.getHostStatus($item);
-
-			return List;
+			resultList = List.split(",");
+			return resultList;
 			
 		}
-		
+		//////////���� �������� ȣ��Ʈ/////////////
 		function getRunningHostList($item){
 			var List = new Array();
-			
-			//List.removeAll(List);
-			
 			List=window.NAPIVcluster.getRunningHostList($item);
-			//alert(List);
-			return List;
+			resultList = List.split(",");
+			return resultList;
 			
 		}
-		
+		//////////ȣ��Ʈ�� running vm�� ����/////////////
 		function getCurrentRunningVmList($item){
 			var List = new Array();
-			
-			//List.removeAll(List);
-			
 			List=window.NAPIVcluster.getCurrentBusyVmList($item);
-			//alert(List);
-			return List;
+			resultList = List.split(",");
+			return resultList.length-1;
 			
 		}
-		
+		//////////ȣ��Ʈ�� idle vm�� ����/////////////
 		function getCurrentIdleVmList($item){
 			var List = new Array();
-			
-			//List.removeAll(List);
-			
 			List=window.NAPIVcluster.getCurrentIdleVmList($item);
-			//alert(List);
-			return List;
+			resultList = List.split(",");
+			return resultList.length-1;
 			
 		}
-		
+		//////////ȣ��Ʈ�� available vm�� ����/////////////
 		function getCurrentAvailableVmList($item){
 			var List = new Array();
-			
-			//List.removeAll(List);
-			
 			List=window.NAPIVcluster.getCurrentAvailableVmList($item);
-			//alert(List);
-			return List;
+			resultList = List.split(",");
+			return resultList.length-1;
 			
 		}
-		
+		//////////ȣ��Ʈ�� unhealthy vm�� ����/////////////
 		function getCurrentUnhealthyVmList($item){
 			var List = new Array();
-			
-			//List.removeAll(List);
-			
 			List=window.NAPIVcluster.getCurrentUnhealthyVmList($item);
-			//alert(List);
-			return List;
+			resultList = List.split(",");
+			return resultList.length-1;
 			
 		}
-		
+		//////////���� 1�������� ���ε� �Լ� /////////////
 		function start_reload_first(){
 			int1 = setInterval( function() {
-				changeStatusNumber();
+				changeStatusNumber();//���� ȣ��Ʈ�� ���¸� ���ε� �ϴ� �Լ� 
+				appendQueueRunning();//����� queue status�� running jobs �� ���ε� �ϴ� �Լ� 
+				appendQueueWaiting();//����� queue status�� waiting jobs �� ���ε� �ϴ� �Լ� 
 			}, 	
-			5000
+			3000//���ε� ���� ������ ���� 
 			);
 
 		};
-	/*
-	 * scene refresh time
-	 * 
-	 *   
-	 *   
-	 *   화면 리프레시 시간 
-	 *   
-	 *   
-	 */	
+		//////////���� 2�������� ���ε� �Լ� /////////////
 		function start_reload_second(){
 			int2 = setInterval( function() {
-				changeVmStatus();
-				hostStatusNumber();
-				subAppendQueueRunning();
-				subAppendQueueWaiting();
-				//changeClusterStatusNumber();
+				changeVmStatus();//���� ȣ��Ʈ��  vm�� ���¸� ���ε� �ϴ� �Լ�
+				hostStatusNumber();//����� status�� ������ ���ε� �ϴ� �� 
+				subAppendQueueRunning();//����� queue status�� running jobs �� ���ε� �ϴ� �Լ� 
+				subAppendQueueWaiting();//����� queue status�� waiting jobs �� ���ε� �ϴ� �Լ� 
 			}, 	
-			3000
+			3000//���ε� ���� ������ ���� 
 			);
 
 		}
 		
+		////////////���� 1������ ������ ���� �⺻ �Լ� ȣ�� ////////////////////
 		appendQueueRunning();
 		appendQueueWaiting();
 		appendImageRepository();
 		statusNumber();
-	 
-		
-		//changeClusterStatusNumber();
+
+		////////////���� 2������ ������ ���� �⺻ �Լ� ȣ�� ////////////////////
 		subAppendQueueRunning();
 		subAppendQueueWaiting();
 		getVsimulatorDisplay();
 		hostStatusNumber();
 		hostVmStatus();
+		
 	$("[data-role=page]").live("pagebeforeshow",function(event) { 
 		if(this.id == "intro") { 
 
@@ -546,25 +565,41 @@ $(document).ready(function() {
 
 	    }else if(this.id == "status") { 
 	    	
-	    	
-	    	start_reload_first();
-	    	addGif();
-			changeStatusNumber();
+	    		//alert("1");
+		    	addGif();
+		    	start_reload_first();
+		    	
+		    	
+				changeStatusNumber();
+				signing();
+	    	//}else{
+	    		
+	    	//}
 			//$(".hostTop").after("<div CLASS='hostSign'><img src='images/host_sign_on.gif'></div>");
 			
 			
 			
 	    }else if(this.id == "hostStatus") { 
-	    	changeVmStatus();
-			hostStatusNumber();
-	    	start_reload_second();
-	    	
+	    	if(pageNumber=="1"){
+	    		changeVmStatus();
+	    		hostStatusNumber();
+	    		flikering();
+	    		start_reload_second();
+	    		$("#masterP").before("<img src='images/master_running.gif' ID='master_running'>"); 
+	    	}else if(pageNumber=="2"){
+	    		//alert("2");
+	    	}else if(pageNumber=="3"){
+	    		
+	    	}else if(pageNumber=="4"){
+	    		
+	    	}
+			
 	    	//addGif2();
 	    	 //hostStatusNumber();
 	    	 //hostVmStatus();
 	    	//alert("����° ������ �Դϴ�."); 
     		//$(".subHostToptitle").before("<div CLASS='cpuSign'><img src='images/fliker_cpu.gif'></div>"); 
-    		$("#masterP").before("<img src='images/master_running.gif' ID='master_running'>"); 
+    		
     		//int1=setInterval(function(){lightning_one();}, 300);
     		//lightning_one();
     	} 
@@ -578,20 +613,29 @@ $(document).ready(function() {
 
 
 	    }else if(this.id == "status") { 
-
+	    	
 			$(".hostSign").remove();
+	    	$(".hostSignOff").remove();
 			window.clearInterval(int1);
-
+			window.clearInterval(int4);
 			//$("#vsimulatorHostStatus").remove();
 			//$("#vsimulatorHost").remove();
 	    }else if(this.id == "hostStatus") { 
+	    	if(pageNumber=="1"){
+	    		$("#master_running").remove();
+				window.clearInterval(int2);
+				window.clearInterval(int3);
+	    	}else if(pageNumber=="2"){
+	    		
+	    	}else if(pageNumber=="3"){
+	    		
+	    	}else if(pageNumber=="4"){
+	    		
+	    	}
 	    	//cpuCover
 			$(".cpuSign").remove();
-			$("#master_running").remove();
-			window.clearInterval(int2);
-			
+			pageNumber=0;
 
-			//window.clearInterval(int1);
 	    } 
 
 	}); 

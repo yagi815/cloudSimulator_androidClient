@@ -22,7 +22,7 @@ import android.util.Log;
  * 
  * @Company : KISTI
  * @Author :grkim
- * @Date :2012. 7. 27. ¿ÀÈÄ 1:34:31
+ * @Date :2012. 7. 27. ï¿½ï¿½ï¿½ï¿½ 1:34:31
  * @Version:
  * 
  */
@@ -45,7 +45,7 @@ public class Simulator {
 		returnObj = "";
 		
 		/*
-		 * ¸í·É¾î ÆÄ½ÌÇØ¼­ ¸Å³ªÀú ¸Å¼Òµå È£Ãâ ÇÑ´Ù. 
+		 * ï¿½ï¿½É¾ï¿½ ï¿½Ä½ï¿½ï¿½Ø¼ï¿½ ï¿½Å³ï¿½ï¿½ï¿½ ï¿½Å¼Òµï¿½ È£ï¿½ï¿½ ï¿½Ñ´ï¿½. 
 		 */
 		String typeOfCommand = command.substring(0, 2);
 		String parameter = command.substring(3, command.length());
@@ -128,9 +128,12 @@ public class Simulator {
 		case 35:
 			returnObj  =	simManager.getTotalAvailableVMs();			
 			break;		
-//		case 36:
-//			returnObj  =	simManager.getHostStatus(parameter);			
-//			break;
+		case 36:
+			returnObj  =	simManager.getJobName(parameter);			
+			break;
+		case 37:
+			returnObj  =	simManager.setIdle(parameter );			
+			break;
 			
 			// VM SPEC
 		case 40:
@@ -159,6 +162,9 @@ public class Simulator {
 		case 80:
 			returnObj  =	simManager.jobSubmit(parameter);
 			break;		
+//		case 81:
+//			returnObj  =	simManager.jobSubmit(parameter);
+//			break;		
 
 		default:
 			break;

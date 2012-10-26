@@ -128,15 +128,7 @@ public class SimManager implements Runnable {
 	// ******************************************************************
 	// 0X: HOST MACHINE
 	// ******************************************************************
-	/**
-	 * Desc : ȣ��Ʈ �ӽ��� �̹� �����ϴ��� Ȯ��
-	 * 
-	 * @Method Name : isContainHost
-	 * @param hostMachine
-	 *            ȣ��Ʈ�̸� EX) "host01"
-	 * @return ������ true , ������ false
-	 * 
-	 */
+	
 	private boolean isContainHost(String hostMachine) {
 		for (int i = 0; i < mainHostContainer.length; i++) {
 			if (mainHostContainer[i].getHostName().equals(hostMachine)) {
@@ -146,15 +138,7 @@ public class SimManager implements Runnable {
 		return false;
 	}
 
-	/**
-	 * Desc : ȣ��Ʈ �ӽ��� �ε��� ��ȯ
-	 * 
-	 * @Method Name : getHostIndex
-	 * @param hostMachine
-	 *            ȣ��Ʈ �ӽ� �̸� EX) "host01"
-	 * @return �ش�ȣ��Ʈ�� �ε��� EX) 2
-	 * 
-	 */
+	
 	private int getHostIndex(String hostMachine) {
 		for (int i = 0; i < mainHostContainer.length; i++) {
 			if (mainHostContainer[i].getHostName().equals(hostMachine)) {
@@ -163,13 +147,7 @@ public class SimManager implements Runnable {
 		}
 		return -1;
 	}
-	/**
-	 * Desc : ��� ȣ��Ʈ�� ����Ʈ
-	 * 
-	 * @Method Name : getHostList
-	 * @return ��� ȣ��Ʈ�� ����Ʈ
-	 * 
-	 */
+	
 	public List getHostList() {
 		List hostList = new ArrayList();
 		for (int i = 0; i < mainHostContainer.length; i++) {
@@ -178,14 +156,6 @@ public class SimManager implements Runnable {
 		return hostList;
 	}
 
-	/**
-	 * Desc : �������� ȣ��Ʈ���� ����Ʈ�� ��ȯ�Ѵ�.
-	 * 
-	 * @Method Name : getPowerOnHostList
-	 * @return �������� ȣ��Ʈ���� ����Ʈ ��ȯ <br>
-	 *         EX) "host01,host02,host02,"
-	 * 
-	 */
 	public List getRunningHostList() {
 		List runningHostList = new ArrayList();
 		for (int i = 0; i < mainHostContainer.length; i++) {
@@ -196,14 +166,6 @@ public class SimManager implements Runnable {
 		return runningHostList;
 	}
 
-	/**
-	 * Desc : ��밡���� ȣ��Ʈ ����Ʈ
-	 * 
-	 * @Method Name : getAvailableHostList
-	 * @return ��밡���� ȣ��Ʈ ����Ʈ <br>
-	 *         EX) "host07, host08..."
-	 * 
-	 */
 	public List getAvailableHostList() {
 		List runningHostList = new ArrayList();
 		for (int i = 0; i < mainHostContainer.length; i++) {
@@ -215,15 +177,6 @@ public class SimManager implements Runnable {
 	}
 
 
-	/**
-	 * Desc : ȣ��Ʈ �ӽ��� ����� �Ҵ�
-	 * 
-	 * @Method Name : turnOnHostMachine
-	 * @param hostMachine
-	 *            ȣ��Ʈ �ӽ� �̸� EX) "host04"
-	 * @return �����ϸ� "1", �����ϸ� "-1"
-	 * 
-	 */
 	public String turnOnHostMachine(String hostMachine) {
 		
 		if (hostMachine.equals("-")) {
@@ -244,15 +197,6 @@ public class SimManager implements Runnable {
 		return "-1";
 	}
 
-	/**
-	 * Desc : ȣ��Ʈ �ӽ��� ����� ����.
-	 * 
-	 * @Method Name : turnOffHostMachine
-	 * @param hostMachine
-	 *            ȣ��Ʈ �ӽ� �̸� EX) "host04"
-	 * @return �����ϸ� "1", �����ϸ� "-1"
-	 * 
-	 */
 	public String turnOffHostMachine(String hostMachine) {
 		for (int i = 0; i < mainHostContainer.length; i++) {
 			if (mainHostContainer[i].getHostName().equals(hostMachine)) {
@@ -277,20 +221,7 @@ public class SimManager implements Runnable {
 	// ******************************************************************
 	// 2X: VIRTUAL MACHINE
 	// ******************************************************************
-	/**
-	 * Desc : ����ӽ��� �����ϴ��� Ȯ���Ѵ�.
-	 * 
-	 * @Method Name : isContainVirtualMachine
-	 * @param hostName
-	 *            ȣ��Ʈ �̸� <br>
-	 *            EX) "host01"
-	 * @param vmName
-	 *            ����ӽ� �̸� <br>
-	 *            EX) "vm01"
-	 * 
-	 * @return �����ϸ� true, ������ false
-	 * 
-	 */
+	
 	private boolean isContainVirtualMachine(String virtualMachine) {
 		HostMachine host;
 		int hostIndex = getHostIndex(virtualMachine.substring(0, 6));
@@ -305,18 +236,6 @@ public class SimManager implements Runnable {
 		return false;
 	}
 
-	/**
-	 * Desc : ���ο� ����ӽ� �߰� 
-	 * <br>�Ķ���Ϳ� ����ӽ��̸��� ������ �ش� �ӽ����� ���ϰ� 
-	 * <br>�׷��� ������ ������ ����Ʈ�� ù��°�� ����ӽ��� �����Ѵ�. 
-	 * 
-	 * @Method Name : addVirtualMachine
-	 * @param virtualMachine
-	 *            ���� ����ӽ� �̸� <br>
-	 *            EX) "host01-vm01"
-	 * @return �����ϸ� "1', �����ϸ� "-1"
-	 * 
-	 */
 	public String createNewVirtualMachine(String virtualMachine) {
 		HostMachine host;
 //		String[] tmp = new String[2];
@@ -331,6 +250,12 @@ public class SimManager implements Runnable {
 				return "-1";
 			}
 //			System.out.println("==="+alist);
+			
+			if (alist.isEmpty()) {
+				return "-1";
+			}
+			
+			
 			String createVmName = (String) alist.get(0);		
 			String[] tmp = new String[2];
 			tmp = createVmName.split("[-]");
@@ -354,16 +279,7 @@ public class SimManager implements Runnable {
 		return "-1";
 	}
 
-	/**
-	 * Desc : �����ϰ� �մ� ����ӽ��� �ش� ȣ��Ʈ���� ���� �Ѵ�.
-	 * 
-	 * @Method Name : removeVirtualMachine
-	 * @param virtualMachine
-	 *            ������ ����ӽ� �̸� <br>
-	 *            EX) "host01-vm01"
-	 * @return �����ϸ� "1", �����ϸ� "-1"
-	 * 
-	 */
+
 	public String removeVirtualMachine(String virtualMachine) {
 		HostMachine host;
 		String[] tmp = new String[2];
@@ -378,17 +294,6 @@ public class SimManager implements Runnable {
 		return "-1";
 	}
 
-	/**
-	 * Desc : �����ϴ� ����ӽ��� ���ο� ����ӽ����� �̵�
-	 * 
-	 * @Method Name : migrationVirtualMachine
-	 * @param srcVirtualMachine
-	 *            src ����ӽ��̸� EX) "host01-vm01"
-	 * @param desVirtualMachine
-	 *            desc ����ӽ��̸� EX) "host02-vm04"
-	 * @return �����ϸ� "1", �����ϸ� "-1"
-	 * 
-	 */
 	public String migrationVirtualMachine(String srcVirtualMachine,
 			String desVirtualMachine) {
 		// job ���� ���¸� �ľ��ؾ� �Ѵ�.
@@ -400,16 +305,6 @@ public class SimManager implements Runnable {
 		return "-1";
 	}
 
-	/**
-	 * Desc : Ŭ���� ������ �������� ����ӽ��� ����Ʈ�� ���´�.
-	 * 
-	 * @Method Name : getRunningVMs
-	 * @param srcVirtualMachine
-	 *            <br>  ȣ��Ʈ �̸�. EX) "host01"
-	 * @return �������� ��� ����ӽ� ����Ʈ ��ȯ <br>
-	 *         EX)"host01-vm01,host02-vm05,host07-vm06"
-	 * 
-	 */
 	public List getRunningVmList(String hostName) {
 		
 		HostMachine host;		
@@ -428,14 +323,6 @@ public class SimManager implements Runnable {
 		}		
 	}
 	
-	/**
-	 * Desc : avaiable ������ ��� vm ����Ʈ�� ���´�.
-	 * 
-	 * @Method Name : getTotalHostList
-	 * @return avaiable ������ ��� ����ӽ� ����Ʈ ��ȯ <br>
-	 *         EX) "host01-vm02,host02-vm08"
-	 * 
-	 */
 	public List getAvaiableVmList(String hostName) {
 		HostMachine host;
 		
@@ -453,14 +340,6 @@ public class SimManager implements Runnable {
 		}
 	}
 
-	/**
-	 * Desc : FAIL ������ ����ӽ��� ����Ʈ�� ��� �´�. *
-	 * 
-	 * @Method Name : getFailVmList
-	 * @return FAIL ������ ����ӽ� ����Ʈ�� ��ȯ<br>
-	 *         EX) "host07-vm06"
-	 * 
-	 */
 	public List getFailVmList(String hostName) {
 		HostMachine host;
 		if (hostName.equals("-")) {
@@ -477,14 +356,6 @@ public class SimManager implements Runnable {
 		} 		
 	}
 
-	/**
-	 * Desc : BUSY ������ ����ӽ��� ����Ʈ�� ���´�. *
-	 * 
-	 * @Method Name : getBusyVmList
-	 * @return BUSY ������ ����ӽ� ����Ʈ�� ��ȯ <br>
-	 *         EX) "host07-vm06,hot08-vm01"
-	 * 
-	 */
 	public List getBusyVmList(String hostName) {
 		HostMachine host;
 		if (hostName.equals("-")) {
@@ -516,14 +387,7 @@ public class SimManager implements Runnable {
 		}
 	}
 
-	/**
-	 * Desc : IDLE ������ ����ӽ��� ����Ʈ�� ���´�.
-	 * 
-	 * @Method Name : getIdleVmList
-	 * @return IDLE ������ ����ӽ� ����Ʈ�� ��ȯ <br>
-	 *         EX) "host07-vm05,..."
-	 * 
-	 */
+	
 	public List getIdleVmList(String hostName) {
 		HostMachine host;
 		if (hostName.equals("-")) {
@@ -540,14 +404,7 @@ public class SimManager implements Runnable {
 		}
 	}
 
-	/**
-	 * Desc : unhealthy ������ ����ӽ��� ����Ʈ�� ���´�.
-	 * 
-	 * @Method Name : getUnhealthyVmList
-	 * @return unhealthy ������ ����ӽ� ����Ʈ�� "," ������ ���ڿ� ���·� ��ȯ <br>
-	 *         EX) "host07-vm01"
-	 * 
-	 */
+	
 	public List getUnhealthyVmList(String hostName) {
 		HostMachine host;
 		if (hostName.equals("-")) {
@@ -564,14 +421,6 @@ public class SimManager implements Runnable {
 		}
 	}
 
-	/**
-	 * Desc : ��밡���� ��� ȣ��Ʈ�� ����Ʈ�� �����´�
-	 * 
-	 * @Method Name : getTotalVmList
-	 * @return ��밡���� ��� ȣ��Ʈ�� ����Ʈ <br>
-	 *         "host01-vm01,host02-vm02..."
-	 * 
-	 */
 	public List getTotalVmList() {
 		List totalVmList = new ArrayList();
 		HostMachine host; 
@@ -585,27 +434,12 @@ public class SimManager implements Runnable {
 		return totalVmList;
 	}
 
-	/**
-	 * Desc : �ùķ����Ϳ��� �������� ��� Job�� �����´�.
-	 * 
-	 * @Method Name : getRunningJobs
-	 * @return Total Job �� ��ȯ <br>
-	 *         EX) "43"
-	 */
 	public String getRunningJobs(String hostName) {
 		List busyVMs;
 		busyVMs = getBusyVmList(hostName);
 		return busyVMs.size() + "";
 	}
 
-	/**
-	 * Desc : ȣ��Ʈ���� ����� ����ӽ��� �ִ� ������ �����´�.
-	 * 
-	 * @Method Name : getTotalVMs
-	 * @return ����� ����ս��� �ִ� ������ ��ȯ <br>
-	 *         EX) "192"
-	 * 
-	 */
 	public String getTotalVMs() {
 		int maxVMs = 0;
 		HostMachine host;
@@ -616,17 +450,7 @@ public class SimManager implements Runnable {
 		return maxVMs + "";
 	}
 
-	/**
-	 * Desc : ����ӽ��� ���� ���¸� ��ȯ�Ѵ�.
-	 * 
-	 * @Method Name : virtualMachineStatus
-	 * @param virtualMachine
-	 *            ����ӽ� �̸� <br>
-	 *            EX) "host01-vm004"
-	 * @return ������ �ϳ� ��ȯ
-	 *         "pending","prolog","running","shudown","eliplog","stop","null"
-	 * 
-	 */
+	
 	public String getVMStatus(String virtualMachine) {
 		HostMachine host;
 		String[] tmp = new String[2];
@@ -661,13 +485,33 @@ public class SimManager implements Runnable {
 		return totalAvailableVMs+"";
 	}
 	
-	/**
-	 * Desc : ���� Ŭ���� �̸� ��ȯ
-	 * 
-	 * @Method Name : getCloudName
-	 * @return ���� Ŭ���� �̸�
-	 * 
-	 */
+	public String getJobName(String virtualMachine){
+		HostMachine host;
+		String[] tmp = new String[2];
+		tmp = virtualMachine.split("[-]");
+		String hName = tmp[0];
+		String vName = tmp[1];
+		if (isContainVirtualMachine(vName)) {
+			host = mainHostContainer[getHostIndex(hName)];
+			return host.getJobName(virtualMachine);
+		}
+		return null;
+	}
+	public String setIdle(String virtualMachine){
+		HostMachine host;
+		String[] tmp = new String[2];
+		tmp = virtualMachine.split("[-]");
+		String hName = tmp[0];
+		String vName = tmp[1];
+		if (isContainVirtualMachine(vName)) {
+			host = mainHostContainer[getHostIndex(hName)];
+			host.setIdle(virtualMachine);
+			return "1";
+		}
+		return null;
+	}
+	
+	
 	public String getCloudName() {
 		return this.cloudName;
 	}
@@ -676,29 +520,7 @@ public class SimManager implements Runnable {
 	// vm specification
 	// ******************************************************************
 
-	// /**
-	// * Desc : ����ӽ��� ������ �ð��� �����´�.
-	// * @Method Name : getVMActiveTime
-	// * @param virtualMachine
-	// * @return [�ð�:��:�� ] ��Ʈ�� ������� ��ȯ
-	// * <br> EX) "00:10:13"
-	// *
-	// */
-	// public String getVMActiveTime(String virtualMachine){
-	// String activeTime = "00:10:13";
-	// return activeTime;
-	// }
-	/**
-	 * 
-	 * Desc : Ư�� ����ӽ��� cpu ������ �����´�.
-	 * 
-	 * @Method Name : getVMCpuInfo
-	 * @param virtualMachine
-	 *            cpu ������ ������ ���� �ӽ� �̸��� String ������� �Է�
-	 * @return cpu ������ ��Ʈ������ ��ȯ <br>
-	 *         EX) "Intel(R) Xeon(R) CPU           E5640  @ 2.67GHz"
-	 * 
-	 */
+	
 	public String getVMCpuInfo(String virtualMachine) {
 		HostMachine host;
 		String[] tmp = virtualMachine.split("[-]");
@@ -709,16 +531,7 @@ public class SimManager implements Runnable {
 		return "null";
 	}
 
-	/**
-	 * Desc : Ư�� ����ӽ��� mem ������ �����´�.
-	 * 
-	 * @Method Name : getVMMemInfo
-	 * @param virtualMachine
-	 *            �޸� ������ ������ ���� �ӽ� �̸��� String ������� �Է�
-	 * @return �޸� ������ ��Ʈ������ ��ȯ <br>
-	 *         EX) "8Gbyte"
-	 * 
-	 */
+	
 	public String getVMMemInfo(String virtualMachine) {
 		HostMachine host;
 		String[] tmp = virtualMachine.split("[-]");
@@ -729,16 +542,7 @@ public class SimManager implements Runnable {
 		return "null";
 	}
 
-	/**
-	 * Desc : Ư�� ����ӽ��� ��ũ �뷮�� �����´�.
-	 * 
-	 * @Method Name : getVMDiskInfo
-	 * @param virtualMachine
-	 *            ��ũ ������ ������ ���� �ӽ� �̸��� String ������� �Է�
-	 * @return ��ũ �뷮�� ��Ʈ������ ��ȯ <br>
-	 *         EX) "100Gbyte"
-	 * 
-	 */
+	
 	public String getVMDiskInfo(String virtualMachine) {
 		HostMachine host;
 		String[] tmp = virtualMachine.split("[-]");
@@ -749,16 +553,7 @@ public class SimManager implements Runnable {
 		return "null";
 	}
 
-	/**
-	 * Desc : Ư�� ����ӽ��� OS ������ �����´�.
-	 * 
-	 * @Method Name : getVMOSInfo
-	 * @param virtualMachine
-	 *            OS ������ ������ ���� �ӽ� �̸��� String ������� �Է�
-	 * @return OS������ ��Ʈ������ ��ȯ <br>
-	 *         EX) "Scientific Linux SLF release 5.7 (Lederman)"
-	 * 
-	 */
+	
 	public String getVMOSInfo(String virtualMachine) {
 		HostMachine host;
 		String[] tmp = virtualMachine.split("[-]");
@@ -769,16 +564,6 @@ public class SimManager implements Runnable {
 		return "null";
 	}
 
-	/**
-	 * Desc : Ư�� ����ӽ��� OSBIT ������ �����´�.
-	 * 
-	 * @Method Name : getVMOSBitInfo
-	 * @param virtualMachine
-	 *            OS BIT ������ ������ ���� �ӽ� �̸��� String ������� �Է�
-	 * @return OSBIT������ ��Ʈ������ ��ȯ <br>
-	 *         EX) "Scientific Linux SLF release 5.7 (Lederman)"
-	 * 
-	 */
 	public String getVMOSBitInfo(String virtualMachine) {
 		HostMachine host;
 		String[] tmp = virtualMachine.split("[-]");
@@ -789,16 +574,7 @@ public class SimManager implements Runnable {
 		return "null";
 	}
 
-	/**
-	 * Desc : Ư�� ����ӽ��� Kernel ������ �����´�.
-	 * 
-	 * @Method Name : getVMKernelInfo
-	 * @param virtualMachine
-	 *            Ŀ�� ������ ������ ���� �ӽ� �̸��� String ������� �Է�
-	 * @return Kernel������ ��Ʈ�� ������� ��ȯ <br>
-	 *         EX) "2.6.18-308.11.1.el5"
-	 * 
-	 */
+	
 	public String getVMKernelInfo(String virtualMachine) {
 		HostMachine host;
 		String[] tmp = virtualMachine.split("[-]");
@@ -809,15 +585,7 @@ public class SimManager implements Runnable {
 		return "null";
 	}
 
-	/**
-	 * Desc : ��� ����ӽ��� ������ȣ(ID)�� �����´�.
-	 * 
-	 * @Method Name : getVMUUID
-	 * @param virtualMachine
-	 *            UUID�� ������ �ӽ��� �̸��� String ������� �Է�
-	 * @return VM ���� ��ȣ ��Ʈ�� ������� ��ȯ
-	 * 
-	 */
+	
 	public String getVMUUID(String virtualMachine) {
 		HostMachine host;
 		String[] tmp = virtualMachine.split("[-]");
@@ -839,25 +607,51 @@ public class SimManager implements Runnable {
 	// 8X: MANIPULATION
 	// ******************************************************************
 
-	/**
-	 * Desc : job�� �����Ѵ�. 
-	 * @Method Name : jobSubmit
-	 * @param jobName ������ Job�̸� EX) "job01"
-	 * @return ���� "1", ���� "-1"
-	 * 
-	 */
-	public String jobSubmit(String jobName){
-		List list = getIdleVmList("-");
-		if (list != null) {
-
-			String virtualMachine = (String) list.get(0);
-
-			HostMachine host;
-			String[] tmp = virtualMachine.split("[-]");
-			if (isContainVirtualMachine(virtualMachine)) {
-				host = mainHostContainer[getHostIndex(tmp[0])];
-				host.submitJob(jobName, this.jobRunningTime);
+	
+	public String jobSubmit(String jobName_hostName){//jobName:hostName
+		
+		if (jobName_hostName.contains(":")) {//jobName:hostName
+			
+			String temp[] = new String[2];
+			temp = jobName_hostName.split("[:]");
+			
+			//특정 호스트에 job submit 한다. 
+			List list = getIdleVmList(temp[1]);
+			
+			if (list != null) {
+				if (list.isEmpty()) {
+					return "-1";
+				}
+				
+				String virtualMachine = (String)list.get(0);
+				HostMachine host;
+				host = mainHostContainer[getHostIndex(temp[1])];
+				host.submitJob(jobName_hostName, this.jobRunningTime);
 				return "1";
+				
+			}
+			
+			
+			
+			
+		} else { // jobName:null
+
+			List list = getIdleVmList("-");
+			if (list != null) {
+
+				if (list.isEmpty()) {
+					return "-1";
+				}
+
+				String virtualMachine = (String) list.get(0);
+
+				HostMachine host;
+				String[] tmp = virtualMachine.split("[-]");
+				if (isContainVirtualMachine(virtualMachine)) {
+					host = mainHostContainer[getHostIndex(tmp[0])];
+					host.submitJob(jobName_hostName, this.jobRunningTime);
+					return "1";
+				}
 			}
 		}
 		return "-1";		

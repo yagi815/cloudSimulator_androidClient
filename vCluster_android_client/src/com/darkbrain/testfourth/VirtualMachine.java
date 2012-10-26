@@ -203,6 +203,9 @@ public class VirtualMachine implements Runnable{
 	public synchronized void setVmBusy(String vmBusy) {
 		this.vmBusy = vmBusy;
 	}
+	public synchronized void setVmIdle() {
+		this.vmBusy = "idle";
+	}
 
 	public synchronized void setVmHealthy(String vmUnhealthy) {
 		this.vmHealthy = vmUnhealthy;

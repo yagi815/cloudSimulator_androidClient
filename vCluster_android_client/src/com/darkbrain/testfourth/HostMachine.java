@@ -15,7 +15,7 @@ import java.util.Vector;
  * 
  * @Company : KISTI
  * @Author :grkim
- * @Date :2012. 9. 11. ¿ÀÀü 11:03:46
+ * @Date :2012. 9. 11. ï¿½ï¿½ï¿½ï¿½ 11:03:46
  * @Version:
  * 
  */
@@ -67,7 +67,7 @@ public class HostMachine {
 			VirtualMachine vm = (VirtualMachine) virtualMachineList.get(i);
 			if (vm.getVmName().equals(virtualMachine)) {
 
-				// Thread ·Î µ¹¾Æ¾ß ÇÑ´Ù.
+				// Thread ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¾ï¿½ ï¿½Ñ´ï¿½.
 				// boolean IS_EXIT=true;
 				// while (IS_EXIT) {
 				// if (vm.getVmPower().equals("off")) {
@@ -118,9 +118,9 @@ public class HostMachine {
 		return virtualMachineList.size();
 	}
 	/**
-	 * Desc : Àü¿øÀÌ µé¾î¿Í¼­ µ¿ÀÛÁßÀÎ °¡»ó¸Ó½Å ¸®½ºÆ® (running, idel, fail ¸ðµÎ Æ÷ÇÔ)
+	 * Desc : ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® (running, idel, fail ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 	 * @Method Name : getPowerOnVMlist
-	 * @return Àü¿øÀÌ µé¾î¿Â °¡»ó¸Ó½Å ¸®½ºÆ® <br> EX) "host01-vm01","host02-vm03"
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® <br> EX) "host01-vm01","host02-vm03"
 	 * 
 	 */
 	public synchronized List getRunningVmList() {
@@ -134,9 +134,9 @@ public class HostMachine {
 		return runningVMlist;
 	}	
 //	/**
-//	 * Desc : JobÀÌ ¼öÇà ÁßÀÎ °¡»ó¸Ó½Å ¸®½ºÆ® 
+//	 * Desc : Jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® 
 //	 * @Method Name : getRunningVMsList
-//	 * @return Job½ÇÇàÁßÀÎ °¡»ó¸Ó½Å ¸®½ºÆ® <br> EX) "host01-vm02", "host02-vm02"
+//	 * @return Jobï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® <br> EX) "host01-vm02", "host02-vm02"
 //	 * 
 //	 */
 //	public synchronized List getRunningVMsList() {
@@ -150,9 +150,9 @@ public class HostMachine {
 //		return runningList;
 //	}	
 	/**
-	 * Desc :  JobÀÌ ¼öÇà ÁßÀÎ °¡»ó¸Ó½Å ¸®½ºÆ®
+	 * Desc :  Jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	 * @Method Name : getBusyVmList
-	 * @return Job½ÇÇàÁßÀÎ °¡»ó¸Ó½Å ¸®½ºÆ® <br> EX) "host01-vm02", "host02-vm02"
+	 * @return Jobï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® <br> EX) "host01-vm02", "host02-vm02"
 	 * 
 	 */
 	public synchronized List getBusyVmList() {
@@ -176,7 +176,7 @@ public class HostMachine {
 		return jobList;
 	}
 	/**
-	 * Desc : JobÀÌ ½ÇÇàÁßÀÎ 
+	 * Desc : Jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	 * @Method Name : getIdleVMs
 	 * @return
 	 * 
@@ -192,9 +192,9 @@ public class HostMachine {
 		return idleList;
 	}
 	/**
-	 * Desc : healthy °¡»ó¸Ó½Å ¸®½ºÆ® ¹ÝÈ¯
+	 * Desc : healthy ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¯
 	 * @Method Name : getHealthyVmList
-	 * @return healthy °¡»ó¸Ó½Å ¸®½ºÆ® <br> EX) "host01-vm001"
+	 * @return healthy ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® <br> EX) "host01-vm001"
 	 * 
 	 */	
 	public synchronized List getHealthyVmList() {
@@ -208,9 +208,9 @@ public class HostMachine {
 		return healthyList;
 	}
 	/**
-	 * Desc : unHealthy ÇÑ °¡»ó¸Ó½Å ¸Ó½Å ¸®½ºÆ® ¹ÝÈ¯ 
+	 * Desc : unHealthy ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¯ 
 	 * @Method Name : getUnHealthyVmList
-	 * @return unHealthy °¡»ó ¸Ó½Å ¸®½ºÆ® ¹ÝÈ¯ <br> EX) "host03-vm03"
+	 * @return unHealthy ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¯ <br> EX) "host03-vm03"
 	 * 
 	 */
 	public synchronized List getUnHealthyVmList() {
@@ -224,9 +224,9 @@ public class HostMachine {
 		return unHealthyList;
 	}
 	/**
-	 * Desc : »ç¿ë°¡´ÉÇÑ °¡»ó¸Ó½Å ¸®½ºÆ® ¹ÝÈ¯
+	 * Desc : ï¿½ï¿½ë°¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¯
 	 * @Method Name : getAvailableVmList
-	 * @return »ç¿ë°¡´ÉÇÑ °¡»ó¸Ó½Å ¸®½ºÆ® ¹ÝÈ¯ <br> EX) "host03-vm03","host04-vm02"
+	 * @return ï¿½ï¿½ë°¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¯ <br> EX) "host03-vm03","host04-vm02"
 	 * 
 	 */
 	public synchronized List getAvailableVmList() {
@@ -254,9 +254,9 @@ public class HostMachine {
 		return availableList;
 	}
 	/**
-	 * Desc : fail ÇÑ °¡»ó¸Ó½Å ¸®½ºÆ® ¹ÝÈ¯
+	 * Desc : fail ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¯
 	 * @Method Name : getFailVmList
-	 * @return fail °¡»ó¸Ó½Å ¸®½ºÆ® ¹ÝÈ¯  <br> EX) "host03-vm04"
+	 * @return fail ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¯  <br> EX) "host03-vm04"
 	 * 
 	 */
 	public synchronized List getFailVmList() {
@@ -330,6 +330,20 @@ public class HostMachine {
 		}
 		return null;
 	}
+	public String getJobName(String virtualMachine) {
+		if (isContainVirtualMachine(virtualMachine)) {
+			return getVM(virtualMachine).getJobName();
+		}
+		return null;
+	}
+	public String setIdle(String virtualMachine) {
+		if (isContainVirtualMachine(virtualMachine)) {
+//			return getVM(virtualMachine).getJobName();
+			getVM(virtualMachine).setVmIdle();
+		}
+		return null;
+	}
+	
 
 	// Machine specification
 	public String getCPU(String virtualMachine) {

@@ -1,5 +1,5 @@
 $(document).ready(function() { 
-	$('#logo2').animate({opacity: 1}, 200);//·Î°í ¾ËÆÄ°ª º¯
+	$('#logo2').animate({opacity: 1}, 200);//ï¿½Î°ï¿½ ï¿½ï¿½ï¿½Ä°ï¿½ ï¿½ï¿½
 
 		theNumberOfCloud=""
 		simulatorOnHostList=""
@@ -15,10 +15,10 @@ $(document).ready(function() {
 		
 		window.NAPIVcluster.simulatorStart();
 		
-		var RunningTop=20;
-		var IdleTop=20;
-		var UnhealthyTop=20;
-		var AvailableTop=20;
+		var RunningTop=0;
+		var IdleTop=0;
+		var UnhealthyTop=0;
+		var AvailableTop=0;
 		
 		function changeNum( vmNumber ) {
 	  	  var RetrunNumber;
@@ -184,7 +184,7 @@ $(document).ready(function() {
 			}
 		}
 		
-////////////////////////////3¹øÂ° ÆäÀÌÁö ½ÃÀÛ///////////////////////////
+////////////////////////////3ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½///////////////////////////
 		
 		function subAppendQueueRunning() {
 			//$.mobile.loading( 'show');
@@ -486,7 +486,15 @@ $(document).ready(function() {
 			);
 
 		};
-		
+	/*
+	 * scene refresh time
+	 * 
+	 *   
+	 *   
+	 *   í™”ë©´ ë¦¬í”„ë ˆì‹œ ì‹œê°„ 
+	 *   
+	 *   
+	 */	
 		function start_reload_second(){
 			int2 = setInterval( function() {
 				changeVmStatus();
@@ -495,7 +503,7 @@ $(document).ready(function() {
 				subAppendQueueWaiting();
 				//changeClusterStatusNumber();
 			}, 	
-			5000
+			3000
 			);
 
 		}
@@ -554,7 +562,7 @@ $(document).ready(function() {
 	    	//addGif2();
 	    	 //hostStatusNumber();
 	    	 //hostVmStatus();
-	    	//alert("¼¼¹øÂ° ÆäÀÌÁö ÀÔ´Ï´Ù."); 
+	    	//alert("ï¿½ï¿½ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô´Ï´ï¿½."); 
     		//$(".subHostToptitle").before("<div CLASS='cpuSign'><img src='images/fliker_cpu.gif'></div>"); 
     		$("#masterP").before("<img src='images/master_running.gif' ID='master_running'>"); 
     		//int1=setInterval(function(){lightning_one();}, 300);

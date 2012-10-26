@@ -309,7 +309,7 @@ $(document).ready(function() {
 	        		  var srcHost = "host-"+(dragParentIndex+1);
 	        		  var desHost = "host-"+(dropIndex+1);
 	        		  
-	        		  List=window.NAPIVcluster.funcName(vmName, srcHost, desHost);
+//	        		  List=window.NAPIVcluster.funcName(vmName, srcHost, desHost);
 						
 	        		  alert("vm"+(dragIndex+1)+",vm host"+(dragParentIndex+1)+",drop host"+(dropIndex+1));
 	        	  }

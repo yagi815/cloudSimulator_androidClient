@@ -86,7 +86,7 @@ public class HostMachine {
 			virtualMachineList.remove(i);
 		}
 	}
-	
+
 	private synchronized VirtualMachine getVM(String virtualMachine) {
 		for (int i = 0; i < virtualMachineList.size(); i++) {
 			VirtualMachine vm = (VirtualMachine) virtualMachineList.get(i);

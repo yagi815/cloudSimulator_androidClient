@@ -193,7 +193,7 @@ public class HostMachine {
 				continue;
 			}
 			
-			String vName = String.format("vm%02d", i);
+			String vName = String.format("vm%02d", i+1);
 			String hName= this.hostName;
 			String virtualMachine =hName+"-"+vName; 
 			list[i] = virtualMachine;

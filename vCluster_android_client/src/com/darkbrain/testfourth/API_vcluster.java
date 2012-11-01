@@ -258,19 +258,22 @@ public class API_vcluster {
 		for (int i = 0; i < availableVmList.size(); i++) {
 			String vm = (String)availableVmList.get(i);
 			int index = Integer.parseInt(vm.substring(vm.length()-2, vm.length()));			
-			hostStatus[index] = "3";			
+			hostStatus[index-1] = "3";	
+//			Log.d("kim", "avail"+index);
 		}		
 		List busyVmList = getBusyVmList(hostName);
 		for (int i = 0; i < busyVmList.size(); i++) {
 			String vm = (String)busyVmList.get(i);
-			int index = Integer.parseInt(vm.substring(vm.length()-2, vm.length()));			
-			hostStatus[index] = "0";			
+			int index = Integer.parseInt(vm.substring(vm.length()-2, vm.length()));
+//			Log.d("kim", "busy"+index);
+			hostStatus[index-1] = "0";	
 		}
 		List idleVmList = getIdleVmList(hostName);				
 		for (int i = 0; i < idleVmList.size(); i++) {
 			String vm = (String)idleVmList.get(i);
-			int index = Integer.parseInt(vm.substring(vm.length()-2, vm.length()));			
-			hostStatus[index] = "1";			
+			int index = Integer.parseInt(vm.substring(vm.length()-2, vm.length()));
+//			Log.d("kim", "idle"+index);
+			hostStatus[index-1] = "1";			
 		}		
 
 		String list = "";
@@ -278,7 +281,7 @@ public class API_vcluster {
 		for (int i = 0; i < hostStatus.length; i++) {
 			list += hostStatus[i]+",";
 		}
-		
+		Log.d("kim", list);
 		return list;
 	}
 	

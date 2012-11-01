@@ -230,6 +230,9 @@ public class API_vcluster {
 	public String setIdle(String virtualMachine) {
 		return (String) requestToSimulator("37:"+virtualMachine );
 	}
+	public String setUnHealthy(String virtualMachine) {
+		return (String) requestToSimulator("38:"+virtualMachine );
+	}
 
 	public String getHostStatus(String hostName){
 
@@ -275,13 +278,20 @@ public class API_vcluster {
 //			Log.d("kim", "idle"+index);
 			hostStatus[index-1] = "1";			
 		}		
+		List unHealthyVmList = getUnhealthyVmList(hostName);				
+		for (int i = 0; i < unHealthyVmList.size(); i++) {
+			String vm = (String)unHealthyVmList.get(i);
+			int index = Integer.parseInt(vm.substring(vm.length()-2, vm.length()));
+//			Log.d("kim", "idle"+index);
+			hostStatus[index-1] = "2";			
+		}		
 
 		String list = "";
 		
 		for (int i = 0; i < hostStatus.length; i++) {
 			list += hostStatus[i]+",";
 		}
-		Log.d("kim", list);
+//		Log.d("kim", list);
 		return list;
 	}
 	

@@ -2,6 +2,8 @@ package com.darkbrain.testfourth;
 
 import java.util.UUID;
 
+import android.util.Log;
+
 
 public class VirtualMachine implements Runnable{
 
@@ -112,6 +114,7 @@ public class VirtualMachine implements Runnable{
 				// TODO Auto-generated method stub
 				setVmBusy("busy");
 				setJobName(jobName);
+				Log.d("aaa",jobName+"job submmitted.");
 				try {Thread.sleep(jobRunningTime);} catch (InterruptedException e) { e.printStackTrace();}
 				setVmBusy("idle");
 				System.out.println( "job "+jobName+" is done.");				
@@ -204,10 +207,16 @@ public class VirtualMachine implements Runnable{
 		this.vmBusy = vmBusy;
 	}
 	public  void setVmIdle() {
-		System.out.println("===============================================");
-		System.out.println("===============================================");
+//		System.out.println("===============================================");
+//		System.out.println("===============================================");
 		this.vmBusy = "idle";		
-		System.out.println(this.vmName+"is setted. with "+this.vmBusy);
+//		System.out.println(this.vmName+"is setted. with "+this.vmBusy);
+	}
+	public  void setUnHealthy() {
+//		System.out.println("===============================================");
+//		System.out.println("===============================================");
+		this.vmHealthy="unhealthy";	
+//		System.out.println(this.vmName+"is setted. with "+this.vmBusy);
 	}
 
 	public synchronized void setVmHealthy(String vmUnhealthy) {

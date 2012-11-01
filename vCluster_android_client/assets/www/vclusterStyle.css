@@ -1,11 +1,21 @@
-/*ÀÎµ¦½º*/
-
+/*ï¿½Îµï¿½ï¿½ï¿½*/
+html {
+    -webkit-user-select: none;
+}
 
 body, html{
 	margin:0px;
 	padding:0px;
 	-webkit-tap-highlight: rgba(0,0,0,0);
 	background-color: black;
+	-webkit-user-select: none;  /* prevent copy paste for all elements */
+}
+* {
+
+-webkit-touch-callout: none;
+
+-webkit-user-select: none;
+
 }
 
 #logo1 {
@@ -27,15 +37,52 @@ body, html{
 	//background-color:#FFFFFF;
 	padding:34px 0px 0px 40px;
 }
+.resetButton {
+	background-image: url('images/btn_reset.png');
+	float:left;
+	//background-color:#FFFFFF;
+	margin:60px 0px 0px 740px;
+	width: 77px;
+ 	height:41px;
+}
+.resetButton:active {
+	background-image: url('images/btn_reset_over.png');
+	float:left;
+	//background-color:#FFFFFF;
+	margin:60px 0px 0px 740px;
+	width: 77px;
+ 	height:41px;
+}
 .menuButton {
+	background-image: url('images/btn_menu.png');
 	float:left;
 	//background-color:#FFFFFF;
 	margin:60px 0px 0px 0px;
+	width: 75px;
+ 	height:41px;
 }
-.demoButton {
+.menuButton:active {
+	background-image: url('images/btn_menu_over.png');
 	float:left;
 	//background-color:#FFFFFF;
-	margin:60px 0px 0px 815px;
+	margin:60px 0px 0px 0px;
+	width: 75px;
+ 	height:41px;
+}
+.demoButton {
+	background-image: url('images/btn_demo.png');
+	float:left;
+	//background-color:#FFFFFF;
+	margin:60px 0px 0px 0px;
+	width: 77px;
+ 	height:41px;
+}
+.demoButton:active {
+ 	background-image: url('images/btn_demo_over.png');
+ 	margin:60px 0px 0px 0px;
+ 	width: 77px;
+ 	height:41px;
+
 }
 .menuOut {
 	//background-color:#FFFFFF;
@@ -70,7 +117,7 @@ body, html{
 .menuPop p A:hover{font-size:18px;color:#FFFFFF;text-decoration:none;}
 
 
-/*¸ÞÀÎ Å¾*/
+/*ï¿½ï¿½ï¿½ï¿½ Å¾*/
 .VclusterTopText{
 	clear:both;
 	padding:0px 0px 0px 49px;
@@ -86,6 +133,11 @@ body, html{
 	text-shadow: 0px -2px 0px #111,
                  0px 0px 2px #999;
 }
+.statusTitle{
+	float:left;
+	width:443px;
+}
+
 
 .VclusterStatus {
 	padding:0px 0px 0px 5px;
@@ -152,7 +204,7 @@ body, html{
 	color: #ea840c;
 	overflow:scroll; width:510px; height:35px;
 }
-/*ÄÁÅÙÃ÷*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .content{
 	clear:both;
 	float:left;
@@ -195,10 +247,20 @@ body, html{
 
 
 .statusConfig {
-	padding:9px 0px 0px 10px;
+	background-image: url('images/btn_config.png');
+	margin:9px 0px 0px 10px;
 	float:left;
+	width: 109px;
+ 	height:27px;
 }
 
+.statusConfig:active {
+	background-image: url('images/btn_config_over.png');
+	margin:9px 0px 0px 10px;
+	float:left;
+	width: 109px;
+ 	height:27px;
+}
 
 .statusTop .title{
 	//clear:both;

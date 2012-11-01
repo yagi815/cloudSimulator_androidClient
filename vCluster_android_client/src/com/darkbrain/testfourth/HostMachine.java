@@ -286,9 +286,15 @@ public class HostMachine {
 		if (isContainVirtualMachine(virtualMachine)) {
 //			return getVM(virtualMachine).getJobName();
 			getVM(virtualMachine).setVmIdle();
-			System.out.println("============================================================");
-			System.out.println("=================================setIdle>>"+getVM(virtualMachine).getVmName());
-			System.out.println("============================================================");
+//			System.out.println("============================================================");
+//			System.out.println("=================================setIdle>>"+getVM(virtualMachine).getVmName());
+//			System.out.println("============================================================");
+		}
+		return null;
+	}
+	public String setUnHealthy(String virtualMachine) {
+		if (isContainVirtualMachine(virtualMachine)) {
+			getVM(virtualMachine).setUnHealthy();
 		}
 		return null;
 	}

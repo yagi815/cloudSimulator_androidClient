@@ -5,6 +5,7 @@ import org.apache.cordova.DroidGap;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends DroidGap
 {
@@ -20,6 +21,7 @@ public class MainActivity extends DroidGap
         super.onCreate(savedInstanceState);
         
         super.init();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
 //        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         //mc = new MyClass(this, appView);
        // mc = new API_vcluster(this, appView);
@@ -37,7 +39,12 @@ public class MainActivity extends DroidGap
         //String wnStatus = cafHelper.hostPowerOn("test");
         //super.appView.addJavascriptInterface(new Toaster(), "toaster");
         super.loadUrl("file:///android_asset/www/index.html");
-        
+        super.appView.setOnLongClickListener(new View.OnLongClickListener() {
+
+            public boolean onLongClick(View v) {
+                return true;
+            }
+        });
     }   
     
 }

@@ -42,9 +42,15 @@ public class tiny_vCluster {
 	}
 
 	public void demoStart() {
-		demoScenario01();		
+//		demoScenario01();		
+		demoScenario02();		
 	}
 	private void demoScenario01(){
+		/*
+		 * 10~20개 job을 5회에 걸쳐서 submit  
+		 * 
+		 */
+		
 		final Random random = new Random();
 		final int nJob = random.nextInt(10);
 		final int runningTime = 50+random.nextInt(10);
@@ -61,10 +67,31 @@ public class tiny_vCluster {
 				e.printStackTrace();
 			}
 		}
-
 	}
 	private void demoScenario02(){
+		/*
+		 * host01 에 10개 60초 동안 
+		 * host02에 10개 60초 동안
+		 * host03 에 3개 60초 동안
+		 * 
+		 *  host02에 unHealthy 발생 
+		 *  손으로 이동 양쪽으로 host02자동으로 꺼짐 
+		 */
 		
+		job_submit(25, 60);
+		API.turnOnHostMachine("host04");
+		API.createNewVirtualMachine("-");
+		API.createNewVirtualMachine("-");
+		API.createNewVirtualMachine("-");
+		API.createNewVirtualMachine("-");
+		API.createNewVirtualMachine("-");
+		API.createNewVirtualMachine("-");
+		API.jobSubmit(60, "50.job"+":"+"host04");
+		API.jobSubmit(60, "51.job"+":"+"host04");
+//		API.jobSubmit(60, "52.job"+":"+"host04");
+		try {Thread.sleep(10000);} catch (InterruptedException e) {e.printStackTrace();}
+		API.setUnHealthy("host04-vm04");
+		reductionResorce();
 	}
 	
 	
@@ -126,12 +153,9 @@ public class tiny_vCluster {
 			//nothing to do 
 			Log.d("aaa","nothing to do ");
 		}
-		// get src jobName
-//		API.getJobName(srcHost+"-"+srcVmName);
-
-		
+	
 		// resubmit job
-		String result = (String)API.jobSubmit(this.runningTime, jobName+":"+desHost);
+		String result = (String)API.jobSubmit(60, jobName+":"+desHost);
 		Log.d("aaa", "resubmit Job:"+desHost+"-"+jobName);
 		if (  result.equals("1")){
 		// setBusy -> idle
@@ -139,6 +163,7 @@ public class tiny_vCluster {
 		// refresh screen 
 		}
 
+		
 		
 	}
 	public void troubleMaker(int numberOfTrouble, String hostName, String vmName) {

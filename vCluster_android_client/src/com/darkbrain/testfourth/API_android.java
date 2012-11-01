@@ -7,6 +7,7 @@ import org.apache.cordova.DroidGap;
 
 import android.util.Log;
 import android.webkit.WebView;
+import android.widget.Toast;
 
 public class API_android {
 
@@ -137,6 +138,13 @@ public class API_android {
 	public void alertTestJava(){	
 		//return "test";
 		mAppView.loadUrl("javascript:alertTest()"); 
+	}
+	public void alertJava(){	
+		//return "test";
+		//mAppView.loadUrl("javascript:alertTest()"); 
+		//Toast.makeText(API_android.this,String.valueOf("test"), Toast.LENGTH_SHORT).show();
+		Toast.makeText(mGap,"Demo has been started!", Toast.LENGTH_SHORT).show();  
+		//Toast.makeText(ButtonEdit.this,str,Toast.LENGTH_SHORT).show();
 	}
 
 }

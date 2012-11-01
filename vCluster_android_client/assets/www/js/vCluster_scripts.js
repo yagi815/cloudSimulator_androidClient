@@ -3,7 +3,7 @@ function alertTest(){
 			alert("test");
 		}
 
-theNumberOfCloud=""
+	theNumberOfCloud=""
 	simulatorOnHostList=""
 	CloudList = new Array();
 	HostList = new Array();
@@ -21,6 +21,269 @@ theNumberOfCloud=""
 	var IdleTop=12;
 	var UnhealthyTop=0;
 	var AvailableTop=11;
+	
+	///////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////vsimulator를 제외한 변수 및 함수 설정///////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////
+	var FermiHostList=new Array("host01","host02","host03","host04","host05","host06","host07");
+	var FermiHostListSize = FermiHostList.length;
+	
+	var FermiOnHostList=new Array("host01","host02","host03","host04");
+	var FermiOnHostListSize = FermiOnHostList.length;
+	
+	var GCloudHostList=new Array("host01","host02","host03","host04");
+	var GCloudHostListSize = GCloudHostList.length;
+	
+	var GCloudOnHostList=new Array("host01","host02");
+	var GCloudOnHostListSize = GCloudOnHostList.length;
+	
+	function FermiVmList( host ) {
+		
+		if(host=="host01"){
+			var FermiVmRealList = [ 1, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3  ];
+		}else if(host=="host02"){
+			var FermiVmRealList = [ 0, 1, 0, 3, 0, 1, 0, 3, 0, 1, 0, 0  ];
+		}else if(host=="host03"){
+			var FermiVmRealList = [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 0, 3  ];
+		}else if(host=="host04"){
+			var FermiVmRealList = [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 0  ];
+		}
+		return FermiVmRealList;
+	}
+	
+	function GCloudVmList( host ) {
+		
+		if(host=="host01"){
+			var GCloudVmRealList = [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3 ];
+		}else if(host=="host02"){
+			var GCloudVmRealList = [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3 ];
+		}
+		return GCloudVmRealList;
+	}
+	
+
+	
+	function changeGCloudStatusNumber(){
+		
+		simulatorOnHostList = GCloudOnHostList;
+		simulatorOnHostListSize = GCloudOnHostList.length;
+		
+		changeNumberOfCloudRunnig = 0;
+		changeNumberOfCloudIdle = 0;
+		changeNumberOfCloudUnhealthy = 0;
+		changeNumberOfCloudAvailable = 0;
+		for (i=0; i<simulatorOnHostListSize; i++){
+			var numberResult = new String(simulatorOnHostList[i]);
+			var stringResult = numberResult.toString();
+			for (j=0; j<12; j++){
+				//alert(FermiVmList(stringResult)[j]);
+				if(GCloudVmList(stringResult)[j]==0){
+					changeNumberOfCloudRunnig+=1;
+				}else if(GCloudVmList(stringResult)[j]==1){
+					changeNumberOfCloudIdle+=1;
+				}else if(GCloudVmList(stringResult)[j]==2){
+					changeNumberOfCloudUnhealthy+=1;
+				}else if(GCloudVmList(stringResult)[j]==3){
+				changeNumberOfCloudAvailable+=1;
+				}
+			}
+		}
+		$("#vsimulatorclusterStatus").replaceWith("<div CLASS='VclusterStatus' id='vsimulatorclusterStatus'><div CLASS='VclusterStatusNumber running'>"+changeNumberOfCloudRunnig+"</div><div CLASS='VclusterStatusNumber idle'>"+changeNumberOfCloudIdle+"</div><div CLASS='VclusterStatusNumber unhealthy'>"+changeNumberOfCloudUnhealthy+"</div><div CLASS='VclusterStatusNumber available'>"+changeNumberOfCloudAvailable+"</div></div>");
+		simulatorOnHostList = null;
+		simulatorOnHostListSize = null;
+	}
+	
+	function getFermiCloudDisplay(){
+		
+		for (j=0; j<FermiHostListSize; j++){
+			stringchangeResult = FermiHostList[j];
+			var firstSpan = new String("<div CLASS='hostSub'><div CLASS='subHostTop'><p CLASS='subHostToptitle'>");
+			var secondSpan = new String("</p><br><p CLASS='subHostTopsubTitle'>");
+			var thirdSpan = new String(" Status</p></div><div CLASS='subStatus'></div><div CLASS='cpuCover'></div>");
+			$(firstSpan+stringchangeResult+secondSpan+stringchangeResult+thirdSpan).appendTo("#FermiSubCover");
+			
+		}
+		
+	}
+	
+	function getGCloudDisplay(){
+		
+		for (j=0; j<GCloudHostList; j++){
+			stringchangeResult = GCloudHostList[j];
+			var firstSpan = new String("<div CLASS='hostSub'><div CLASS='subHostTop'><p CLASS='subHostToptitle'>");
+			var secondSpan = new String("</p><br><p CLASS='subHostTopsubTitle'>");
+			var thirdSpan = new String(" Status</p></div><div CLASS='subStatus'></div><div CLASS='cpuCover'></div>");
+			$(firstSpan+stringchangeResult+secondSpan+stringchangeResult+thirdSpan).appendTo("#GCloudSubCover");
+			
+		}
+		
+	}
+
+	function hostFermiStatusNumber(){
+		
+		simulatorOnHostList = FermiOnHostList;
+		simulatorOnHostListSize = FermiOnHostListSize;
+		
+		changeNumberOfCloudRunnig = 0;
+		changeNumberOfCloudIdle = 0;
+		changeNumberOfCloudUnhealthy = 0;
+		changeNumberOfCloudAvailable = 0;
+		k=0;
+		for (i=0; i<simulatorHostListSize; i++){
+			var stringResult = simulatorOnHostList[k];
+			//var stringResult = numberResult.toString();
+			
+			if(FermiHostList[i]==stringResult){
+				FermiVmRunnigNumber=0;
+				FermiVmIdleNumber=0;
+				FermiVmUnhealthyNumber=0;
+				FermiVmAvailbleNumber=0;
+				for (j=0; j<12; j++){
+					//alert(FermiVmList(stringResult)[j]);
+					if(FermiVmList(stringResult)[j]==0){
+						changeNumberOfCloudRunnig+=1;
+						FermiVmRunnigNumber++
+					}else if(FermiVmList(stringResult)[j]==1){
+						changeNumberOfCloudIdle+=1;
+						FermiVmIdleNumber++
+					}else if(FermiVmList(stringResult)[j]==2){
+						changeNumberOfCloudUnhealthy+=1;
+						FermiVmUnhealthyNumber++
+					}else if(FermiVmList(stringResult)[j]==3){
+						changeNumberOfCloudAvailable+=1;
+						FermiVmAvailbleNumber++
+					}
+				}
+
+			    $("#FermiSubCover").children().eq(i).children().eq(1).replaceWith("<div CLASS='subStatus'><span CLASS='subStatusNumber running'>"+FermiVmRunnigNumber+"</span><span CLASS='subStatusNumber idle'>"+FermiVmIdleNumber+"</span><span CLASS='subStatusNumber unhealthy'>"+FermiVmUnhealthyNumber+"</span><span CLASS='subStatusNumber available'>"+FermiVmAvailbleNumber+"</span></div></div>");
+				if(k<simulatorOnHostListSize-1){
+					k++;
+				}
+			}else{
+				$("#FermiSubCover").children().eq(i).children().eq(1).replaceWith("<div CLASS='subStatus'><span CLASS='subStatusNumber off'>0</span><span CLASS='subStatusNumber off'>0</span><span CLASS='subStatusNumber off'>0</span><span CLASS='subStatusNumber off'>0</span></div></div>");
+			}
+		}
+		$("#vsimulatorclusterStatus").replaceWith("<div CLASS='VclusterStatus' id='vsimulatorclusterStatus'><div CLASS='VclusterStatusNumber running'>"+changeNumberOfCloudRunnig+"</div><div CLASS='VclusterStatusNumber idle'>"+changeNumberOfCloudIdle+"</div><div CLASS='VclusterStatusNumber unhealthy'>"+changeNumberOfCloudUnhealthy+"</div><div CLASS='VclusterStatusNumber available'>"+changeNumberOfCloudAvailable+"</div></div>");
+		simulatorOnHostList = null;
+		simulatorOnHostListSize = null;
+	}
+	
+	function FermihostVmStatus(){
+		
+		var firstSpan0 = new String("<div CLASS='cpu_running'><p class='cpuP'>vm-");
+		var firstSpan1 = new String("<div CLASS='cpu_idle'><p class='cpuP'>vm-");
+		var firstSpan2 = new String("<div CLASS='cpu_unhealthy'><p class='cpuP'>vm-");
+		var firstSpan3 = new String("<div CLASS='cpu_available'><p class='cpuP'>vm-");
+		var firstSpan4 = new String("<div CLASS='cpu_off'><p class='cpuP'>vm-");
+		var secondSpan = new String("</p></div>");
+		
+		simulatorOnHostList = FermiOnHostList;
+		simulatorOnHostListSize = FermiOnHostListSize;
+		
+		k=0;
+		for (i=0; i<FermiHostListSize; i++){
+			
+			var stringResult = simulatorOnHostList[k];
+			//var stringResult = numberResult.toString();
+			if(FermiHostList[i]==stringResult){
+				var lastSpan = new String("");
+				for (j=0; j<12; j++){
+					if(FermiVmList(stringResult)[j]==0){
+
+						lastSpan += firstSpan0+changeNum(j+1)+secondSpan;
+					}else if(FermiVmList(stringResult)[j]==1){
+
+						lastSpan += firstSpan1+changeNum(j+1)+secondSpan;
+					}else if(FermiVmList(stringResult)[j]==2){
+
+						lastSpan += firstSpan2+changeNum(j+1)+secondSpan;
+					}else if(FermiVmList(stringResult)[j]==3){
+
+						lastSpan += firstSpan3+changeNum(j+1)+secondSpan;
+					}
+					
+				}
+				//alert(lastSpan);
+				$("#FermiSubCover").children().eq(i).children().eq(2).replaceWith("<div CLASS='cpuCover'>"+lastSpan+"</div>");
+
+				//lastSpan=null;
+				if(k<simulatorOnHostListSize-1){
+					k++;
+				}
+				$("#FermiSubCover").children().eq(i).children().eq(0).children().eq(1).before("<div CLASS='cpuSign'><img src='images/btn_power_fliker_00.png'></div>");
+			}else{
+				var lastSpan = new String("");
+				for (j=0; j<12; j++){
+					lastSpan += firstSpan4+changeNum(j+1)+secondSpan;
+				}
+				$("#FermiSubCover").children().eq(i).children().eq(2).replaceWith("<div CLASS='cpuCover'>"+lastSpan+"</div>");
+				//lastSpan=null;
+			}
+			
+		}
+		simulatorOnHostList = null;
+		simulatorOnHostListSize = null;
+	}
+	
+	function FermihostVmStatus(){
+		
+		var firstSpan0 = new String("<div CLASS='cpu_running'><p class='cpuP'>vm-");
+		var firstSpan1 = new String("<div CLASS='cpu_idle'><p class='cpuP'>vm-");
+		var firstSpan2 = new String("<div CLASS='cpu_unhealthy'><p class='cpuP'>vm-");
+		var firstSpan3 = new String("<div CLASS='cpu_available'><p class='cpuP'>vm-");
+		var firstSpan4 = new String("<div CLASS='cpu_off'><p class='cpuP'>vm-");
+		var secondSpan = new String("</p></div>");
+		
+		simulatorOnHostList = FermiOnHostList;
+		simulatorOnHostListSize = FermiOnHostListSize;
+		
+		k=0;
+		for (i=0; i<FermiHostListSize; i++){
+			
+			var stringResult = simulatorOnHostList[k];
+			//var stringResult = numberResult.toString();
+			if(FermiHostList[i]==stringResult){
+				var lastSpan = new String("");
+				for (j=0; j<12; j++){
+					if(FermiVmList(stringResult)[j]==0){
+
+						lastSpan += firstSpan0+changeNum(j+1)+secondSpan;
+					}else if(FermiVmList(stringResult)[j]==1){
+
+						lastSpan += firstSpan1+changeNum(j+1)+secondSpan;
+					}else if(FermiVmList(stringResult)[j]==2){
+
+						lastSpan += firstSpan2+changeNum(j+1)+secondSpan;
+					}else if(FermiVmList(stringResult)[j]==3){
+
+						lastSpan += firstSpan3+changeNum(j+1)+secondSpan;
+					}
+					
+				}
+				//alert(lastSpan);
+				$("#FermiSubCover").children().eq(i).children().eq(2).replaceWith("<div CLASS='cpuCover'>"+lastSpan+"</div>");
+
+				//lastSpan=null;
+				if(k<simulatorOnHostListSize-1){
+					k++;
+				}
+				$("#FermiSubCover").children().eq(i).children().eq(0).children().eq(1).before("<div CLASS='cpuSign'><img src='images/btn_power_fliker_00.png'></div>");
+			}else{
+				var lastSpan = new String("");
+				for (j=0; j<12; j++){
+					lastSpan += firstSpan4+changeNum(j+1)+secondSpan;
+				}
+				$("#FermiSubCover").children().eq(i).children().eq(2).replaceWith("<div CLASS='cpuCover'>"+lastSpan+"</div>");
+				//lastSpan=null;
+			}
+			
+		}
+		simulatorOnHostList = null;
+		simulatorOnHostListSize = null;
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////
+	
 	
 	
 	
@@ -68,7 +331,7 @@ theNumberOfCloud=""
 	
 	function statusNumber(){
 		
-		simulatorOnHostList = getRunningHostList("vSimulator");
+		simulatorOnHostList = getRunningHostList("vsimulator");
 		simulatorOnHostListSize = simulatorOnHostList.length-1;
 		
 		var firstSpan = new String("<div CLASS='host' id='vsimulatorHost'><div CLASS='simulatorHostTop'><div CLASS='hostTitle'><p>");
@@ -111,7 +374,7 @@ theNumberOfCloud=""
 	
 	
 	function changeStatusNumber(){
-		simulatorOnHostList = getRunningHostList("vSimulator");
+		simulatorOnHostList = getRunningHostList("vsimulator");
 		simulatorOnHostListSize = simulatorOnHostList.length-1;
 		
 		changeNumberOfCloudRunnig = 0;
@@ -184,6 +447,7 @@ theNumberOfCloud=""
 	
 	function subAppendQueueRunning() {
 		//$.mobile.loading( 'show');
+		//alert("subTest");
 		$("#subQueueRunning").replaceWith("<div CLASS='VclusterStatusNumber running' id='subQueueRunning'>"+window.NAPIVcluster.getRunningJobs()+"</div>");
     }
 	
@@ -193,7 +457,7 @@ theNumberOfCloud=""
 	
 	function changeClusterStatusNumber(){
 		
-		simulatorOnHostList = getRunningHostList("vSimulator");
+		simulatorOnHostList = getRunningHostList("vsimulator");
 		simulatorOnHostListSize = simulatorOnHostList.length-1;
 		
 		changeNumberOfCloudRunnig = 0;
@@ -213,20 +477,27 @@ theNumberOfCloud=""
 			changeNumberOfCloudAvailable+=parseInt(getCurrentAvailableVmList(stringResult));
 
 		}
-		$("#VsimulatorclusterStatus").replaceWith("<div CLASS='VclusterStatus' id='VsimulatorclusterStatus'><div CLASS='VclusterStatusNumber running'>"+changeNumberOfCloudRunnig+"</div><div CLASS='VclusterStatusNumber idle'>"+changeNumberOfCloudIdle+"</div><div CLASS='VclusterStatusNumber unhealthy'>"+changeNumberOfCloudUnhealthy+"</div><div CLASS='VclusterStatusNumber available'>"+changeNumberOfCloudAvailable+"</div></div>");
+		$("#vsimulatorclusterStatus").replaceWith("<div CLASS='VclusterStatus' id='vsimulatorclusterStatus'><div CLASS='VclusterStatusNumber running'>"+changeNumberOfCloudRunnig+"</div><div CLASS='VclusterStatusNumber idle'>"+changeNumberOfCloudIdle+"</div><div CLASS='VclusterStatusNumber unhealthy'>"+changeNumberOfCloudUnhealthy+"</div><div CLASS='VclusterStatusNumber available'>"+changeNumberOfCloudAvailable+"</div></div>");
 		simulatorOnHostList = null;
 		simulatorOnHostListSize = null;
 	}
 	
-	function getVsimulatorDisplay(){
+	function getvsimulatorDisplay(){
+		
 		for (j=0; j<simulatorHostListSize; j++){
 			stringchangeResult = simulatorHostList[j];
 			if(j==0){
+				
 				var firstSpan = new String("<div CLASS='hostSub'><div CLASS='subHostTop'><div CLASS='cpuSign'></div><p CLASS='subHostToptitle'>");
 				var secondSpan = new String("</p><br><p CLASS='subHostTopsubTitle'>");
 				var thirdSpan = new String(" Status</p></div><div CLASS='subStatus'></div><div CLASS='masterCover'><div CLASS='master'><p ID='masterP'>Master</p></div></div><div CLASS='cpuCover'></div>");
+
+				
+				
 				$(firstSpan+stringchangeResult+secondSpan+stringchangeResult+thirdSpan).appendTo("#simulatorSubCover");
+
 			}else{
+				//alert("test");
 				var firstSpan = new String("<div CLASS='hostSub'><div CLASS='subHostTop'><p CLASS='subHostToptitle'>");
 				var secondSpan = new String("</p><br><p CLASS='subHostTopsubTitle'>");
 				var thirdSpan = new String(" Status</p></div><div CLASS='subStatus'></div><div CLASS='cpuCover'></div>");
@@ -248,7 +519,7 @@ theNumberOfCloud=""
 	////////////////2�������� ����� status�� ������ ���� �ϴ� �Լ� //////////////////////////
 	function hostStatusNumber(){
 		
-		simulatorOnHostList = getRunningHostList("vSimulator");
+		simulatorOnHostList = getRunningHostList("vsimulator");
 		simulatorOnHostListSize = simulatorOnHostList.length-1;
 		
 		changeNumberOfCloudRunnig = 0;
@@ -273,7 +544,7 @@ theNumberOfCloud=""
 				$("#simulatorSubCover").children().eq(i).children().eq(1).replaceWith("<div CLASS='subStatus'><span CLASS='subStatusNumber off'>0</span><span CLASS='subStatusNumber off'>0</span><span CLASS='subStatusNumber off'>0</span><span CLASS='subStatusNumber off'>0</span></div></div>");
 			}
 		}
-		$("#VsimulatorclusterStatus").replaceWith("<div CLASS='VclusterStatus' id='VsimulatorclusterStatus'><div CLASS='VclusterStatusNumber running'>"+changeNumberOfCloudRunnig+"</div><div CLASS='VclusterStatusNumber idle'>"+changeNumberOfCloudIdle+"</div><div CLASS='VclusterStatusNumber unhealthy'>"+changeNumberOfCloudUnhealthy+"</div><div CLASS='VclusterStatusNumber available'>"+changeNumberOfCloudAvailable+"</div></div>");
+		$("#vsimulatorclusterStatus").replaceWith("<div CLASS='VclusterStatus' id='vsimulatorclusterStatus'><div CLASS='VclusterStatusNumber running'>"+changeNumberOfCloudRunnig+"</div><div CLASS='VclusterStatusNumber idle'>"+changeNumberOfCloudIdle+"</div><div CLASS='VclusterStatusNumber unhealthy'>"+changeNumberOfCloudUnhealthy+"</div><div CLASS='VclusterStatusNumber available'>"+changeNumberOfCloudAvailable+"</div></div>");
 		simulatorOnHostList = null;
 		simulatorOnHostListSize = null;
 	}
@@ -301,7 +572,6 @@ theNumberOfCloud=""
 					
         		  var dragParentIndex = $dragBox.parent().parent().parent().children().index($dragBox.parent().parent());
 
-					
         		  // 추가할 부분
         		  // =====================================================
         		  var srcHostIdx = (dragParentIndex+1);
@@ -309,8 +579,7 @@ theNumberOfCloud=""
         		  var desHostIdx = (dropIndex+1);
         		  
         		  List=window.NAPIVcluster.migrationVM(srcHostIdx, srcVmNameIdx, desHostIdx);
-        		  
-//        		  alert("srcHostIdx:"+srcHostIdx+",srcVmNameIdx:"+srcVmNameIdx+",desHostIdx:"+desHostIdx);
+//        		  alert("vm"+(dragIndex+1)+",vm host"+(dragParentIndex+1)+",drop host"+(dropIndex+1));
         	  }
           });
     } 
@@ -325,7 +594,7 @@ theNumberOfCloud=""
 		var firstSpan4 = new String("<div CLASS='cpu_off'><p class='cpuP'>vm-");
 		var secondSpan = new String("</p></div>");
 		
-		simulatorOnHostList = getRunningHostList("vSimulator");
+		simulatorOnHostList = getRunningHostList("vsimulator");
 		simulatorOnHostListSize = simulatorOnHostList.length-1;
 		
 		k=0;
@@ -337,6 +606,7 @@ theNumberOfCloud=""
 				//vmList = new Array();
 				resultList=getHostStatus(stringResult);
 				//resultList = vmList.split(",");
+				//alert(resultList);
 				var lastSpan = new String("");
 				
 				for (j=0; j<resultList.length-1; j++){
@@ -382,7 +652,7 @@ theNumberOfCloud=""
 	///////////////2�������� ȣ��Ʈ�� vm�� ���¸� ���ε� �ϴ� �Լ� //////////////////
 	function changeVmStatus(){
 		$(".cpuSign").remove();
-		simulatorOnHostList = getRunningHostList("vSimulator");
+		simulatorOnHostList = getRunningHostList("vsimulator");
 		simulatorOnHostListSize = simulatorOnHostList.length-1;
 		
 		k=0;
@@ -539,12 +809,16 @@ $(document).ready(function() {
 	statusNumber();
 
 	////////////���� 2������ ������ ���� �⺻ �Լ� ȣ�� ////////////////////
+	
 	subAppendQueueRunning();
 	subAppendQueueWaiting();
-	getVsimulatorDisplay();
+	getvsimulatorDisplay();
 	hostStatusNumber();
 	hostVmStatus();
-		
+	
+	getFermiCloudDisplay();
+	getGCloudDisplay();
+	
 	$("[data-role=page]").live("pagebeforeshow",function(event) { 
 		if(this.id == "intro") { 
 
@@ -553,11 +827,28 @@ $(document).ready(function() {
 
 	    	$('#menuOut').hide();
 			$('#menuBack').hide();
+			
 
 	    }else if(this.id == "hostStatus") { 
 
 	    	$('#menuSubOut').hide();
 			$('#menuSubBack').hide();
+			if(pageNumber=="1"){
+				changeVmStatus();
+	    		hostStatusNumber();
+	    		$("#statusTitle").replaceWith("<div CLASS='statusTitle' ID='statusTitle'>vsimulator Cluster Status</div>");
+	    	}else if(pageNumber=="2"){
+	    		hostFermiStatusNumber();
+	    		FermihostVmStatus();
+	    		//alert("2");
+	    		$("#statusTitle").replaceWith("<div CLASS='statusTitle' ID='statusTitle'>FermiCloud Cluster Status</div>");
+	    	}else if(pageNumber=="3"){
+	    		
+	    		$("#statusTitle").replaceWith("<div CLASS='statusTitle' ID='statusTitle'>Amazon Cloud Cluster Status</div>");
+	    	}else if(pageNumber=="4"){
+	    		changeGCloudStatusNumber();
+	    		$("#statusTitle").replaceWith("<div CLASS='statusTitle' ID='statusTitle'>GCloud Cluster Status</div>");
+	    	} 
     	} 
 
 	});
@@ -586,18 +877,20 @@ $(document).ready(function() {
 			
 			
 	    }else if(this.id == "hostStatus") { 
+	    	//alert(pageNumber);
 	    	if(pageNumber=="1"){
-	    		changeVmStatus();
-	    		hostStatusNumber();
+	    		
 	    		flikering();
 	    		start_reload_second();
 	    		$("#masterP").before("<img src='images/master_running.gif' ID='master_running'>"); 
 	    	}else if(pageNumber=="2"){
 	    		//alert("2");
+	    		flikering();
+	    		//alert(FermiVmList(FermiHostList[2]));
 	    	}else if(pageNumber=="3"){
-	    		
+
 	    	}else if(pageNumber=="4"){
-	    		
+
 	    	}
 			
 	    	//addGif2();
@@ -627,10 +920,11 @@ $(document).ready(function() {
 			//$("#vsimulatorHostStatus").remove();
 			//$("#vsimulatorHost").remove();
 	    }else if(this.id == "hostStatus") { 
+	    	
 	    	if(pageNumber=="1"){
 	    		$("#master_running").remove();
 				window.clearInterval(int2);
-				window.clearInterval(int3);
+				//window.clearInterval(int3);
 	    	}else if(pageNumber=="2"){
 	    		
 	    	}else if(pageNumber=="3"){
@@ -639,6 +933,7 @@ $(document).ready(function() {
 	    		
 	    	}
 	    	//cpuCover
+	    	window.clearInterval(int3);
 			$(".cpuSign").remove();
 			pageNumber=0;
 

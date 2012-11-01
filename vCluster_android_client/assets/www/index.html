@@ -21,11 +21,12 @@
 	
 		
 </head>
-<body>
+<body style="-webkit-user-select: none;">
 
 <!-- Start of first page: #intro -->
 <div data-role="page" id="intro" style="background-image: url(images/default_image.png); background-repeat: no-repeat; background-color:black; height:760px">
-
+	   <div id="alertAction"></div>
+   <div id="confirmAction"></div>
 	<!-- <video autoplay>
   		<source src="images/00_intro.mp4" type="video/mp4">
 		<div id="wrapper" style="width:300px;height:200px;background-color:white;">
@@ -63,12 +64,13 @@
 	
 	<div>
 		<div CLASS="logoSub"><a href="#intro" data-direction="reverse" data-transition="slide"><img src="images/logo_sub.png" ></a></div>
-		<div CLASS="demoButton" ><img src="images/btn_demo.png" ID="demoButton"></div>
-		<div CLASS="menuButton" ><img src="images/btn_menu.png" ID="menuButton"></div>
+		<div CLASS="resetButton" ID="resetButton"></div>
+		<div CLASS="demoButton" ID="demoButton"></div>
+		<div CLASS="menuButton" ID="menuButton"></div>
 	</div>
 
 	<div CLASS="VclusterTopText">
-		<div style="float:left;width:443px" >vsimulator Status</div><div style="float:left;width:220px">Queue Status</div><div style="float:left">Image Repository</div>
+		<div style="float:left;width:443px" >Status</div><div style="float:left;width:220px">Queue Status</div><div style="float:left">Image Repository</div>
 	</div>
 	<div CLASS="VclusterTop">
 		<div CLASS="VclusterStatus" id="VclusterStatus">
@@ -106,7 +108,7 @@
 	
 		<div CLASS="vsimulator">
 			<div CLASS="statusTop" id="statusTop">
-				<p CLASS="title">vsimulator</p><a href="#hostStatus" data-transition="slide"><img src="images/btn_config.png" CLASS="statusConfig" ID="goVsimulatorButton"></a><br>
+				<p CLASS="title">vsimulator</p><a href="#hostStatus" data-transition="slide"><div CLASS="statusConfig" ID="govsimulatorButton"></div></a><br>
 				<p CLASS="subTitle">vsimulator Status</p>
 			</div>
 			<div CLASS="status" id="statusCloudNumber">
@@ -123,7 +125,7 @@
 			
 	
 			<div CLASS="statusTop">
-				<p CLASS="title">FermiCloud</p><a href="#hostStatus" data-transition="slide"><img src="images/btn_config.png" CLASS="statusConfig" ID="goFermiButton"></a><br>
+				<p CLASS="title">FermiCloud</p><a href="#hostStatus" data-transition="slide"><div CLASS="statusConfig" ID="goFermiButton"></div></a><br>
 				<p CLASS="subTitle">FermiCloud Status</p>
 			</div>
 			
@@ -190,7 +192,7 @@
 	<!--Amazon_Cloud 시작-->
 		<div CLASS="Amazon_Cloud">
 			<div CLASS="statusTop">
-				<p CLASS="title">Amazon Cloud</p><a href="#hostStatus" data-transition="slide"><img src="images/btn_config.png" CLASS="statusConfig" ID="goAmazonButton"></a><br>
+				<p CLASS="title">Amazon Cloud</p><a href="#hostStatus" data-transition="slide"><div CLASS="statusConfig" ID="goAmazonButton"></div></a><br>
 				<p CLASS="subTitle">Amazon Cloud Status</p>
 			</div>
 			<div CLASS="status">
@@ -224,7 +226,7 @@
 	<!--GCloud 시작-->
 		<div CLASS="GCloud">
 			<div CLASS="statusTop">
-				<p CLASS="title">GCloud</p><a href="#hostStatus" data-transition="slide"><img src="images/btn_config.png" CLASS="statusConfig" ID="goGcloudButton"></a><br>
+				<p CLASS="title">GCloud</p><a href="#hostStatus" data-transition="slide"><div CLASS="statusConfig" ID="goGcloudButton"></div></a><br>
 				<p CLASS="subTitle">GCloud Status</p>
 			</div>
 			<div CLASS="status">
@@ -288,7 +290,7 @@
 	<div CLASS="menuOut" ID="menuOut" style="display:none;z-index:100007">
 		<div ID="menuPop" CLASS="menuPop" >
 			<p><a href="#status" data-transition="slide" data-direction="reverse" >vcluster Status</a></p>
-			<p id="sgoVsimulatorButton"><a href="#hostStatus" data-transition="slide">vsimulator Status</a></p>
+			<p id="sgovsimulatorButton"><a href="#hostStatus" data-transition="slide">vsimulator Status</a></p>
 			<p><a href="#hostStatus" data-transition="slide">FermiCloud Status</a></p>
 			<p><a href="#hostStatus" data-transition="slide">Amazon Cloud Status</a></p>
 			<p><a href="#hostStatus" data-transition="slide">GCloud Status</a></p>
@@ -312,15 +314,16 @@
 <div data-role="page" id="hostStatus" style="background-image: url(images/sub_back.png); background-repeat: no-repeat; background-color:black; height:760px">   
 	<div>
 		<div CLASS="logoSub"><a href="#status" data-direction="reverse" data-transition="slide"><img src="images/logo_sub.png" ID="logoNew"></a></div>
-		<div CLASS="demoButton" ><img src="images/btn_demo.png" ID="demoSubButton"></div>
-		<div CLASS="menuButton" ><img src="images/btn_menu.png" ID="menuSubButton"></div>
+		<div CLASS="resetButton" ID="resetSubButton"></div>
+		<div CLASS="demoButton" ID="demoSubButton"></div>
+		<div CLASS="menuButton" ID="menuSubButton"></div>
 	</div>
 	
 	<div CLASS="VclusterTopText">
-		<div style="float:left;width:443px" >vSimulator Cluster Status</div><div style="float:left;width:220px">Queue Status</div>
+		<div CLASS="statusTitle" ID="statusTitle">vsimulator Cluster Status</div><div style="float:left;width:220px">Queue Status</div>
 	</div>
 	<div CLASS="VclusterTop">
-		<div CLASS="VclusterStatus" id="VsimulatorclusterStatus">
+		<div CLASS="VclusterStatus" id="vsimulatorclusterStatus">
 			
 		</div>
 		<div CLASS="QueStatus">
@@ -695,568 +698,16 @@
 			
 		</div>
 		<div ID="fermiSub" CLASS="hostSubScroll"  style="display:none">
-			<div CLASS="hostSubCover">
-				<div CLASS="hostSub" >
-					<div CLASS="subHostTop">
-						<img src="images/btn_host_power.png" CLASS="subHost_power" name="Host01">
-						<p CLASS="subHostToptitle">host01</p><br>
-						<p CLASS="subHostTopsubTitle">Host1 Status</p>
-					</div>
-					<div CLASS="subStatus">
-						<div CLASS="subStatusNumber running">
-							123
-						</div>
-						<div CLASS="subStatusNumber idle">
-							45
-						</div>
-						<div CLASS="subStatusNumber unhealthy">
-							160
-						</div>
-						<div CLASS="subStatusNumber available">
-							789
-						</div>
-					</div>
-
-					<div CLASS="cpuCover">
-						<div CLASS="cpu_available">
-							<p class="cpuP" title="vm-04">vm-04</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP" title="vm-05">vm-05</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP" title="vm-01">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP" title="vm-02" time="00:10:13" cpu="Intel(R) Xeon(R) CPU  E5640  @ 2.67GHz" ram="Gbyte">vm-02</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP" title="vm-03" time="00:10:13" cpu="Intel(R) Xeon(R) CPU  E5640  @ 2.67GHz" ram="Gbyte">vm-03</p>
-						</div>
-						<div CLASS="cpu_available">
-							<p class="cpuP" title="vm-04">vm-04</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP" title="vm-05">vm-05</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP" title="vm-06">vm-06</p>
-						</div>
-						<div CLASS="cpu_available">
-							<p class="cpuP" title="vm-07">vm-07</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP" title="vm-08" time="00:10:13" cpu="Intel(R) Xeon(R) CPU  E5640  @ 2.67GHz" ram="Gbyte">vm-08</p>
-						</div>
-						<div CLASS="cpu_available">
-							<p class="cpuP" title="vm-09">vm-09</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP" title="vm-10">vm-10</p>
-						</div>
-					</div>
-				</div>
-				
-				
-				
-				<div CLASS="hostSub">
-					<div CLASS="subHostTop">
-						<img src="images/btn_host_power.png" CLASS="subHost_power"  name="Host04">
-						<p CLASS="subHostToptitle">host02</p><br>
-						<p CLASS="subHostTopsubTitle">Host1 Status</p>
-						
-					</div>
-					<div CLASS="subStatus">
-						<div CLASS="subStatusNumber running">
-							123
-						</div>
-						<div CLASS="subStatusNumber idle">
-							45
-						</div>
-						<div CLASS="subStatusNumber unhealthy">
-							160
-						</div>
-						<div CLASS="subStatusNumber available">
-							789
-						</div>
-					</div>
-					<div CLASS="cpuCover">
-						<div CLASS="cpu_available">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_available">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-					</div>
-				</div>
-				
-				<div CLASS="hostSub">
-					<div CLASS="subHostTop">
-						<img src="images/btn_host_power.png" CLASS="subHost_power"  name="Host05">
-						<p CLASS="subHostToptitle">host03</p><br>
-						<p CLASS="subHostTopsubTitle">Host1 Status</p>
-					</div>
-					
-					<div CLASS="subStatus">
-						<div CLASS="subStatusNumber running">
-							123
-						</div>
-						<div CLASS="subStatusNumber idle">
-							45
-						</div>
-						<div CLASS="subStatusNumber unhealthy">
-							160
-						</div>
-						<div CLASS="subStatusNumber available">
-							789
-						</div>
-					</div>
-					<div CLASS="cpuCover">
-						<div CLASS="cpu_available">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_available">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-					</div>
-				</div>
-				
-				<div CLASS="hostSub">
-					<div CLASS="subHostTop">
-						<img src="images/btn_host_power.png" CLASS="subHost_power"  name="Host06">
-						<p CLASS="subHostToptitle">host04</p><br>
-						<p CLASS="subHostTopsubTitle">Host1 Status</p>
-					</div>
-					
-					<div CLASS="subStatus">
-						<div CLASS="subStatusNumber running">
-							123
-						</div>
-						<div CLASS="subStatusNumber idle">
-							45
-						</div>
-						<div CLASS="subStatusNumber unhealthy">
-							160
-						</div>
-						<div CLASS="subStatusNumber available">
-							789
-						</div>
-					</div>
-					<div CLASS="cpuCover">
-						<div CLASS="cpu_available">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_available">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-					</div>
-				</div>
-				
-				<div CLASS="hostSub">
-					<div CLASS="subHostTop">
-						<img src="images/btn_host_power.png" CLASS="subHost_power"  name="Host07">
-						<p CLASS="subHostToptitle">host05</p><br>
-						<p CLASS="subHostTopsubTitle">Host1 Status</p>
-					</div>
-					
-					<div CLASS="subStatus">
-						<div CLASS="subStatusNumber running">
-							123
-						</div>
-						<div CLASS="subStatusNumber idle">
-							45
-						</div>
-						<div CLASS="subStatusNumber unhealthy">
-							160
-						</div>
-						<div CLASS="subStatusNumber available">
-							789
-						</div>
-					</div>
-					<div CLASS="cpuCover">
-						<div CLASS="cpu_available">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_available">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-					</div>
-				</div>
-				
-				
+			<div CLASS="hostSubCover" id="FermiSubCover">
+	
 				
 			</div>	
 			
 		</div>
 		<div ID="gcloudSub" CLASS="hostSubScroll"  style="display:none">
-			<div CLASS="hostSubCover">
+			<div CLASS="hostSubCover" id="GCloudSubCover">
 				
-				
-				<div CLASS="hostSub">
-					<div CLASS="subHostTop">
-						<img src="images/btn_host_power.png" CLASS="subHost_power"  name="Host02">
-						<p CLASS="subHostToptitle">host01</p><br>
-						<p CLASS="subHostTopsubTitle">Host1 Status</p>
-					</div>
-					<div CLASS="subStatus">
-						<div CLASS="subStatusNumber running">
-							123
-						</div>
-						<div CLASS="subStatusNumber idle">
-							45
-						</div>
-						<div CLASS="subStatusNumber unhealthy">
-							160
-						</div>
-						<div CLASS="subStatusNumber available">
-							789
-						</div>
-					</div>
-					<div CLASS="cpuCover">
-						<div CLASS="cpu_idle">
-							<p class="cpuP" title="vm-01">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP" title="vm-02">vm-02</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP" title="vm-03">vm-03</p>
-						</div>
-						<div CLASS="cpu_available">
-							<p class="cpuP" title="vm-04">vm-04</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP" title="vm-05">vm-05</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP" title="vm-06">vm-06</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP" title="vm-07">vm-07</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP" title="vm-08">vm-08</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP" title="vm-09">vm-09</p>
-						</div>
-						<div CLASS="cpu_available">
-							<p class="cpuP" title="vm-10">vm-10</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP" title="vm-11">vm-11</p>
-						</div>
-						<div CLASS="cpu_available">
-							<p class="cpuP" title="vm-12">vm-12</p>
-						</div>
-					</div>
-				</div>
-				
-				<div CLASS="hostSub">
-					<div CLASS="subHostTop">
-						<img src="images/btn_host_power.png" CLASS="subHost_power"  name="Host03">
-						<p CLASS="subHostToptitle">host02</p><br>
-						<p CLASS="subHostTopsubTitle">Host1 Status</p>
-					</div>
-					<div CLASS="subStatus">
-						<div CLASS="subStatusNumber running">
-							123
-						</div>
-						<div CLASS="subStatusNumber idle">
-							45
-						</div>
-						<div CLASS="subStatusNumber unhealthy">
-							160
-						</div>
-						<div CLASS="subStatusNumber available">
-							789
-						</div>
-					</div>
-					<div CLASS="cpuCover">
-						<div CLASS="cpu_available">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_available">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-					</div>
-				</div>
-				
-				<div CLASS="hostSub">
-					<div CLASS="subHostTop">
-						<img src="images/btn_host_power.png" CLASS="subHost_power"  name="Host04">
-						<p CLASS="subHostToptitle">host03</p><br>
-						<p CLASS="subHostTopsubTitle">Host1 Status</p>
-						
-					</div>
-					<div CLASS="subStatus">
-						<div CLASS="subStatusNumber running">
-							123
-						</div>
-						<div CLASS="subStatusNumber idle">
-							45
-						</div>
-						<div CLASS="subStatusNumber unhealthy">
-							160
-						</div>
-						<div CLASS="subStatusNumber available">
-							789
-						</div>
-					</div>
-					<div CLASS="cpuCover">
-						<div CLASS="cpu_available">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_available">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-					</div>
-				</div>
-				
-				<div CLASS="hostSub">
-					<div CLASS="subHostTop">
-						<img src="images/btn_host_power.png" CLASS="subHost_power"  name="Host05">
-						<p CLASS="subHostToptitle">host04</p><br>
-						<p CLASS="subHostTopsubTitle">Host1 Status</p>
-					</div>
-					
-					<div CLASS="subStatus">
-						<div CLASS="subStatusNumber running">
-							123
-						</div>
-						<div CLASS="subStatusNumber idle">
-							45
-						</div>
-						<div CLASS="subStatusNumber unhealthy">
-							160
-						</div>
-						<div CLASS="subStatusNumber available">
-							789
-						</div>
-					</div>
-					<div CLASS="cpuCover">
-						<div CLASS="cpu_available">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_available">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_unhealthy">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_idle">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-						<div CLASS="cpu_running">
-							<p class="cpuP">vm-01</p>
-						</div>
-					</div>
-				</div>
-				
-				
-				
-				
+	
 				
 			</div>	
 			
@@ -1292,7 +743,7 @@
 	<div CLASS="menuOut" ID="menuSubOut" style="display:none;z-index:100006">
 		<div CLASS="menuPop" >
 			<p><a href="#status" data-transition="slide" data-direction="reverse" >vcluster Status</a></p>
-			<p id="subgoVsimulatorButton">vsimulator Status</p>
+			<p id="subgovsimulatorButton">vsimulator Status</p>
 			<p id="subgoFermiButton">FermiCloud Status</p>
 			<p><a href="#hostStatus" data-transition="slide">Amazon Cloud Status</a></p>
 			<p><a href="#hostStatus" data-transition="slide">GCloud Status</a></p>

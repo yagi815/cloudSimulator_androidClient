@@ -132,6 +132,9 @@ public class Simulator {
 		case 37:
 			returnObj  =	simManager.setIdle(parameter );			
 			break;
+		case 38:
+			returnObj  =	simManager.setUnHealthy(parameter );			
+			break;
 			
 			// VM SPEC
 		case 40:

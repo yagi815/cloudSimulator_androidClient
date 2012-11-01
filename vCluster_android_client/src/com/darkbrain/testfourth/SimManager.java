@@ -3,34 +3,19 @@ package com.darkbrain.testfourth;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R.integer;
 import android.util.Log;
 
-//import kisti.vSimulator.MachineContainer.HostMachine;
-import com.darkbrain.testfourth.HostMachine;
 
 
-/**
- * <pre>
- * SimManager
- *   |_ SimManager.java
- * 
- * </pre>
- * 
- * Desc :
- * 
- * @Company : KISTI
- * @Author :grkim
- * @Date :2012. 9. 11. ���� 5:12:49
- * @Version:
- * 
- */
+
 public class SimManager implements Runnable {
 
-	// host ���� ����Ʈ
+	// 
 	private HostMachine[] mainHostContainer;
 
 	
-	// ����Ʈ ���� ���� * ��å ���� ����.		
+	// 		
 	final private String cloudName = "vSimulator";
 	private static List hostList;
 	private static List vmList;
@@ -261,7 +246,7 @@ public class SimManager implements Runnable {
 			tmp = createVmName.split("[-]");
 			host = mainHostContainer[getHostIndex(tmp[0])];
 //			System.out.println("name>>>----------"+createVmName);
-			Log.d("SimManager", "name>>---"+createVmName);
+			Log.d("SimManager", "createNewVirtualMachine>>---"+createVmName);
 			host.addVM(createVmName);
 			return "1";
 			
@@ -334,9 +319,15 @@ public class SimManager implements Runnable {
 				availableVmList.addAll(host.getAvailableVmList());
 			}
 			return availableVmList;			
-		}else {
-			host = mainHostContainer[getHostIndex(hostName)];
-			return host.getAvailableVmList();
+		}else {// 없을 경우 -1 리턴 한다. 이때 에러 발생!!!!!!!!!!!!!!!!!! 
+//			host = mainHostContainer[getHostIndex(hostName)];
+//			return host.getAvailableVmList();
+			int idx = getHostIndex(hostName);
+			if (idx <0) {
+				return null;
+			}
+			host = mainHostContainer[idx];
+			return host.getIdleVmList();
 		}
 	}
 
@@ -390,16 +381,24 @@ public class SimManager implements Runnable {
 	
 	public List getIdleVmList(String hostName) {
 		HostMachine host;
+		List idleVmList = new ArrayList();
+		
 		if (hostName.equals("-")) {
 			List runnHost = getRunningHostList();
-			List idleVmList = new ArrayList();
-			for (int i = 0; i < runnHost.size(); i++) {
-			 	host = mainHostContainer[getHostIndex((String) runnHost.get(i))];
-				idleVmList.addAll(host.getIdleVmList());
+			if (runnHost != null) {				
+				for (int i = 0; i < runnHost.size(); i++) {
+				 	host = mainHostContainer[getHostIndex((String) runnHost.get(i))];
+					idleVmList.addAll(host.getIdleVmList());
+				}
 			}
+			
 			return idleVmList;			
-		} else {
-			host = mainHostContainer[getHostIndex(hostName)];
+		} else { // 없을 경우 -1 리턴 한다. 이때 에러 발생!!!!!!!!!!!!!!!!!! 
+			int idx = getHostIndex(hostName);
+			if (idx <0) {
+				return null;
+			}
+			host = mainHostContainer[idx];
 			return host.getIdleVmList();
 		}
 	}
@@ -486,26 +485,42 @@ public class SimManager implements Runnable {
 	}
 	
 	public String getJobName(String virtualMachine){
+		Log.d("getJobName", "getJobName >>"+virtualMachine);
 		HostMachine host;
-		String[] tmp = new String[2];
-		tmp = virtualMachine.split("[-]");
-		String hName = tmp[0];
-		String vName = tmp[1];
-		if (isContainVirtualMachine(vName)) {
-			host = mainHostContainer[getHostIndex(hName)];
+//		String[] tmp = virtualMachine.split("[-]");
+//		String hName = tmp[0];
+//		String vName = tmp[1]; /host01-vm01
+		String hName = virtualMachine.substring(0, 6);
+//		String vName = virtualMachine.substring(7, 11);
+//		Log.d("getJobName","hNAme:"+hName+",vName:"+vName);
+		if (isContainVirtualMachine(virtualMachine)) {
+			
+			int idx = getHostIndex(hName);
+			if (idx < 0) {
+				return null;
+			}
+			host = mainHostContainer[idx];			
 			return host.getJobName(virtualMachine);
 		}
 		return null;
+//		return "job001";
 	}
 	public String setIdle(String virtualMachine){
 		HostMachine host;
-		String[] tmp = new String[2];
-		tmp = virtualMachine.split("[-]");
-		String hName = tmp[0];
-		String vName = tmp[1];
-		if (isContainVirtualMachine(vName)) {
-			host = mainHostContainer[getHostIndex(hName)];
+//		String[] tmp = virtualMachine.split("[-]");
+//		String hName = tmp[0];
+//		String vName = tmp[1];
+		String hName = virtualMachine.substring(0, 6);
+//		String vName = virtualMachine.substring(7, 11);
+		if (isContainVirtualMachine(virtualMachine)) {
+			int idx = getHostIndex(hName);
+			if (idx < 0) {
+				return null;
+			}
+			host = mainHostContainer[idx];
+			Log.d("aaa", "hostName:"+host.getHostName());
 			host.setIdle(virtualMachine);
+			Log.d("aaa", "setIdle:"+virtualMachine);
 			return "1";
 		}
 		return null;
@@ -608,15 +623,22 @@ public class SimManager implements Runnable {
 	// ******************************************************************
 
 	
-	public String jobSubmit(String jobName_hostName){//jobName:hostName
+	public String jobSubmit(String param){//jobName:hostName
+		
+		String tmp_01[] = new String[2];
+		tmp_01 = param.split("[-]");
+		int runningTime = Integer.parseInt(tmp_01[0]);
+		final int SECOND = 1000;
+		
+		String jobName_hostName = tmp_01[1];
 		
 		if (jobName_hostName.contains(":")) {//jobName:hostName
 			
-			String temp[] = new String[2];
-			temp = jobName_hostName.split("[:]");
+			String tem_02[] = new String[2];
+			tem_02 = jobName_hostName.split("[:]");
 			
 			//특정 호스트에 job submit 한다. 
-			List list = getIdleVmList(temp[1]);
+			List list = getIdleVmList(tem_02[1]);
 			
 			if (list != null) {
 				if (list.isEmpty()) {
@@ -625,8 +647,9 @@ public class SimManager implements Runnable {
 				
 				String virtualMachine = (String)list.get(0);
 				HostMachine host;
-				host = mainHostContainer[getHostIndex(temp[1])];
-				host.submitJob(jobName_hostName, this.jobRunningTime);
+				host = mainHostContainer[getHostIndex(tem_02[1])];
+//				host.submitJob(jobName_hostName, this.jobRunningTime);
+				host.submitJob(jobName_hostName, runningTime*SECOND);
 				return "1";
 				
 			}
@@ -646,10 +669,11 @@ public class SimManager implements Runnable {
 				String virtualMachine = (String) list.get(0);
 
 				HostMachine host;
-				String[] tmp = virtualMachine.split("[-]");
+				String[] tmp_03 = virtualMachine.split("[-]");
 				if (isContainVirtualMachine(virtualMachine)) {
-					host = mainHostContainer[getHostIndex(tmp[0])];
-					host.submitJob(jobName_hostName, this.jobRunningTime);
+					host = mainHostContainer[getHostIndex(tmp_03[0])];
+//					host.submitJob(jobName_hostName, this.jobRunningTime);
+					host.submitJob(jobName_hostName, runningTime*SECOND);
 					return "1";
 				}
 			}

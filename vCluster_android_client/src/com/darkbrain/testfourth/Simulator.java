@@ -44,9 +44,7 @@ public class Simulator {
 		
 		returnObj = "";
 		
-		/*
-		 * ��ɾ� �Ľ��ؼ� �ų��� �żҵ� ȣ�� �Ѵ�. 
-		 */
+		
 		String typeOfCommand = command.substring(0, 2);
 		String parameter = command.substring(3, command.length());
 		
@@ -157,7 +155,7 @@ public class Simulator {
 		case 46:
 			returnObj  =	simManager.getVMUUID(parameter);			
 			break;
-					
+
 			// MANIPULATION
 		case 80:
 			returnObj  =	simManager.jobSubmit(parameter);
@@ -175,6 +173,7 @@ public class Simulator {
 		
 		return returnObj;		
 	}
+
 
 	
 }

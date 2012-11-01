@@ -7,25 +7,8 @@ import android.util.Log;
 
 //import kisti.vSimulator.Simulator;
 
-import com.darkbrain.testfourth.Simulator;
 
-/**
- * <pre>
- * API
- *   |_ API_for_vcluster.java
- * 
- * </pre>
- * 
- * Desc : Vcluster �� ��� �� vsimulator �����ϴ� API�̴�. <br>
- * ���� Ŭ������ �ùķ����Ϳ��� �ʿ��� ��� �����͸� <br>
- * ��û�ϰ� �޾ƿ´�.
- * 
- * @Company : KISTI
- * @Author :grkim
- * @Date :2012. 8. 10. ���� 2:43:57
- * @Version: 1.0
- * 
- */ 
+
 
 
 
@@ -256,10 +239,10 @@ public class API_vcluster {
 //		2-UnHealthyVM, 
 
 		// host01-vm01 .... 
-		System.out.println("hostNAme:"+hostName);
+//		System.out.println("hostNAme:"+hostName);
 		
 		String result = (String)requestToSimulator("07:-");		
-		Log.d("test", "result:"+result);
+//		Log.d("test", "result:"+result);
 		
 		int totalVM = Integer.parseInt(result);
 		if (hostName.equals("host01")) {
@@ -335,12 +318,12 @@ public class API_vcluster {
 	// MANIPULATION 8X:
 	// ******************************************************************
 	
-	public String jobSubmit(String jobName) {
-		return (String) requestToSimulator("80:" + jobName);
+	public String jobSubmit(int runningTime, String jobName) {
+		return (String) requestToSimulator("80:"+ runningTime+"-" + jobName);
 	}
-	public String jobSubmit(String HostName, String jobName) {
-		return (String) requestToSimulator("81:"+HostName+":"+jobName);		
-	}
+//	public String jobSubmit(String HostName, String jobName) {
+//		return (String) requestToSimulator("81:"+HostName+":"+jobName);		
+//	}
 
 	public List getJobRunningList(String hostName){
 		List getJobRunningList = new ArrayList();

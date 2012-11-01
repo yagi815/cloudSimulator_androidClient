@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.cordova.DroidGap;
 
+import android.util.Log;
 import android.webkit.WebView;
 
 public class API_android {
@@ -83,20 +84,16 @@ public class API_android {
 	}
 	public String getCurrentBusyVmList(String hostMame) {
 		return API.newgetBusyVmList(hostMame);
-	}
-	
+	}	
 	public String getCurrentRunningVmList(String hostMame) {
 		return API.newgetRunningVmList(hostMame);
-	}
-	
+	}	
 	public String getCurrentIdleVmList(String hostMame) {
 		return API.newgetIdleVmList(hostMame);
-	}
-	
+	}	
 	public String getCurrentAvailableVmList(String hostMame) {
 		return API.newgetAvailableVmList(hostMame);
-	}
-	
+	}	
 	public  String getCurrentUnhealthyVmList(String hostMame) {
 		return API.newgetUnhealthyVmList(hostMame);
 	}
@@ -124,11 +121,22 @@ public class API_android {
 	public String getTotalVMs(){
 		return API.getTotalVMs();
 	}
-	public void migrationVM(String srcVM, String desHost){
-		API.migrationVirtualMachine(srcVM, desHost);
+	public void migrationVM(int srcHostIdx, int srcVmNameIdx, int desHostIdx){
+		String srcHostName =  String.format("host%02d",srcHostIdx);
+		String srcVmName=  String.format("vm%02d",srcVmNameIdx);
+		String desHostName =  String.format("host%02d",desHostIdx);
+		
+		
+		t_vCluster.migrationVM(srcHostName, srcVmName, desHostName);
+//		Log.d("aaa","srcHost:"+srcHostName+",srcVmName:"+srcVmName+",desHost:"+desHostName);
+		mAppView.loadUrl("javascript:start_reload_second()"); 
 	}
 	public String getHostStatus(String hostName){
 		return API.getHostStatus(hostName);
+	}
+	public void alertTestJava(){	
+		//return "test";
+		mAppView.loadUrl("javascript:alertTest()"); 
 	}
 
 }

@@ -4,21 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-/**
- * <pre>
- * MachineContainer
- *   |_ HostMachine.java
- * 
- * </pre>
- * 
- * Desc :
- * 
- * @Company : KISTI
- * @Author :grkim
- * @Date :2012. 9. 11. ���� 11:03:46
- * @Version:
- * 
- */
+
 public class HostMachine {
 
 	// private String cloudName = "vSimulator";
@@ -67,7 +53,7 @@ public class HostMachine {
 			VirtualMachine vm = (VirtualMachine) virtualMachineList.get(i);
 			if (vm.getVmName().equals(virtualMachine)) {
 
-				// Thread �� ���ƾ� �Ѵ�.
+				// Thread �� ���ƾ� �Ѵ.
 				// boolean IS_EXIT=true;
 				// while (IS_EXIT) {
 				// if (vm.getVmPower().equals("off")) {
@@ -117,12 +103,7 @@ public class HostMachine {
 	public synchronized int getRunningVMs(){
 		return virtualMachineList.size();
 	}
-	/**
-	 * Desc : ����� ���ͼ� �������� ����ӽ� ����Ʈ (running, idel, fail ��� ����)
-	 * @Method Name : getPowerOnVMlist
-	 * @return ����� ���� ����ӽ� ����Ʈ <br> EX) "host01-vm01","host02-vm03"
-	 * 
-	 */
+
 	public synchronized List getRunningVmList() {
 		List runningVMlist = new ArrayList();
 		for (int i = 0; i < virtualMachineList.size(); i++) {
@@ -133,12 +114,7 @@ public class HostMachine {
 		}
 		return runningVMlist;
 	}	
-//	/**
-//	 * Desc : Job�� ���� ���� ����ӽ� ����Ʈ 
-//	 * @Method Name : getRunningVMsList
-//	 * @return Job�������� ����ӽ� ����Ʈ <br> EX) "host01-vm02", "host02-vm02"
-//	 * 
-//	 */
+
 //	public synchronized List getRunningVMsList() {
 //		List runningList = new ArrayList();
 //		for (int i = 0; i < virtualMachineList.size(); i++) {
@@ -149,12 +125,7 @@ public class HostMachine {
 //		}
 //		return runningList;
 //	}	
-	/**
-	 * Desc :  Job�� ���� ���� ����ӽ� ����Ʈ
-	 * @Method Name : getBusyVmList
-	 * @return Job�������� ����ӽ� ����Ʈ <br> EX) "host01-vm02", "host02-vm02"
-	 * 
-	 */
+
 	public synchronized List getBusyVmList() {
 		List busyList = new ArrayList();
 		for (int i = 0; i < virtualMachineList.size(); i++) {
@@ -175,12 +146,7 @@ public class HostMachine {
 		}
 		return jobList;
 	}
-	/**
-	 * Desc : Job�� �������� 
-	 * @Method Name : getIdleVMs
-	 * @return
-	 * 
-	 */
+
 	public synchronized List getIdleVmList() {
 		List idleList = new ArrayList();
 		for (int i = 0; i < virtualMachineList.size(); i++) {
@@ -191,12 +157,7 @@ public class HostMachine {
 		}
 		return idleList;
 	}
-	/**
-	 * Desc : healthy ����ӽ� ����Ʈ ��ȯ
-	 * @Method Name : getHealthyVmList
-	 * @return healthy ����ӽ� ����Ʈ <br> EX) "host01-vm001"
-	 * 
-	 */	
+	
 	public synchronized List getHealthyVmList() {
 		List healthyList = new ArrayList();
 		for (int i = 0; i < virtualMachineList.size(); i++) {
@@ -207,12 +168,7 @@ public class HostMachine {
 		}
 		return healthyList;
 	}
-	/**
-	 * Desc : unHealthy �� ����ӽ� �ӽ� ����Ʈ ��ȯ 
-	 * @Method Name : getUnHealthyVmList
-	 * @return unHealthy ���� �ӽ� ����Ʈ ��ȯ <br> EX) "host03-vm03"
-	 * 
-	 */
+
 	public synchronized List getUnHealthyVmList() {
 		List unHealthyList = new ArrayList();
 		for (int i = 0; i < virtualMachineList.size(); i++) {
@@ -223,12 +179,7 @@ public class HostMachine {
 		}
 		return unHealthyList;
 	}
-	/**
-	 * Desc : ��밡���� ����ӽ� ����Ʈ ��ȯ
-	 * @Method Name : getAvailableVmList
-	 * @return ��밡���� ����ӽ� ����Ʈ ��ȯ <br> EX) "host03-vm03","host04-vm02"
-	 * 
-	 */
+
 	public synchronized List getAvailableVmList() {
 		List availableList = new ArrayList();
 
@@ -253,12 +204,7 @@ public class HostMachine {
 		}
 		return availableList;
 	}
-	/**
-	 * Desc : fail �� ����ӽ� ����Ʈ ��ȯ
-	 * @Method Name : getFailVmList
-	 * @return fail ����ӽ� ����Ʈ ��ȯ  <br> EX) "host03-vm04"
-	 * 
-	 */
+	
 	public synchronized List getFailVmList() {
 		List failList = new ArrayList();
 		for (int i = 0; i < virtualMachineList.size(); i++) {
@@ -340,6 +286,9 @@ public class HostMachine {
 		if (isContainVirtualMachine(virtualMachine)) {
 //			return getVM(virtualMachine).getJobName();
 			getVM(virtualMachine).setVmIdle();
+			System.out.println("============================================================");
+			System.out.println("=================================setIdle>>"+getVM(virtualMachine).getVmName());
+			System.out.println("============================================================");
 		}
 		return null;
 	}

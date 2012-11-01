@@ -9,7 +9,7 @@ public class tiny_vCluster {
 
 	private static int maxQueue = 1000;;
 	private static int queue = 0;
-	private static int running;
+	private static int runningTime=0;
 	private static int cnt = 1;
 
 	private API_vcluster API;
@@ -38,26 +38,36 @@ public class tiny_vCluster {
 
 	public void demoStop() {
 		// not yet impleted.
+		// 
 	}
 
 	public void demoStart() {
-
+		demoScenario01();		
+	}
+	private void demoScenario01(){
 		final Random random = new Random();
 		final int nJob = random.nextInt(10);
+		final int runningTime = 50+random.nextInt(10);
+				
+		this.runningTime = runningTime;
 
-		reductionResorce(); // call reductionResouce
+		reductionResorce(); 
 
-		for (int i = 0; i < 20; i++) {
-			job_submit(10 + nJob); // 10�ʿ� �ѹ�
-			Log.d("tiny_vCluster", 7 + nJob + "�� job is submitted.");
+		for (int i = 0; i < 5; i++) {
+			job_submit(10 + nJob, this.runningTime);			
 			try {
-				Thread.sleep(500);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
 
 	}
+	private void demoScenario02(){
+		
+	}
+	
+	
 	public void reductionResorce() {
 
 		new Thread(new Runnable() {
@@ -96,32 +106,36 @@ public class tiny_vCluster {
 	 * Desc :
 	 * 
 	 * @Method Name  : migrationVM
-	 * @param srcVM
+	 * @param srcVmName
 	 * @param desHost
 	 */
-	public void migrationVM(String srcHost, String srcVM, String desHost) {
+	public void migrationVM(String srcHost, String srcVmName, String desHost) {
 		List idleList = API.getIdleVmList(desHost);
 		List availList = API.getAvailableVmList(desHost);
-		String jobName = API.getJobName(srcHost+srcVM);
+		String jobName = API.getJobName(srcHost+"-"+srcVmName);
 		String desVM = "";
 		String srcJobName = "";
 		
 		if (!idleList.isEmpty()) {	//비어 있지 않으면 처리 
 			desVM = (String)idleList.get(0);
+			Log.d("aaa","idleList is not empty");
 		}else if(!availList.isEmpty()){ //비어 있지 않으면 처리 
 			desVM = (String)availList.get(0);
+			Log.d("aaa","availlist is not empty");
 		}else{
 			//nothing to do 
+			Log.d("aaa","nothing to do ");
 		}
 		// get src jobName
-		API.getJobName(srcHost+":"+srcVM);
+//		API.getJobName(srcHost+"-"+srcVmName);
 
 		
 		// resubmit job
-		String result = (String)API.jobSubmit(jobName+":"+desHost);
+		String result = (String)API.jobSubmit(this.runningTime, jobName+":"+desHost);
+		Log.d("aaa", "resubmit Job:"+desHost+"-"+jobName);
 		if (  result.equals("1")){
 		// setBusy -> idle
-			API.setIdle(srcHost+":"+srcVM);
+			API.setIdle(srcHost+"-"+srcVmName);
 		// refresh screen 
 		}
 
@@ -130,7 +144,7 @@ public class tiny_vCluster {
 	public void troubleMaker(int numberOfTrouble, String hostName, String vmName) {
 
 	}
-	public void job_submit(int num) {
+	public void job_submit(int num, int runningTime) {
 
 		int runningJobs = getRunninJobs();
 		int availSlots = getAvailableSlots();
@@ -153,7 +167,8 @@ public class tiny_vCluster {
 		while (!jobQueue.isEmpty()) {
 
 			if (idleVMs > remainJob) {
-				API.jobSubmit(jobQueue.deQueue());
+//				API.jobSubmit(jobQueue.deQueue()+":"+runningTime);
+				API.jobSubmit(runningTime, jobQueue.deQueue());
 				setQueue(getQueue() - 1);
 
 				remainJob--;
@@ -285,7 +300,7 @@ class JobQueue {
 	}
 
 	public boolean isFull() {
-		// �Ա����� �ⱸ�� �������� 1ĭ ���̸� ���� �� ���̴�.
+	
 		if ((front + 1) % size == rear) {
 			return true;
 		} else {
@@ -294,7 +309,7 @@ class JobQueue {
 	}
 
 	public boolean isEmpty() {
-		// �Ա��� �ⱸ�� ������ ����ִ°��̴�.
+	
 		if (front == rear) {
 			return true;
 		} else {

@@ -60,7 +60,7 @@ public class VirtualMachine implements Runnable{
 		
 		Thread t = new Thread(this);
 		t.start();
-		System.out.println("vm created by host.......................");
+		
 	}
 	
 	public void run() {
@@ -154,7 +154,7 @@ public class VirtualMachine implements Runnable{
 		return jobName;
 	}
 	
-	public synchronized String getVmBusy() {
+	public  String getVmBusy() {
 		return vmBusy;
 	}
 
@@ -203,8 +203,11 @@ public class VirtualMachine implements Runnable{
 	public synchronized void setVmBusy(String vmBusy) {
 		this.vmBusy = vmBusy;
 	}
-	public synchronized void setVmIdle() {
-		this.vmBusy = "idle";
+	public  void setVmIdle() {
+		System.out.println("===============================================");
+		System.out.println("===============================================");
+		this.vmBusy = "idle";		
+		System.out.println(this.vmName+"is setted. with "+this.vmBusy);
 	}
 
 	public synchronized void setVmHealthy(String vmUnhealthy) {

@@ -41,11 +41,15 @@ public class tiny_vCluster {
 		// 
 	}
 
-	public void demoStart() {
-//		demoScenario01();		
-		demoScenario02();		
-	}
-	private void demoScenario01(){
+//	public void demoStart1() {
+////		demoScenario01();		
+////		demoScenario02();		
+//	}
+//	public void demoStart2() {
+////		demoScenario01();		
+////		demoScenario02();		
+//	}
+	public void demoStart1(){
 		/*
 		 * 10~20개 job을 5회에 걸쳐서 submit  
 		 * 
@@ -59,8 +63,8 @@ public class tiny_vCluster {
 
 		reductionResorce(); 
 
-		for (int i = 0; i < 5; i++) {
-			job_submit(10 + nJob, this.runningTime);			
+		for (int i = 0; i < 10; i++) {
+			job_submit(15, this.runningTime);			
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
@@ -68,7 +72,7 @@ public class tiny_vCluster {
 			}
 		}
 	}
-	private void demoScenario02(){
+	public void demoStart2(){
 		/*
 		 * host01 에 10개 60초 동안 
 		 * host02에 10개 60초 동안
@@ -76,6 +80,10 @@ public class tiny_vCluster {
 		 * 
 		 *  host02에 unHealthy 발생 
 		 *  손으로 이동 양쪽으로 host02자동으로 꺼짐 
+		 *  
+		 *  
+		 *  host05에 데이터 하나일 경우 다른쪽으로 job 마이그레이션 하고 
+		 *  전원 off 한다. 
 		 */
 		
 		job_submit(25, 60);
@@ -89,6 +97,12 @@ public class tiny_vCluster {
 		API.jobSubmit(60, "50.job"+":"+"host04");
 		API.jobSubmit(60, "51.job"+":"+"host04");
 //		API.jobSubmit(60, "52.job"+":"+"host04");
+		API.turnOnHostMachine("host05");
+		API.createNewVirtualMachine("host05-vm01");
+		API.createNewVirtualMachine("host05-vm02");
+		API.createNewVirtualMachine("host05-vm03");
+		API.jobSubmit(60, "60.job"+":"+"host05");
+		API.jobSubmit(60, "61.job"+":"+"host05");
 		try {Thread.sleep(10000);} catch (InterruptedException e) {e.printStackTrace();}
 		API.setUnHealthy("host04-vm04");
 		reductionResorce();

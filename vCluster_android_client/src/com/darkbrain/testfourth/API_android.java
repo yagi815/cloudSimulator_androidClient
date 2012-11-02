@@ -105,11 +105,19 @@ public class API_android {
 		list.add("Ligo_OS_Image");
 		return list;
 	}		
-	public void demoStart(){
+	public void demoStart1(){
 		new Thread(new Runnable() {
 			
 			public void run() {		
-				t_vCluster.demoStart();					
+				t_vCluster.demoStart1();					
+			}			
+		}).start();			
+	}	
+	public void demoStart2(){
+		new Thread(new Runnable() {
+			
+			public void run() {		
+				t_vCluster.demoStart2();					
 			}			
 		}).start();			
 	}	

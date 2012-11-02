@@ -38,19 +38,20 @@ body, html{
 	padding:34px 0px 0px 40px;
 }
 .resetButton {
-	background-image: url('images/btn_reset.png');
+	background-image: url('images/btn_demo1.png');
 	float:left;
+	
 	//background-color:#FFFFFF;
-	margin:60px 0px 0px 740px;
-	width: 77px;
+	margin:60px 0px 0px 730px;
+	width: 76px;
  	height:41px;
 }
 .resetButton:active {
-	background-image: url('images/btn_reset_over.png');
+	background-image: url('images/btn_demo1_over.png');
 	float:left;
 	//background-color:#FFFFFF;
-	margin:60px 0px 0px 740px;
-	width: 77px;
+	margin:60px 0px 0px 730px;
+	width: 76px;
  	height:41px;
 }
 .menuButton {
@@ -58,7 +59,7 @@ body, html{
 	float:left;
 	//background-color:#FFFFFF;
 	margin:60px 0px 0px 0px;
-	width: 75px;
+	width: 77px;
  	height:41px;
 }
 .menuButton:active {
@@ -66,21 +67,22 @@ body, html{
 	float:left;
 	//background-color:#FFFFFF;
 	margin:60px 0px 0px 0px;
-	width: 75px;
- 	height:41px;
-}
-.demoButton {
-	background-image: url('images/btn_demo.png');
-	float:left;
-	//background-color:#FFFFFF;
-	margin:60px 0px 0px 0px;
 	width: 77px;
  	height:41px;
 }
+.demoButton {
+	background-image: url('images/btn_demo2.png');
+	float:left;
+	
+	//background-color:#FFFFFF;
+	margin:60px 10px 0px 0px;
+	width: 76px;
+ 	height:41px;
+}
 .demoButton:active {
- 	background-image: url('images/btn_demo_over.png');
- 	margin:60px 0px 0px 0px;
- 	width: 77px;
+ 	background-image: url('images/btn_demo2_over.png');
+ 	margin:60px 10px 0px 0px;
+ 	width: 76px;
  	height:41px;
 
 }
@@ -422,7 +424,7 @@ body, html{
 	
 	//margin:12px 0px 0px 34px;
 	//background-color:red;
-	width:2625px;
+	width:2611px;
 	height:477px;
 }
 .hostSubScroll{
@@ -431,20 +433,20 @@ body, html{
 	//overflow-x:hidden;
 	//overflow-y:hidden;
 	overflow:scroll; 
-	width:1210px; 
+	width:1211px; 
 	height:477px;
 }
 .hostSub{
-	//background-color:bule;
-	margin-right:4px;
+	background-color:bule;
+	margin-right:14px;
 	float:left;
 	background:url("images/host_sub_back.png") 0 0 no-repeat;
-	width:171px;
+	width:161px;
 	height:477px;
 }
 
 .hostSubOver{
-	background-color:bule;
+	//background-color:bule;
 	margin-right:4px;
 	float:left;
 	background:url("images/host_sub_back_over.png") 0 0 no-repeat;
@@ -502,7 +504,7 @@ body, html{
 .subHostTopsubTitle{
 	margin:21px 0px 0px 12px;
 	//background-color:#FFFFFF;
-	width:140px;
+	width:148px;
 	font-size:12px;
 	color:#FFFFFF;
 	text-shadow: none;
@@ -510,10 +512,10 @@ body, html{
 }
 .subStatus {
 	//clear:both;
-	width:160px;
+	width:140px;
 	
-	padding:17px 0px 0px 18px;
-	//background-color:#FFFFFF;
+	margin:17px 0px 0px 23px;
+	background-color:#FFFFFF;
 	text-shadow: -1px -1px 0px #111,
                  0px 0px 1px #999;
 }
@@ -541,12 +543,13 @@ body, html{
 
 }
 .subStatusNumber {
+	float:left;
 	//background-color:#FFFFFF;
 	width:56px;
 	height:25px;
 	float:left;
 	text-align:right;
-	margin:10px 8px 11px 7px;
+	margin:10px 8px 11px 5px;
 	letter-spacing: 11px;
 }
 

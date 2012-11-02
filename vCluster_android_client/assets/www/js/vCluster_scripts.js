@@ -101,19 +101,28 @@ function alertTest(){
 			var secondSpan = new String("</p><br><p CLASS='subHostTopsubTitle'>");
 			var thirdSpan = new String(" Status</p></div><div CLASS='subStatus'></div><div CLASS='cpuCover'></div>");
 			$(firstSpan+stringchangeResult+secondSpan+stringchangeResult+thirdSpan).appendTo("#FermiSubCover");
-			
+			$("#FermiSubCover").css("width",FermiHostListSize*175-14+"px");
+			if(j+1==FermiHostListSize){
+				$("#FermiSubCover").children().eq(j).css("margin-right" , "0px");
+			}
 		}
 		
 	}
 	
 	function getGCloudDisplay(){
 		
-		for (j=0; j<GCloudHostList; j++){
+		//alert(GCloudHostListSize);
+		for (j=0; j<GCloudHostListSize; j++){
+			
 			stringchangeResult = GCloudHostList[j];
 			var firstSpan = new String("<div CLASS='hostSub'><div CLASS='subHostTop'><p CLASS='subHostToptitle'>");
 			var secondSpan = new String("</p><br><p CLASS='subHostTopsubTitle'>");
 			var thirdSpan = new String(" Status</p></div><div CLASS='subStatus'></div><div CLASS='cpuCover'></div>");
 			$(firstSpan+stringchangeResult+secondSpan+stringchangeResult+thirdSpan).appendTo("#GCloudSubCover");
+			$("#GCloudSubCover").css("width",GCloudHostListSize*175-14+"px");
+			if(j+1==GCloudHostListSize){
+				$("#GCloudSubCover").children().eq(j).css("margin-right" , "0px");
+			}
 			
 		}
 		
@@ -168,62 +177,55 @@ function alertTest(){
 		simulatorOnHostListSize = null;
 	}
 	
-	function FermihostVmStatus(){
+	function hostGStatusNumber(){
 		
-		var firstSpan0 = new String("<div CLASS='cpu_running'><p class='cpuP'>vm-");
-		var firstSpan1 = new String("<div CLASS='cpu_idle'><p class='cpuP'>vm-");
-		var firstSpan2 = new String("<div CLASS='cpu_unhealthy'><p class='cpuP'>vm-");
-		var firstSpan3 = new String("<div CLASS='cpu_available'><p class='cpuP'>vm-");
-		var firstSpan4 = new String("<div CLASS='cpu_off'><p class='cpuP'>vm-");
-		var secondSpan = new String("</p></div>");
+		simulatorOnHostList = GCloudOnHostList;
+		simulatorOnHostListSize = GCloudOnHostListSize;
 		
-		simulatorOnHostList = FermiOnHostList;
-		simulatorOnHostListSize = FermiOnHostListSize;
-		
+		changeNumberOfCloudRunnig = 0;
+		changeNumberOfCloudIdle = 0;
+		changeNumberOfCloudUnhealthy = 0;
+		changeNumberOfCloudAvailable = 0;
 		k=0;
-		for (i=0; i<FermiHostListSize; i++){
-			
+		for (i=0; i<simulatorHostListSize; i++){
 			var stringResult = simulatorOnHostList[k];
 			//var stringResult = numberResult.toString();
-			if(FermiHostList[i]==stringResult){
-				var lastSpan = new String("");
+			
+			if(GCloudHostList[i]==stringResult){
+				GCloudVmRunnigNumber=0;
+				GCloudVmIdleNumber=0;
+				GCloudVmUnhealthyNumber=0;
+				GCloudVmAvailbleNumber=0;
 				for (j=0; j<12; j++){
-					if(FermiVmList(stringResult)[j]==0){
-
-						lastSpan += firstSpan0+changeNum(j+1)+secondSpan;
-					}else if(FermiVmList(stringResult)[j]==1){
-
-						lastSpan += firstSpan1+changeNum(j+1)+secondSpan;
-					}else if(FermiVmList(stringResult)[j]==2){
-
-						lastSpan += firstSpan2+changeNum(j+1)+secondSpan;
-					}else if(FermiVmList(stringResult)[j]==3){
-
-						lastSpan += firstSpan3+changeNum(j+1)+secondSpan;
+					//alert(GCloudVmList(stringResult)[j]);
+					if(GCloudVmList(stringResult)[j]==0){
+						changeNumberOfCloudRunnig+=1;
+						GCloudVmRunnigNumber++
+					}else if(GCloudVmList(stringResult)[j]==1){
+						changeNumberOfCloudIdle+=1;
+						GCloudVmIdleNumber++
+					}else if(GCloudVmList(stringResult)[j]==2){
+						changeNumberOfCloudUnhealthy+=1;
+						GCloudVmUnhealthyNumber++
+					}else if(GCloudVmList(stringResult)[j]==3){
+						changeNumberOfCloudAvailable+=1;
+						GCloudVmAvailbleNumber++
 					}
-					
 				}
-				//alert(lastSpan);
-				$("#FermiSubCover").children().eq(i).children().eq(2).replaceWith("<div CLASS='cpuCover'>"+lastSpan+"</div>");
 
-				//lastSpan=null;
+			    $("#GCloudSubCover").children().eq(i).children().eq(1).replaceWith("<div CLASS='subStatus'><span CLASS='subStatusNumber running'>"+GCloudVmRunnigNumber+"</span><span CLASS='subStatusNumber idle'>"+GCloudVmIdleNumber+"</span><span CLASS='subStatusNumber unhealthy'>"+GCloudVmUnhealthyNumber+"</span><span CLASS='subStatusNumber available'>"+GCloudVmAvailbleNumber+"</span></div></div>");
 				if(k<simulatorOnHostListSize-1){
 					k++;
 				}
-				$("#FermiSubCover").children().eq(i).children().eq(0).children().eq(1).before("<div CLASS='cpuSign'><img src='images/btn_power_fliker_00.png'></div>");
 			}else{
-				var lastSpan = new String("");
-				for (j=0; j<12; j++){
-					lastSpan += firstSpan4+changeNum(j+1)+secondSpan;
-				}
-				$("#FermiSubCover").children().eq(i).children().eq(2).replaceWith("<div CLASS='cpuCover'>"+lastSpan+"</div>");
-				//lastSpan=null;
+				$("#GCloudSubCover").children().eq(i).children().eq(1).replaceWith("<div CLASS='subStatus'><span CLASS='subStatusNumber off'>0</span><span CLASS='subStatusNumber off'>0</span><span CLASS='subStatusNumber off'>0</span><span CLASS='subStatusNumber off'>0</span></div></div>");
 			}
-			
 		}
+		$("#vsimulatorclusterStatus").replaceWith("<div CLASS='VclusterStatus' id='vsimulatorclusterStatus'><div CLASS='VclusterStatusNumber running'>"+changeNumberOfCloudRunnig+"</div><div CLASS='VclusterStatusNumber idle'>"+changeNumberOfCloudIdle+"</div><div CLASS='VclusterStatusNumber unhealthy'>"+changeNumberOfCloudUnhealthy+"</div><div CLASS='VclusterStatusNumber available'>"+changeNumberOfCloudAvailable+"</div></div>");
 		simulatorOnHostList = null;
 		simulatorOnHostListSize = null;
 	}
+	
 	
 	function FermihostVmStatus(){
 		
@@ -281,7 +283,63 @@ function alertTest(){
 		simulatorOnHostList = null;
 		simulatorOnHostListSize = null;
 	}
+	
+	function GhostVmStatus(){
+		
+		var firstSpan0 = new String("<div CLASS='cpu_running'><p class='cpuP'>vm-");
+		var firstSpan1 = new String("<div CLASS='cpu_idle'><p class='cpuP'>vm-");
+		var firstSpan2 = new String("<div CLASS='cpu_unhealthy'><p class='cpuP'>vm-");
+		var firstSpan3 = new String("<div CLASS='cpu_available'><p class='cpuP'>vm-");
+		var firstSpan4 = new String("<div CLASS='cpu_off'><p class='cpuP'>vm-");
+		var secondSpan = new String("</p></div>");
+		
+		simulatorOnHostList = GCloudOnHostList;
+		simulatorOnHostListSize = GCloudOnHostListSize;
+		
+		k=0;
+		for (i=0; i<GCloudOnHostListSize; i++){
+			
+			var stringResult = GCloudOnHostList[k];
+			//var stringResult = numberResult.toString();
+			if(GCloudOnHostList[i]==stringResult){
+				var lastSpan = new String("");
+				for (j=0; j<12; j++){
+					if(GCloudVmList(stringResult)[j]==0){
 
+						lastSpan += firstSpan0+changeNum(j+1)+secondSpan;
+					}else if(GCloudVmList(stringResult)[j]==1){
+
+						lastSpan += firstSpan1+changeNum(j+1)+secondSpan;
+					}else if(GCloudVmList(stringResult)[j]==2){
+
+						lastSpan += firstSpan2+changeNum(j+1)+secondSpan;
+					}else if(GCloudVmList(stringResult)[j]==3){
+
+						lastSpan += firstSpan3+changeNum(j+1)+secondSpan;
+					}
+					
+				}
+				//alert(lastSpan);
+				$("#GCloudSubCover").children().eq(i).children().eq(2).replaceWith("<div CLASS='cpuCover'>"+lastSpan+"</div>");
+
+				//lastSpan=null;
+				if(k<simulatorOnHostListSize-1){
+					k++;
+				}
+				$("#GCloudSubCover").children().eq(i).children().eq(0).children().eq(1).before("<div CLASS='cpuSign'><img src='images/btn_power_fliker_00.png'></div>");
+			}else{
+				var lastSpan = new String("");
+				for (j=0; j<12; j++){
+					lastSpan += firstSpan4+changeNum(j+1)+secondSpan;
+				}
+				$("#GCloudSubCover").children().eq(i).children().eq(2).replaceWith("<div CLASS='cpuCover'>"+lastSpan+"</div>");
+				//lastSpan=null;
+			}
+			
+		}
+		simulatorOnHostList = null;
+		simulatorOnHostListSize = null;
+	}
 	/////////////////////////////////////////////////////////////////////////////////////////
 	
 	
@@ -366,9 +424,102 @@ function alertTest(){
 
 			$("#statusCloudNumber").replaceWith("<div CLASS='status' id='statusCloudNumber'><div CLASS='statusNumber running'>"+theNumberOfCloudRunnig+"</div><div CLASS='statusNumber idle'>"+theNumberOfCloudIdle+"</div><div CLASS='statusNumber unhealthy'>"+theNumberOfCloudUnhealthy+"</div><div CLASS='statusNumber available'>"+theNumberOfCloudAvailable+"</div></div>");
 			$("#VclusterStatus").replaceWith("<div CLASS='VclusterStatus'  id='VclusterStatus'><div CLASS='VclusterStatusNumber running'>"+(parseInt(theNumberOfCloudRunnig)+parseInt(RunningTop))+"</div><div CLASS='VclusterStatusNumber idle'>"+(parseInt(theNumberOfCloudIdle)+parseInt(IdleTop))+"</div><div CLASS='VclusterStatusNumber unhealthy'>"+(parseInt(theNumberOfCloudUnhealthy)+parseInt(UnhealthyTop))+"</div><div CLASS='VclusterStatusNumber available'>"+(parseInt(theNumberOfCloudAvailable)+parseInt(AvailableTop))+"</div></div>");
-
-			simulatorOnHostList = null;
-			simulatorOnHostListSize = null;
+			
+			
+			/////////fermiCloud 화면 세팅 ////////////////////////
+		var firstSpan = new String("<div CLASS='host' id='FermiHost'><div CLASS='FermiHostTop'><div CLASS='hostTitle'><p>");
+			
+			changeNumberOfFermiRunnig = 0;
+			changeNumberOfFermiIdle = 0;
+			changeNumberOfFermiUnhealthy = 0;
+			changeNumberOfFermiAvailable = 0;
+			k=0;
+			for (i=0; i<FermiHostListSize; i++){
+				var stringResult = FermiOnHostList[k];
+				//var stringResult = numberResult.toString();
+				
+				if(FermiHostList[i]==stringResult){
+					FermiVmRunnigNumber=0;
+					FermiVmIdleNumber=0;
+					FermiVmUnhealthyNumber=0;
+					FermiVmAvailbleNumber=0;
+					for (j=0; j<12; j++){
+						//alert(FermiVmList(stringResult)[j]);
+						if(FermiVmList(stringResult)[j]==0){
+							changeNumberOfFermiRunnig+=1;
+							FermiVmRunnigNumber++
+						}else if(FermiVmList(stringResult)[j]==1){
+							changeNumberOfFermiIdle+=1;
+							FermiVmIdleNumber++
+						}else if(FermiVmList(stringResult)[j]==2){
+							changeNumberOfFermiUnhealthy+=1;
+							FermiVmUnhealthyNumber++
+						}else if(FermiVmList(stringResult)[j]==3){
+							changeNumberOfFermiAvailable+=1;
+							FermiVmAvailbleNumber++
+						}
+					}
+				    
+				    var secondSpan = new String("</p></div></div><div CLASS='hostStatus' id='FermiHostStatus'><span CLASS='running'>"+FermiVmRunnigNumber+"</span><span CLASS='idle'>"+FermiVmIdleNumber+"</span><span CLASS='unhealthy'>"+FermiVmUnhealthyNumber+"</span><span CLASS='available'>"+FermiVmAvailbleNumber+"</span></div></div>");
+						$(firstSpan+FermiHostList[i]+secondSpan).appendTo("#Fermi_cover");
+					if(k<FermiOnHostListSize-1){
+						k++;
+					}
+				}else{
+					var secondSpan = new String("</p></div></div><div CLASS='hostStatus' id='FermiHostStatus'><span CLASS='off'>0</span><span CLASS='off'>0</span><span CLASS='off'>0</span><span CLASS='off'>0</span></div></div>");
+						$(firstSpan+FermiHostList[i]+secondSpan).appendTo("#Fermi_cover");
+				}
+			}
+			$("#statusFermiNumber").replaceWith("<div CLASS='status' id='statusFermiNumber'><div CLASS='statusNumber running'>"+changeNumberOfFermiRunnig+"</div><div CLASS='statusNumber idle'>"+changeNumberOfFermiIdle+"</div><div CLASS='statusNumber unhealthy'>"+changeNumberOfFermiUnhealthy+"</div><div CLASS='statusNumber available'>"+changeNumberOfFermiAvailable+"</div></div>");
+			
+			/////////GCloud 화면 세팅 //////////////
+		var firstSpan = new String("<div CLASS='host' id='GHost'><div CLASS='GHostTop'><div CLASS='hostTitle'><p>");
+		
+			changeNumberOfGRunnig = 0;
+			changeNumberOfGIdle = 0;
+			changeNumberOfGUnhealthy = 0;
+			changeNumberOfGAvailable = 0;
+			
+			l=0;
+			for (i=0; i<GCloudHostListSize; i++){
+				//alert(GCloudHostList);
+				var stringResult = GCloudOnHostList[l];
+				//var stringResult = numberResult.toString();
+				
+				if(GCloudHostList[i]==stringResult){
+					GVmRunnigNumber=0;
+					GVmIdleNumber=0;
+					GVmUnhealthyNumber=0;
+					GVmAvailbleNumber=0;
+					for (j=0; j<12; j++){
+						
+						if(GCloudVmList(stringResult)[j]==0){
+							changeNumberOfGRunnig+=1;
+							GVmRunnigNumber++
+						}else if(GCloudVmList(stringResult)[j]==1){
+							changeNumberOfGIdle+=1;
+							GVmIdleNumber++
+						}else if(GCloudVmList(stringResult)[j]==2){
+							changeNumberOfGUnhealthy+=1;
+							GVmUnhealthyNumber++
+						}else if(GCloudVmList(stringResult)[j]==3){
+							changeNumberOfGAvailable+=1;
+							GVmAvailbleNumber++
+						}
+					}
+				    
+				    var secondSpan = new String("</p></div></div><div CLASS='hostStatus' id='FermiHostStatus'><span CLASS='running'>"+GVmRunnigNumber+"</span><span CLASS='idle'>"+GVmIdleNumber+"</span><span CLASS='unhealthy'>"+GVmUnhealthyNumber+"</span><span CLASS='available'>"+GVmAvailbleNumber+"</span></div></div>");
+						$(firstSpan+GCloudHostList[i]+secondSpan).appendTo("#G_cover");
+					if(l<GCloudOnHostListSize-1){
+						l++;
+					}
+				}else{
+					var secondSpan = new String("</p></div></div><div CLASS='hostStatus' id='FermiHostStatus'><span CLASS='off'>0</span><span CLASS='off'>0</span><span CLASS='off'>0</span><span CLASS='off'>0</span></div></div>");
+						$(firstSpan+GCloudHostList[i]+secondSpan).appendTo("#G_cover");
+				}
+			}
+			
+			$("#statusGNumber").replaceWith("<div CLASS='status' id='statusGNumber'><div CLASS='statusNumber running'>"+changeNumberOfGRunnig+"</div><div CLASS='statusNumber idle'>"+changeNumberOfGIdle+"</div><div CLASS='statusNumber unhealthy'>"+changeNumberOfGUnhealthy+"</div><div CLASS='statusNumber available'>"+changeNumberOfGAvailable+"</div></div>");
 
 	}
 	
@@ -424,16 +575,56 @@ function alertTest(){
 		
 		for (i=0; i<4; i++){
 			var hostLength = $("#secondContent").children().eq(i).children().eq(2).children(".host").length;
-			for (j=0; j<hostLength; j++){
-				//$("<div CLASS='hostSign'><img src='images/host_sign_on_"+i+changeNum(j)+".gif'></div>").appendTo($("#secondContent").children().eq(i).children().eq(2).children().eq(j).children().eq(0));
-				$("<div CLASS='hostSign'><img src='images/host_sign_on_000.png'></div>").appendTo($("#secondContent").children().eq(i).children().eq(2).children().eq(j).children().eq(0));
+			if(i==0){
+				j=0;
+				simulatorOnHostList = getRunningHostList("vsimulator");
+				var stringResult = simulatorOnHostList[j];
+				
+				for (k=0; k<simulatorHostListSize; k++){
+					if(simulatorHostList[k]==stringResult){
+						$("<div CLASS='hostSign'><img src='images/host_sign_on_000.png'></div>").appendTo($("#secondContent").children().eq(i).children().eq(2).children().eq(k).children().eq(0));
+						if(j<simulatorOnHostListSize-1){
+							j++;
+						}
+					}else{
+						$("<div CLASS='hostSign'><img src='images/host_sign_on_000.png'></div>").appendTo($("#secondContent").children().eq(i).children().eq(2).children().eq(k).children().eq(0));
+					}
+				}
+			}
+			if(i==1){
+				j=0;
+				var stringResult = FermiOnHostList[j];
+				
+				for (k=0; k<FermiOnHostListSize; k++){
+					if(FermiOnHostListSize[k]==stringResult){
+						$("<div CLASS='hostSign'><img src='images/host_sign_on_000.png'></div>").appendTo($("#secondContent").children().eq(i).children().eq(2).children().eq(k).children().eq(0));
+						if(j<simulatorOnHostListSize-1){
+							j++;
+						}
+					}else{
+						$("<div CLASS='hostSign'><img src='images/host_sign_on_000.png'></div>").appendTo($("#secondContent").children().eq(i).children().eq(2).children().eq(k).children().eq(0));
+					}
+				}
+			}
+			if(i==2){
+				
+			}
+			if(i==3){
+				j=0;
+				var stringResult = GCloudOnHostList[j];
+				
+				for (k=0; k<GCloudOnHostListSize; k++){
+					if(GCloudOnHostListSize[k]==stringResult){
+						$("<div CLASS='hostSign'><img src='images/host_sign_on_000.png'></div>").appendTo($("#secondContent").children().eq(i).children().eq(2).children().eq(k).children().eq(0));
+						if(j<simulatorOnHostListSize-1){
+							j++;
+						}
+					}else{
+						$("<div CLASS='hostSign'><img src='images/host_sign_on_000.png'></div>").appendTo($("#secondContent").children().eq(i).children().eq(2).children().eq(k).children().eq(0));
+					}
+				}
 			}
 		}
-		//$("#secondContent").children().eq(i).children().eq(2).children().eq(j).children().eq(0).replaceWith("<div CLASS='hostSign'></div>");
-		$("#secondContent").children().eq(1).children().eq(2).children().eq(3).children().eq(0).children().eq(1).replaceWith("<div CLASS='hostSignOff'><img src='images/host_sign_off.png'></div>");
-		$("#secondContent").children().eq(1).children().eq(2).children().eq(4).children().eq(0).children().eq(1).replaceWith("<div CLASS='hostSignOff'><img src='images/host_sign_off.png'></div>");
-		$("#secondContent").children().eq(3).children().eq(2).children().eq(2).children().eq(0).children().eq(1).replaceWith("<div CLASS='hostSignOff'><img src='images/host_sign_off.png'></div>");
-		$("#secondContent").children().eq(3).children().eq(2).children().eq(3).children().eq(0).children().eq(1).replaceWith("<div CLASS='hostSignOff'><img src='images/host_sign_off.png'></div>");
 	}
 	function signing(){
 		int4 = setInterval( function() {
@@ -443,7 +634,7 @@ function alertTest(){
 		300
 		);
 	}
-	////////////////////////////����2��° ������ ��� �Ǵ� �Լ� ����///////////////////////////
+	////////////////////////////서브 2페이지 vsimulator 화면 설정 //////////////////////////
 	
 	function subAppendQueueRunning() {
 		//$.mobile.loading( 'show');
@@ -502,6 +693,10 @@ function alertTest(){
 				var secondSpan = new String("</p><br><p CLASS='subHostTopsubTitle'>");
 				var thirdSpan = new String(" Status</p></div><div CLASS='subStatus'></div><div CLASS='cpuCover'></div>");
 				$(firstSpan+stringchangeResult+secondSpan+stringchangeResult+thirdSpan).appendTo("#simulatorSubCover");
+			}
+			$("#simulatorSubCover").css("width",simulatorHostListSize*175-14+"px");
+			if(j+1==simulatorHostListSize){
+				$("#simulatorSubCover").children().eq(j).css("margin-right" , "0px");
 			}
 			
 		}
@@ -819,6 +1014,9 @@ $(document).ready(function() {
 	getFermiCloudDisplay();
 	getGCloudDisplay();
 	
+	
+	
+	
 	$("[data-role=page]").live("pagebeforeshow",function(event) { 
 		if(this.id == "intro") { 
 
@@ -846,7 +1044,9 @@ $(document).ready(function() {
 	    		
 	    		$("#statusTitle").replaceWith("<div CLASS='statusTitle' ID='statusTitle'>Amazon Cloud Cluster Status</div>");
 	    	}else if(pageNumber=="4"){
-	    		changeGCloudStatusNumber();
+	    		//changeGCloudStatusNumber();
+	    		hostGStatusNumber();
+	    		GhostVmStatus();
 	    		$("#statusTitle").replaceWith("<div CLASS='statusTitle' ID='statusTitle'>GCloud Cluster Status</div>");
 	    	} 
     	} 
@@ -890,7 +1090,7 @@ $(document).ready(function() {
 	    	}else if(pageNumber=="3"){
 
 	    	}else if(pageNumber=="4"){
-
+	    		flikering();
 	    	}
 			
 	    	//addGif2();

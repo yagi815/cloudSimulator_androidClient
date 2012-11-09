@@ -1,7 +1,5 @@
-/*�ε���*/
-html {
-    -webkit-user-select: none;
-}
+
+
 
 body, html{
 	margin:0px;
@@ -10,13 +8,11 @@ body, html{
 	background-color: black;
 	-webkit-user-select: none;  /* prevent copy paste for all elements */
 }
-* {
 
--webkit-touch-callout: none;
-
--webkit-user-select: none;
-
-}
+a:link    {color:green;}
+a:visited {color:green;}
+a:hover   {color:red;}
+a:active  {color:yellow;}
 
 #logo1 {
 	width:1000px;
@@ -95,6 +91,7 @@ body, html{
 	background-image:url("images/menu_bg.png");
 }
 .menuPop {
+	color:#FFFFFF;
 	position: absolute;
 	width:277px;
 	height:247px;
@@ -112,11 +109,7 @@ body, html{
 
 
 
-.menuPop p A{font-size:18px;color:#FFFFFF;text-decoration:none;}
-.menuPop p A:link{font-size:18px;color:#FFFFFF;text-decoration:none;}
-.menuPop p A:active{font-size:18px;color:#FFFFFF;text-decoration:none;}
-.menuPop p A:visited{font-size:18px;color:#FFFFFF;text-decoration:none;}
-.menuPop p A:hover{font-size:18px;color:#FFFFFF;text-decoration:none;}
+
 
 
 /*���� ž*/
@@ -575,7 +568,7 @@ body, html{
 .cpuAmazonCover{
 	//background-color:#FFFFFF;
 	float:left;
-	width: 146px;
+	width: 141px;
 	padding-left:0px;
 }
 .cpu{

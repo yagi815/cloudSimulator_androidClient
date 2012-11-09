@@ -19,56 +19,32 @@
 	<script src="js/video.js"></script>
 	
 	
+	
 		
 </head>
-<body style="-webkit-user-select: none;">
+<body>
 
 <!-- Start of first page: #intro -->
 <div data-role="page" id="intro" style="background-image: url(images/default_image.png); background-repeat: no-repeat; background-color:black; height:760px">
-	   <div id="alertAction"></div>
-   <div id="confirmAction"></div>
-	<!-- <video autoplay>
-  		<source src="images/00_intro.mp4" type="video/mp4">
-		<div id="wrapper" style="width:300px;height:200px;background-color:white;">
-	</video> -->
-	
- 	
-	
+
 	<a href="#status" data-transition="slide"><img src="images/default_logo.png" ID="logo2"></a><br>
 	<img src="images/default_copy.png" CLASS=copy>
 
-</div>
+
 	
 
+</div>
 
 
 <!-- Start of second page: #status -->
 <div data-role="page" id="status" style="background-image: url(images/main_back.png); background-repeat: no-repeat; background-color:black; height:760px">
-	<script>
 
-		function getRunningJobs(item) {
-			//return window.NAPIVcluster.getRunningJobs();
-			//document.getElementById("rQ").innerHtml=window.NAPIVcluster.getRunningJobs();
-			//alert(window.NAPIVcluster.getRunningJobs());
-			//alert($item);
-			//$(".hostTop").after("<div CLASS='hostSign'><img src='images/host_sign_on.gif'></div>");
-			item.after(window.NAPIVcluster.getRunningJobs());
-		}
-
-	</script>
-	<script type="text/javascript">
-		//window.plugins.videoPlayer.play("images/00_intro.mp4");
-	 </script>
-	
-		
-	
 	<div>
 		<div CLASS="logoSub"><a href="#intro" data-direction="reverse" data-transition="slide"><img src="images/logo_sub.png" ></a></div>
 		<div CLASS="resetButton" ID="resetButton"></div>
 		<div CLASS="demoButton" ID="demoButton"></div>
 		<div CLASS="menuButton" ID="menuButton"></div>
 	</div>
-
 	<div CLASS="VclusterTopText">
 		<div style="float:left;width:443px" >Status</div><div style="float:left;width:220px">Queue Status</div><div style="float:left">Image Repository</div>
 	</div>
@@ -99,13 +75,11 @@
 			<div CLASS="ImageText" ID="ImageRepositoryText">
 				<span>CDF_OS_Image</span><span>STAR_OS_IMAGE</span><span>Belle_OS_Image</span><span>Ligo_OS_Image</span>
 			</div>
-			<!--img src="images/image_cover.png"-->
 		</div>
 	</div>
-<!--vsimulator시작-->
+
 	<div CLASS="content" ID="secondContent">
-		
-	
+		<!--vsimulator시작-->
 		<div CLASS="vsimulator">
 			<div CLASS="statusTop" id="statusTop">
 				<p CLASS="title">vsimulator</p><a href="#hostStatus" data-transition="slide"><div CLASS="statusConfig" ID="govsimulatorButton"></div></a><br>
@@ -117,26 +91,15 @@
 			</div>
 		</div>
 		<!--FermiCloud 시작-->
-		
-		
-	
 		<div CLASS="FermiCloud" ID="FermiCloud">
-		
-			
-	
 			<div CLASS="statusTop">
 				<p CLASS="title">FermiCloud</p><a href="#hostStatus" data-transition="slide"><div CLASS="statusConfig" ID="goFermiButton"></div></a><br>
 				<p CLASS="subTitle">FermiCloud Status</p>
 			</div>
-			
 			<div CLASS="status" id="statusFermiNumber">
-				
 			</div>
-
 			<div CLASS="host_cover" id="Fermi_cover">
-				
 			</div>
-			
 		</div>
 	<!--Amazon_Cloud 시작-->
 		<div CLASS="Amazon_Cloud">
@@ -144,32 +107,9 @@
 				<p CLASS="title">Amazon Cloud</p><a href="#hostStatus" data-transition="slide"><div CLASS="statusConfig" ID="goAmazonButton"></div></a><br>
 				<p CLASS="subTitle">Amazon Cloud Status</p>
 			</div>
-			<div CLASS="status">
-				<div CLASS="statusNumber running">
-					16
-				</div>
-				<div CLASS="statusNumber idle">
-					5
-				</div>
-				<div CLASS="statusNumber unhealthy">
-					0
-				</div>
-				<div CLASS="statusNumber available">
-					4
-				</div>
+			<div CLASS="status" id="statusAmazonNumber">
 			</div>
-			<div CLASS="host_cover">
-				<div CLASS="host">
-					<div CLASS="hostTop">
-						<div CLASS="hostTitle"><p>host01</p></div>
-					</div>
-					<div CLASS="hostStatus">
-						<span CLASS="running">16</span><span CLASS="idle">5</span><span CLASS="unhealthy">0</span><span CLASS="available">4</span>
-					</div>
-				</div>
-
-
-				
+			<div CLASS="host_cover" id="Amazon_cover">	
 			</div>
 		</div>
 	<!--GCloud 시작-->
@@ -179,28 +119,23 @@
 				<p CLASS="subTitle">GCloud Status</p>
 			</div>
 			<div CLASS="status" id="statusGNumber">
-
 			</div>
 			<div CLASS="host_cover" id="G_cover">
-				
 			</div>
 		</div>
-		
-
-			
-
 	</div>
+	
 	<div CLASS="menuBack" ID="menuBack" style="display:none;z-index:100005">
 	</div>
 	
 	<div CLASS="menuOut" ID="menuOut" style="display:none;z-index:100007">
 		<div ID="menuPop" CLASS="menuPop" >
-			<p><a href="#status" data-transition="slide" data-direction="reverse" >vcluster Status</a></p>
-			<p id="sgovsimulatorButton"><a href="#hostStatus" data-transition="slide">vsimulator Status</a></p>
-			<p><a href="#hostStatus" data-transition="slide">FermiCloud Status</a></p>
-			<p><a href="#hostStatus" data-transition="slide">Amazon Cloud Status</a></p>
-			<p><a href="#hostStatus" data-transition="slide">GCloud Status</a></p>
-			<p><a href="index.html">Configueration</a><br>
+			<p id="sgoStatusButton"><a href="#">vcluster Status</a></p>
+			<p id="sgoVsimulatorButton"><a href="#hostStatus" data-transition="slide">vsimulator Status</a></p>
+			<p id="sgoFermiButton"><a href="#hostStatus" data-transition="slide">FermiCloud Status</a></p>
+			<p id="sgoAmazonButton"><a href="#hostStatus" data-transition="slide">Amazon Cloud Status</a></p>
+			<p id="sgoGcloudButton"><a href="#hostStatus" data-transition="slide">GCloud Status</a></p>
+			<p><a href="#">Configueration</a><br>
 
 			
 		</div>
@@ -210,7 +145,31 @@
 		
 
 	<script>
+	$('#sgoStatusButton').click(function() {
+		$('#menuBack').fadeOut("fast");
+		$('#menuOut').fadeOut("fast");
+	});
+	$('#sgoVsimulatorButton').click(function() {
+		//alert("test");
+		pageNumber=1;
+		$("#vsimulatorSub").show();
+	});
+	$('#sgoAmazonButton').click(function() {
+		pageNumber=3
+		$('#amazonSub').show();
+		;
+	});
+	
+	$('#sgoFermiButton').click(function() {
+		pageNumber=2;
+		$('#fermiSub').show();
 		
+	});
+	
+	$('#sgoGcloudButton').click(function() {
+		pageNumber=4;
+		$('#gcloudSub').show();
+	});
 	</script>
 
 </div>
@@ -248,343 +207,8 @@
 
 	<div CLASS="contentSub">
 		<div ID="amazonSub" CLASS="hostSubScroll" style="display:none">
-			<div CLASS="hostSubCover">
-				<div CLASS="hostSubAmazon">
-					<div CLASS="subHostTop">
-						<img src="images/btn_host_power.png" CLASS="subHost_power">
-						<p CLASS="subHostToptitle">Host01</p><br>
-						<p CLASS="subHostTopsubTitle">Host1 Status</p>
-					</div>
-					<div CLASS="subStatus">
-						<div CLASS="subStatusNumber running">
-							123
-						</div>
-						<div CLASS="subStatusNumber idle">
-							45
-						</div>
-						<div CLASS="subStatusNumber unhealthy">
-							160
-						</div>
-						<div CLASS="subStatusNumber available">
-							789
-						</div>
-					</div><br>
-					<div Class="amazonCover">
-						<div CLASS="cpuAmazonCover">
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-01">vm-01</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-02">vm-02</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-03">vm-03</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-04">vm-04</p>
-							</div>
-							<div CLASS="cpu_unhealthy">
-								<p class="cpuP" title="vm-05">vm-05</p>
-							</div>
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-06">vm-06</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-07">vm-07</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-08">vm-08</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-09">vm-09</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-10">vm-10</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-11">vm-11</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-12">vm-12</p>
-							</div>
-						</div>
-						
-						<div CLASS="cpuAmazonCover">
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-01">vm-01</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-02">vm-02</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-03">vm-03</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-04">vm-04</p>
-							</div>
-							<div CLASS="cpu_unhealthy">
-								<p class="cpuP" title="vm-05">vm-05</p>
-							</div>
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-06">vm-06</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-07">vm-07</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-08">vm-08</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-09">vm-09</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-10">vm-10</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-11">vm-11</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-12">vm-12</p>
-							</div>
-						</div>
-						
-						<div CLASS="cpuAmazonCover">
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-01">vm-01</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-02">vm-02</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-03">vm-03</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-04">vm-04</p>
-							</div>
-							<div CLASS="cpu_unhealthy">
-								<p class="cpuP" title="vm-05">vm-05</p>
-							</div>
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-06">vm-06</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-07">vm-07</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-08">vm-08</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-09">vm-09</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-10">vm-10</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-11">vm-11</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-12">vm-12</p>
-							</div>
-						</div>
-						
-						
-						<div CLASS="cpuAmazonCover">
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-01">vm-01</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-02">vm-02</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-03">vm-03</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-04">vm-04</p>
-							</div>
-							<div CLASS="cpu_unhealthy">
-								<p class="cpuP" title="vm-05">vm-05</p>
-							</div>
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-06">vm-06</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-07">vm-07</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-08">vm-08</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-09">vm-09</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-10">vm-10</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-11">vm-11</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-12">vm-12</p>
-							</div>
-						</div>
-						<div CLASS="cpuAmazonCover">
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-01">vm-01</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-02">vm-02</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-03">vm-03</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-04">vm-04</p>
-							</div>
-							<div CLASS="cpu_unhealthy">
-								<p class="cpuP" title="vm-05">vm-05</p>
-							</div>
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-06">vm-06</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-07">vm-07</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-08">vm-08</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-09">vm-09</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-10">vm-10</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-11">vm-11</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-12">vm-12</p>
-							</div>
-						</div>
-						<div CLASS="cpuAmazonCover">
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-01">vm-01</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-02">vm-02</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-03">vm-03</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-04">vm-04</p>
-							</div>
-							<div CLASS="cpu_unhealthy">
-								<p class="cpuP" title="vm-05">vm-05</p>
-							</div>
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-06">vm-06</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-07">vm-07</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-08">vm-08</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-09">vm-09</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-10">vm-10</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-11">vm-11</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-12">vm-12</p>
-							</div>
-						</div>
-						
-						<div CLASS="cpuAmazonCover">
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-01">vm-01</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-02">vm-02</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-03">vm-03</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-04">vm-04</p>
-							</div>
-							<div CLASS="cpu_unhealthy">
-								<p class="cpuP" title="vm-05">vm-05</p>
-							</div>
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-06">vm-06</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-07">vm-07</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-08">vm-08</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-09">vm-09</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-10">vm-10</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-11">vm-11</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-12">vm-12</p>
-							</div>
-						</div>
-						<div CLASS="cpuAmazonCover">
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-01">vm-01</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-02">vm-02</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-03">vm-03</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-04">vm-04</p>
-							</div>
-							<div CLASS="cpu_unhealthy">
-								<p class="cpuP" title="vm-05">vm-05</p>
-							</div>
-							<div CLASS="cpu_idle">
-								<p class="cpuP" title="vm-06">vm-06</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-07">vm-07</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-08">vm-08</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-09">vm-09</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-10">vm-10</p>
-							</div>
-							<div CLASS="cpu_running">
-								<p class="cpuP" title="vm-11">vm-11</p>
-							</div>
-							<div CLASS="cpu_available">
-								<p class="cpuP" title="vm-12">vm-12</p>
-							</div>
-						</div>
-						
-					</div>
-
-						
-					
-				</div>
+			<div CLASS="hostSubCover" id="AmazonSubCover">
+				
 				
 				
 				
@@ -649,15 +273,89 @@
 	<div CLASS="menuOut" ID="menuSubOut" style="display:none;z-index:100006">
 		<div CLASS="menuPop" >
 			<p><a href="#status" data-transition="slide" data-direction="reverse" >vcluster Status</a></p>
-			<p id="subgovsimulatorButton">vsimulator Status</p>
-			<p id="subgoFermiButton">FermiCloud Status</p>
-			<p><a href="#hostStatus" data-transition="slide">Amazon Cloud Status</a></p>
-			<p><a href="#hostStatus" data-transition="slide">GCloud Status</a></p>
-			<p><a href="index.html">Configueration</a><br>
+			<p id="subgovsimulatorButton"><a href="#">vsimulator Status</a></p>
+			<p id="subgoFermiButton"><a href="#">FermiCloud Status</a></p>
+			<p id="subgoAmazonButton"><a href="#">Amazon Cloud Status</a></p>
+			<p id="subgoGcloudButton"><a href="#">GCloud Status</a></p>
+			<p><a href="#">Configueration</a><br>
 		</div>
 	</div>	
 
+	<script>
+	
+	$('#sgoStatusButton').click(function() {
 
+	});
+	$('#subgovsimulatorButton').click(function() {
+		changeVmStatus();
+		hostStatusNumber();
+		$("#statusTitle").replaceWith("<div CLASS='statusTitle' ID='statusTitle'>vsimulator Cluster Status</div>");
+		//alert("test");
+		pageNumber=1;
+		$("#vsimulatorSub").show();
+		$("#amazonSub").hide();
+		$("#fermiSub").hide();
+		$("#gcloudSub").hide();
+		start_reload_second();
+		$("#masterP").before("<img src='images/master_running.gif' ID='master_running'>");
+		$('#menuSubBack').fadeOut("fast");
+		$('#menuSubOut').fadeOut("fast");
+		
+	});
+	$('#subgoAmazonButton').click(function() {
+		if(pageNumber=="1"){
+			$("#master_running").remove();
+			window.clearInterval(int2);
+		}
+		hostAmazonStatusNumber();
+		AmazonhostVmStatus();
+		$("#statusTitle").replaceWith("<div CLASS='statusTitle' ID='statusTitle'>Amazon Cloud Cluster Status</div>");
+		pageNumber=3
+		$('#amazonSub').show();
+		$("#vsimulatorSub").hide();
+		$("#fermiSub").hide();
+		$("#gcloudSub").hide();
+		$('#menuSubBack').fadeOut("fast");
+		$('#menuSubOut').fadeOut("fast");
+		;
+	});
+	
+	$('#subgoFermiButton').click(function() {
+		if(pageNumber=="1"){
+			$("#master_running").remove();
+			window.clearInterval(int2);
+		}
+		hostFermiStatusNumber();
+		FermihostVmStatus();
+		//alert("2");
+		$("#statusTitle").replaceWith("<div CLASS='statusTitle' ID='statusTitle'>FermiCloud Cluster Status</div>");
+		pageNumber=2;
+		$('#fermiSub').show();
+		$("#vsimulatorSub").hide();
+		$("#amazonSub").hide();
+		$("#gcloudSub").hide();
+		$('#menuSubBack').fadeOut("fast");
+		$('#menuSubOut').fadeOut("fast");
+		
+	});
+	
+	$('#subgoGcloudButton').click(function() {
+		if(pageNumber=="1"){
+			$("#master_running").remove();
+			window.clearInterval(int2);
+		}
+		hostGStatusNumber();
+		GhostVmStatus();
+		$("#statusTitle").replaceWith("<div CLASS='statusTitle' ID='statusTitle'>GCloud Cluster Status</div>");
+		pageNumber=4;
+		$('#gcloudSub').show();
+		$("#vsimulatorSub").hide();
+		$("#amazonSub").hide();
+		$("#fermiSub").hide();
+		$('#menuSubBack').fadeOut("fast");
+		$('#menuSubOut').fadeOut("fast");
+	});
+	</script>
 	
 </div>
 

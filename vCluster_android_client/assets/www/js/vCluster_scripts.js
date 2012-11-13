@@ -36,7 +36,7 @@
 	
 	function FermiVmList( host ) {//
 		if(host=="host01"){
-			var FermiVmRealList = [ 1, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3  ];
+			var FermiVmRealList = [ 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0  ];
 		}else if(host=="host02"){
 			var FermiVmRealList = [ 0, 1, 0, 3, 0, 1, 0, 3, 0, 1, 0, 0  ];
 		}else if(host=="host03"){

@@ -34,44 +34,39 @@
 	var AmazonOnHostList=new Array("host01","host02","host03","host04","host05","host06");
 	var AmazonOnHostListSize = AmazonOnHostList.length;
 	
-	
-//	3-availableVM
-//	1-IdleVM, 
-//	0-RunningVM, 
-//	2-UnHealthyVM, 	
-	function FermiVmList( host ) {
+	function FermiVmList( host ) {//
 		if(host=="host01"){
-			var FermiVmRealList = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1  ];
+			var FermiVmRealList = [ 1, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3  ];
 		}else if(host=="host02"){
-			var FermiVmRealList = [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3  ];
+			var FermiVmRealList = [ 0, 1, 0, 3, 0, 1, 0, 3, 0, 1, 0, 0  ];
 		}else if(host=="host03"){
-			var FermiVmRealList = [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3  ];
+			var FermiVmRealList = [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 0, 3  ];
 		}else if(host=="host04"){
-			var FermiVmRealList = [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3  ];
+			var FermiVmRealList = [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 0  ];
 		}
 		return FermiVmRealList;
 	}
 	function GCloudVmList( host ) {
 		if(host=="host01"){
-			var GCloudVmRealList = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1  ];
+			var GCloudVmRealList = [ 0, 1, 0, 3, 0, 1, 0, 3, 0, 1, 1, 3 ];
 		}else if(host=="host02"){
-			var GCloudVmRealList = [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3  ];
+			var GCloudVmRealList = [ 0, 1, 2, 0, 0, 1, 0, 3, 0, 1, 1, 3 ];
 		}
 		return GCloudVmRealList;
 	}
 	function AmazonVmList( host ) {
 		if(host=="host01"){
-			var AmazonVmRealList = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1  ];
+			var AmazonVmRealList = [ 1, 1, 1, 3, 0, 1, 1, 3, 0, 1, 0, 3 ];
 		}else if(host=="host02"){
-			var AmazonVmRealList = [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3  ];
+			var AmazonVmRealList = [ 1, 1, 3, 3, 1, 1, 0, 3, 0, 1, 1, 3 ];
 		}else if(host=="host03"){
-			var AmazonVmRealList = [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3  ];
+			var AmazonVmRealList = [ 3, 1, 3, 3, 3, 1, 1, 3, 0, 1, 1, 3 ];
 		}else if(host=="host04"){
-			var AmazonVmRealList = [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3  ];
+			var AmazonVmRealList = [ 0, 1, 3, 3, 0, 1, 0, 3, 0, 1, 1, 3 ];
 		}else if(host=="host05"){
-			var AmazonVmRealList = [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3  ];
+			var AmazonVmRealList = [ 0, 1, 1, 3, 3, 1, 1, 3, 0, 1, 0, 3 ];
 		}else if(host=="host06"){
-			var AmazonVmRealList = [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3  ];
+			var AmazonVmRealList = [ 0, 1, 1, 3, 1, 1, 1, 3, 0, 1, 3, 3 ];
 		}
 		return AmazonVmRealList;
 	}
